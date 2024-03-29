@@ -32,22 +32,12 @@ style: |
 
 ---
 
-# 目次
-
-1. **Webアプリケーションについて**
-1. サーバーサイドとクライアントサイド
-1. Webアプリケーション開発の授業について
-1. 最後に
-
----
-
 # Webアプリケーションとは
 
 - クライアント側に特別なアプリは不要でWebブラウザのみあればよい
 - クライアントからリクエストを送信
 - サーバはリクエストを処理し、レスポンスを返す
-![](../images/04.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF.jpg)
-
+![](../images/orientation/04.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF.jpg)
 
 ---
 
@@ -58,7 +48,7 @@ style: |
   - HTML（Hyper Text Markup Language）
   - TCP/IP（Transmission Control ProtocolとInternet Protocol）
   - HTTP（Hyper Text Transfer Protocol）
-  <img src="../images/05.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%8A%80%E8%A1%93.jpg" width=%/>
+  <img src="../images/orientation/05.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%8A%80%E8%A1%93.jpg" width=%/>
 
 ---
 
@@ -74,7 +64,7 @@ style: |
 # Webアプリケーションの進化
 
 最初はサーバーに保存されている静的コンテンツしかレスポンスできなかった
-![](../images/07.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%B2%E5%8C%96.jpg)
+![](../images/orientation/07.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%B2%E5%8C%96.jpg)
 
 
 ---
@@ -82,19 +72,19 @@ style: |
 # Webアプリケーションの進化
 
 リクエスト時にデータを送信し、それに応じて動的コンテンツをレスポンスできるようになった
-![](../images/08.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%B2%E5%8C%96.jpg)
+![](../images/orientation/08.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%B2%E5%8C%96.jpg)
 
 ---
 
 # 動的コンテンツの例：Amazon(ログイン前)
 
-![](../images/09.Amazon(%E5%89%8D).jpeg)
+![](../images/orientation/09.Amazon(%E5%89%8D).jpeg)
 
 ---
 
 # 動的コンテンツの例：Amazon(ログイン後)
 
-![](../images/10.Amazon(%E5%BE%8C).jpeg)
+![](../images/orientation/10.Amazon(%E5%BE%8C).jpeg)
 
 ---
 
@@ -103,7 +93,7 @@ style: |
 - サーバー側で動作するプログラム
 - クライアントから送られてきたデータを処理し、処理結果をクライアントに返信する
 
-![](../images/11.%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0.jpg)
+![](../images/orientation/11.%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0.jpg)
 
 ---
 
@@ -127,7 +117,7 @@ style: |
 
 ---
 
-# ![](../images/14.PHP.png)
+# ![](../images/orientation/14.PHP.png)
 
 - 1995年に誕生したオープンソースの汎用プログラミング言語
 - コンパイル不要のスクリプト言語
@@ -136,7 +126,7 @@ style: |
 
 ---
 
-# ![](../images/15.Apache_1.png)
+# ![](../images/orientation/15.Apache_1.png)
 
 - 世界中でもっとも多く使われているWebサーバソフトウェア
 - 大規模な商用サイトから自宅サーバまで幅広く利用されている
@@ -144,7 +134,7 @@ style: |
 
 ---
 
-# ![](../images/16.MariaDB.png)
+# ![](../images/orientation/16.MariaDB.png)
 
 - MySQLから派生したオープンソースのリレーショナルデータベース管理システム
 - MySQLとの互換性を保ちつつ、性能や頑健性を高めるための独自機能を
@@ -153,7 +143,7 @@ style: |
 
 ---
 
-# <img src="../images/17.XAMPP.jpeg" width=15%/> 
+# <img src="../images/orientation/17.XAMPP.jpeg" width=15%/> 
 
 - 「ザンプ」と読みます
 - PHPを学習するために必要なソフトウェア(PHP,Apache,MariaDB)を１つにまとめたもの
@@ -239,6 +229,6 @@ style: |
 
 <div style="text-align:center" width="60%">
 
- <img src="../images/24.%E4%B8%80%E6%AD%A9%E4%B8%80%E6%AD%A9%E3%81%AE%E7%A9%8D%E3%81%BF%E9%87%8D%E3%81%AD.jpeg" width=50%/>
+ <img src="../images/orientation/24.%E4%B8%80%E6%AD%A9%E4%B8%80%E6%AD%A9%E3%81%AE%E7%A9%8D%E3%81%BF%E9%87%8D%E3%81%AD.jpeg" width=50%/>
 
 </div>
