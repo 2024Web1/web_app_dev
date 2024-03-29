@@ -40,12 +40,12 @@
 
 2. その後、リクエスト時にデータを送信し、それに応じて動的コンテンツをレスポンスできるようになった
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/images/orientation/08.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%B2%E5%8C%96.jpg?raw=true">
-</br>
-</br>
+<br>
+<br>
 動的コンテンツの例：Amazon(ログイン前)
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/images/orientation/09.Amazon(%E5%89%8D).jpeg?raw=true">
-</br>
-</br>
+<br>
+<br>
 動的コンテンツの例：Amazon(ログイン後)
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/images/orientation/10.Amazon(%E5%BE%8C).jpeg?raw=true">
 
@@ -60,14 +60,14 @@
 - 1995年に誕生したオープンソースの汎用プログラミング言語
 - コンパイル不要のスクリプト言語
 - サーバーサイドで動的なウェブページを作成
-- PHPの由来である“PHP:Hypertext Preprocessor”には、「Webページを構成するHTML(Hypertext)」を「事前に作り出す」という意味がある</br>
+- PHPの由来である“PHP:Hypertext Preprocessor”には、「Webページを構成するHTML(Hypertext)」を「事前に作り出す」という意味がある<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/images/orientation/14.PHP.png?raw=true">
 
 ### Apache
 
 - 世界中でもっとも多く使われているWebサーバソフトウェア
 - 大規模な商用サイトから自宅サーバまで幅広く利用されている
-- 開発は、Apacheソフトウェア財団のApache Licenseの下でソースコードが公開および配布されている代表的なオープンソースソフトウェアの一つ</br>
+- 開発は、Apacheソフトウェア財団のApache Licenseの下でソースコードが公開および配布されている代表的なオープンソースソフトウェアの一つ<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/images/orientation/15.Apache_1.png?raw=true">
 
 ### MySQL
@@ -134,5 +134,5 @@
 ### 一歩一歩の積み重ねが大事
 
 - 一日サボると難易度は倍になる
-- 技術の勉強は今日学んだものの上に明日は新たなものを積み上げていく</br>
+- 技術の勉強は今日学んだものの上に明日は新たなものを積み上げていく<br>
  <img src="https://github.com/2024Web1/web_app_dev/blob/main/images/orientation/24.%E4%B8%80%E6%AD%A9%E4%B8%80%E6%AD%A9%E3%81%AE%E7%A9%8D%E3%81%BF%E9%87%8D%E3%81%AD.jpeg?raw=true">
