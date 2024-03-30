@@ -98,12 +98,12 @@ GitHub はGitリポジトリのホスティングサービスです。
 
 ## 課題へのアクセス、受諾
 
-課題ページは[こちら](https://classroom.github.com/a/gKo4uB25)
+課題ページは[こちら](https://classroom.github.com/a/QM3UUgtQ)
 
 1. GitHubアカウントでログインしてください
 1. GitHub Classroomには既に皆さんの名前を登録しています、自分の名前を選んでクリックして進めてください</br>
-<img src=""></br></br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.009.png)</br></br>
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/join_the_classroom.png?raw=true"></br></br>
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.009.png?raw=true"></br></br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.010.jpeg)
 
 <div style="page-break-before:always"></div>
