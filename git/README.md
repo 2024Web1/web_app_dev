@@ -8,7 +8,7 @@
       - [Gitのインストール](#gitのインストール)
       - [インストールしたけどgitコマンドが見つからない場合](#インストールしたけどgitコマンドが見つからない場合)
     - [GitHub](#github)
-    - [GitHubアカウントの作り方](#githubアカウントの作り方)
+    - [GitHubアカウント作成(※既にGitHubアカウントを作成済の方は不要)](#githubアカウント作成既にgithubアカウントを作成済の方は不要)
   - [課題へのアクセス、受諾](#課題へのアクセス受諾)
     - [Gitの下準備](#gitの下準備)
     - [VSCode(Visual Studio Code)でのコード取得](#vscodevisual-studio-codeでのコード取得)
@@ -77,34 +77,32 @@ GitHub はGitリポジトリのホスティングサービスです。
 
 インターネット上にリモートリポジトリを用意することで、離れた場所にいるメンバー同士で開発を行ったり、ソースコードを世界中に公開することができます。
 
-### GitHubアカウントの作り方
+### GitHubアカウント作成(※既にGitHubアカウントを作成済の方は不要)
 
-※既にGitHubアカウントを作成済の方は不要の作業です。
-
-1. GitHubのサイトにアクセスしてください。[GitHubのサイトはこちら](https://github.co.jp/)![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.003.png)
+1. GitHubのサイトにアクセスしてください。[GitHubのサイトはこちら](https://github.co.jp/)<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.003.png?raw=true">
 2. 画面中央付近にある、緑色のGithub に登録するボタンをクリックしてください。
-3. ここから先はUIが英語になります。ユーザー名、メールアドレス、パスワードを入力してくださ い。メールアドレスは神戸電子のアカウント(kdXXXXXXX@st.kobedenshi.ac.jp)
-4. Verify your accountから指示に従ってアカウント認証を行ってください。![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.004.png)
+3. ここから先はUIが英語になります。ユーザー名、メールアドレス、パスワードを入力してください。
+4. Verify your accountから指示に従ってアカウント認証を行ってください。<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.004.png?raw=true">
 5. 認証が完了したらCreateaccountボタンをクリックします。
-6. 登録したメールアドレス宛にEnter codeが送られてきますので、そちらを入力します。</br>![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.006.jpeg)</br>
+6. 登録したメールアドレス宛にEnter codeが送られてきますので、そちらを入力します。</br><img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.006.jpeg?raw=true"></br>
 
 <div style="page-break-before:always"></div>
 
-7. アンケートに答えてください。(2回あります。)※アンケートが表示されない場合もあるので、その時はこの作業は無視してください。</br>![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.005.png)</br>
+7. アンケートに答えてください。(2回あります。)※アンケートが表示されない場合もあるので、その時はこの作業は無視してください。</br><img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.005.png?raw=true"></br>
 8. プランの選択画面になりますので、Free(左側)を 選択しましょう。プランはあとから変更できます。※プランの選択画面が表示されない場合もあるので、その時はこの作業は無視してください。</br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.007.jpeg)
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.007.jpeg?raw=true">
 
-1. 登録完了です。
+9. 登録完了です。
 
 <div style="page-break-before:always"></div>
 
 ## 課題へのアクセス、受諾
 
-課題ページは[こちら](https://classroom.github.com/a/HtzW6-np)
+課題ページは[こちら](https://classroom.github.com/a/gKo4uB25)
 
 1. GitHubアカウントでログインしてください
 1. GitHub Classroomには既に皆さんの名前を登録しています、自分の名前を選んでクリックして進めてください</br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.008.jpeg)</br></br>
+<img src=""></br></br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.009.png)</br></br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.010.jpeg)
 
@@ -113,8 +111,26 @@ GitHub はGitリポジトリのホスティングサービスです。
 3. 招待の受け入れをすると、課題ページに到達できます。ただし即座にできないこともあるため、 リロードしてみてと言われたらリロードしてみてください。※下の図のように待たされる場合があります。</br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.011.jpeg)
 
-4. 待たされたら、リロードするとOKです。</br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.012.jpeg)
+4. 待たされ- [Gitによる課題提出方法](#gitによる課題提出方法)
+- [Gitによる課題提出方法](#gitによる課題提出方法)
+  - [事前準備](#事前準備)
+    - [Winget](#winget)
+      - [Wingetのインストール](#wingetのインストール)
+    - [Git](#git)
+      - [Gitのインストール](#gitのインストール)
+      - [インストールしたけどgitコマンドが見つからない場合](#インストールしたけどgitコマンドが見つからない場合)
+    - [GitHub](#github)
+    - [GitHubアカウント作成(※既にGitHubアカウントを作成済の方は不要)](#githubアカウント作成既にgithubアカウントを作成済の方は不要)
+  - [課題へのアクセス、受諾](#課題へのアクセス受諾)
+    - [Gitの下準備](#gitの下準備)
+    - [VSCode(Visual Studio Code)でのコード取得](#vscodevisual-studio-codeでのコード取得)
+      - [プラグインGit Graphインストール](#プラグインgit-graphインストール)
+      - [cloneできなかった場合](#cloneできなかった場合)
+  - [作成と提出](#作成と提出)
+    - [テキストファイルの追加(add)](#テキストファイルの追加add)
+    - [テキストファイルをコミット(commit)する](#テキストファイルをコミットcommitする)
+    - [テキストファイルをプッシュ(push)する](#テキストファイルをプッシュpushする)
+  - [付録(Git関連の用語説明)](#付録git関連の用語説明)
 
 5. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
 6. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。</br>
