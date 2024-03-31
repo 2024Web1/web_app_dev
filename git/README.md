@@ -104,36 +104,15 @@ GitHub はGitリポジトリのホスティングサービスです。
 1. GitHub Classroomには既に皆さんの名前を登録しています、自分の名前を選んでクリックして進めてください</br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/join_the_classroom.png?raw=true"></br></br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.009.png?raw=true"></br></br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.010.jpeg)
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/accept_the_assignment.png?raw=true">
 
 <div style="page-break-before:always"></div>
 
-3. 招待の受け入れをすると、課題ページに到達できます。ただし即座にできないこともあるため、 リロードしてみてと言われたらリロードしてみてください。※下の図のように待たされる場合があります。</br>
+1. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。</br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.011.jpeg)
 
-4. 待たされ- [Gitによる課題提出方法](#gitによる課題提出方法)
-- [Gitによる課題提出方法](#gitによる課題提出方法)
-  - [事前準備](#事前準備)
-    - [Winget](#winget)
-      - [Wingetのインストール](#wingetのインストール)
-    - [Git](#git)
-      - [Gitのインストール](#gitのインストール)
-      - [インストールしたけどgitコマンドが見つからない場合](#インストールしたけどgitコマンドが見つからない場合)
-    - [GitHub](#github)
-    - [GitHubアカウント作成(※既にGitHubアカウントを作成済の方は不要)](#githubアカウント作成既にgithubアカウントを作成済の方は不要)
-  - [課題へのアクセス、受諾](#課題へのアクセス受諾)
-    - [Gitの下準備](#gitの下準備)
-    - [VSCode(Visual Studio Code)でのコード取得](#vscodevisual-studio-codeでのコード取得)
-      - [プラグインGit Graphインストール](#プラグインgit-graphインストール)
-      - [cloneできなかった場合](#cloneできなかった場合)
-  - [作成と提出](#作成と提出)
-    - [テキストファイルの追加(add)](#テキストファイルの追加add)
-    - [テキストファイルをコミット(commit)する](#テキストファイルをコミットcommitする)
-    - [テキストファイルをプッシュ(push)する](#テキストファイルをプッシュpushする)
-  - [付録(Git関連の用語説明)](#付録git関連の用語説明)
-
-5. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
-6. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。</br>
+1. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
+2. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。</br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.013.jpeg)
 
 <div style="page-break-before:always"></div>
