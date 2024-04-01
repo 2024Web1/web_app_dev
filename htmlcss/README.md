@@ -45,18 +45,15 @@ Webページの見た目を指定する言語です。CSSは、HTMLで定義さ�
 
 1. 認証を求められた場合は、GitHubアカウントでログインしてください。<br><br>
    ※前回の授業までで、Gitがインストールできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`Git`の章を参考に、インストールを行ってください。<br><br>
-  ※前回の授業までで、GitHubアカウントを作成できていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。<br>
+  ※前回の授業までで、GitHubアカウントを作成できていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。<br><br>
   ※前回の授業までで、GitHubアカウントをGitHub Classroomにリンクできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `課題へのアクセス、受諾`の章を参考にアカウント作成を行なってください。<br>
 
-1. 招待の受け入れをすると、課題ページに到達できます。ただし即座にできないこともあるため、リロードしてみてと言われたらリロードしてみてください。※下の図のように待たされる場合があります。<br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.011.jpeg)
-
-1. 待たされたら、リロードするとOKです。<br>
+1. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。<br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.012.jpeg)
 
 1. リポジトリリンク(上記の水色背景行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
 
-1. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。
+2. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。
 
 <div style="page-break-before:always"></div>
 
