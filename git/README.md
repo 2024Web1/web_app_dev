@@ -109,21 +109,21 @@ GitHub はGitリポジトリのホスティングサービスです。
 <div style="page-break-before:always"></div>
 
 1. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。</br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.011.jpeg)
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/repository_link.png?raw=true">
 
-1. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
-2. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。</br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.013.jpeg)
+2. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
+3. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。</br>
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.013.jpeg?raw=true">
 
 <div style="page-break-before:always"></div>
 
 ### Gitの下準備
 
-初めてGitを使う方は、commit(登録)の際に使う名前とメールアドレスを登録しましょう。 PowerShellもしくはコマンドプロンプトから下記コマンドを実行してください。**※コピペしないこと！挙動がおかしくなります。**
+初めてGitを使う方は、commit(登録)の際に使う名前とメールアドレスを登録しましょう。 PowerShellもしくはコマンドプロンプトから下記コマンドを実行してください。**{}の入力はいりません。自分の名前、メールアドレスは半角英数字で！**
 
 ```shell
-git config --global user.name "SHIMA Tomoya" ※名前のローマ字表記
-git config --global user.email "kdXXXXXXX@st.kobedenshi.ac.jp"
+git config --global user.name {自分の名前}
+git config --global user.email {メールアドレス}
 ```
 
 確認には、下記コマンドを実行します。出力に`user.name`と`user.email`の項目があるので、設定したとおりになっていればOKです。
@@ -138,17 +138,18 @@ git config --list
 
 #### プラグインGit Graphインストール
 
-1. VSCodeにて、Ctrl+Shift+Xを同時に押します
+1. 本授業のclone用フォルダ `C:¥web_app_dev` を作成してください。
+1. VSCodeにて、Ctrl+Shift+Xを同時に押します。
 1. "Search Extentions in Marketplace"の欄に"Git Graph"と入力します。
 1. "Git Graph"のInstallボタンを押します
-1. インストールが完了し、サイドバーにGit Graphのアイコン![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png)が追加されていることを確認します。
+1. インストールが完了し、サイドバーにGit Graphのアイコン<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png?raw=true">が追加されていることを確認します。
 2. Git Graphのアイコンをクリックし、リポジトリのクローンを押します。(もしくは、`Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押すのでも可)先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。
-<img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png" width="90%"></br>
-1. フォルダの選択画面になるので、`C:¥xampp¥htdocs` フォルダを選択してください。
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png?raw=true"></br>
+1. フォルダの選択画面になるので、`C:¥web_app_dev` フォルダを選択してください。
 2. 認証を求められるので、ブラウザでアカウントを入れて認証してください。(※求められなければ無視してください。)</br>
-<img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.018.jpeg" width="40%">
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.018.jpeg?raw=true">
 
-1. 認証に成功すれば、`C:¥xampp¥htdocs` 直下にコードがcloneできています。</br></br>
+1. 認証に成功すれば、`C:¥web_app_dev` 直下にコードがcloneできています。</br></br>
 
 #### cloneできなかった場合
 
@@ -173,13 +174,13 @@ https://ユーザー名@github.com/〜.git
 
 ### テキストファイルの追加(add)
 
-1. 課題として提出するファイルをVSCodeで開きます。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、`C:¥xampp¥htdocs¥01_git-github...`を選択します。
+1. 課題として提出するファイルをVSCodeで開きます。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、`C:¥web_app_dev¥01-git...`を選択します。
 2. `src`フォルダにある`kadai.txt`を開きます。「A.」の横に好きな食べ物を入力し、保存してください。
 3. VSCodeサイドバーのGit Graphのアイコンを押します。![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png)
 4. 変更の欄に`kadai.txt`が表示されていることを確認し、+ボタンを押します。</br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.019.png)
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png?raw=true">
 
-1. `kadai.txt`がステージされている変更に移動していれば、addは成功です。
+5. `kadai.txt`がステージされている変更に移動していれば、addは成功です。
 
 <div style="page-break-before:always"></div>
 
@@ -188,7 +189,7 @@ https://ユーザー名@github.com/〜.git
 commitを行うためには、変更理由を記録する必要があります。最初に変更理由の記録からはじめます。
 
 1. メッセージの欄に変更理由を入力します。ここでは「好きな食べ物を入力」とします。</br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.020.png)
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.020.png?raw=true">
 
 2. ✔のボタンを押すとコミットは完了です。</br></br>
 
@@ -196,13 +197,13 @@ commitを行うためには、変更理由を記録する必要があります�
 
 あとは課題を提出するのみです。
 
-1. 変更の同期ボタンを押します。</br>![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.022.png)
+1. 変更の同期ボタンを押します。</br><img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.022.png?raw=true">
 
 1. ブラウザで、再度課題のリンクにアクセスすると(cloneで使ったURLでも良い)、編集内容が反映されているのがわかります。(kadai.txtを押して、中身も変わっているか確認しましょう。)</br>
-<img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.021.png" width="60%">
-<img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.023.png" width="50%">
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.021.png?raw=true">
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.023.png?raw=true">
 
-3. 提出完了です。今後の課題は、このようにGitで提出してもらいますので、よろしくお願いします。</br></br>
+1. 提出完了です。今後の課題は、このようにGitで提出してもらいますので、よろしくお願いします。</br></br>
 
 <div style="page-break-before:always"></div>
 
@@ -225,4 +226,4 @@ commitを行うためには、変更理由を記録する必要があります�
 - **コミット(commit)**: ステージングエリアにある変更をローカルリポジトリに記録するコマンドです。コミットは、変更の履歴を残し、特定のスナップショットを作成します。
 
 - **プッシュ(push)**: ローカルリポジトリの変更をリモートリポジトリに反映するコマンドです。変更をリモートリポジトリに送信し、共有されたプロジェクトに変更を適用します。</br></br>
-![](./images/git_image.jpg)
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/git_image.jpg?raw=true">
