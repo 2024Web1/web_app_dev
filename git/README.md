@@ -101,18 +101,18 @@ GitHub はGitリポジトリのホスティングサービスです。
 課題ページは[こちら](https://classroom.github.com/a/QM3UUgtQ)
 
 1. GitHubアカウントでログインしてください
-1. GitHub Classroomには既に皆さんの名前を登録しています、自分の名前を選んでクリックして進めてください<br>
+2. GitHub Classroomには既に皆さんの名前を登録しています、自分の名前を選んでクリックして進めてください<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/join_the_classroom.png?raw=true"><br><br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.009.png?raw=true"><br><br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/accept_the_assignment.png?raw=true">
 
 <div style="page-break-before:always"></div>
 
-1. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。<br>
+3. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/repository_link.png?raw=true">
 
-2. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
-3. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。<br>
+4. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
+5. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.013.jpeg?raw=true">
 
 <div style="page-break-before:always"></div>
@@ -139,17 +139,18 @@ git config --list
 #### プラグインGit Graphインストール
 
 1. 本授業のclone用フォルダ `C:¥web_app_dev` を作成してください。
-1. VSCodeにて、Ctrl+Shift+Xを同時に押します。
-1. "Search Extentions in Marketplace"の欄に"Git Graph"と入力します。
-1. "Git Graph"のInstallボタンを押します
-1. インストールが完了し、サイドバーにGit Graphのアイコン<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png?raw=true">が追加されていることを確認します。
-2. Git Graphのアイコンをクリックし、リポジトリのクローンを押します。(もしくは、`Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押すのでも可)先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。
+2. VSCodeにて、Ctrl+Shift+Xを同時に押します。
+3. "Search Extentions in Marketplace"の欄に"Git Graph"と入力します。
+4. "Git Graph"のInstallボタンを押します
+5. インストールが完了し、サイドバーにGit Graphのアイコン<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png?raw=true">が追加されていることを確認します。
+6. Git Graphのアイコンをクリックし、リポジトリのクローンを押します。(もしくは、`Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押すのでも可)先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png?raw=true"><br>
-1. フォルダの選択画面になるので、`C:¥web_app_dev` フォルダを選択してください。
-2. 認証を求められるので、ブラウザでアカウントを入れて認証してください。(※求められなければ無視してください。)<br>
+
+7. フォルダの選択画面になるので、`C:¥web_app_dev` フォルダを選択してください。
+8. 認証を求められるので、ブラウザでアカウントを入れて認証してください。(※求められなければ無視してください。)<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.018.jpeg?raw=true">
 
-1. 認証に成功すれば、`C:¥web_app_dev` 直下にコードがcloneできています。<br><br>
+9. 認証に成功すれば、`C:¥web_app_dev` 直下にコードがcloneできています。<br><br>
 
 #### cloneできなかった場合
 
