@@ -86,8 +86,6 @@ GitHub はGitリポジトリのホスティングサービスです。
 5. 認証が完了したらCreateaccountボタンをクリックします。
 6. 登録したメールアドレス宛にEnter codeが送られてきますので、そちらを入力します。<br><img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.006.jpeg?raw=true"><br>
 
-<div style="page-break-before:always"></div>
-
 7. アンケートに答えてください。(2回あります。)※アンケートが表示されない場合もあるので、その時はこの作業は無視してください。<br><img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.005.png?raw=true"><br>
 8. プランの選択画面になりますので、Free(左側)を 選択しましょう。プランはあとから変更できます。※プランの選択画面が表示されない場合もあるので、その時はこの作業は無視してください。<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.007.jpeg?raw=true">
@@ -158,10 +156,9 @@ git config --list
 
 1. `repository not found`とエラーが出る。<br>
   過去に別のGitHubアカウントを作成し、Gitを利用した経験がある方は、`repository not found`のエラーでcloneできない場合があります。その場合は、下記サンプルのように、cloneするリポジトリのURLに`ユーザー名@`を追記し、再度cloneをしてください。※このユーザー名はアカウント作成時に登録したユーザー名です。<br>
-
-```
-https://ユーザー名@github.com/〜.git
-```
+    ```
+    https://ユーザー名@github.com/〜.git
+    ```
 
 1. cloneが終わらない。<br>
   エラーは出ないが、cloneがいつまで経っても終了しない場合があります。実際は、別ウインドウ・ブラウザで、GitHubアカウントの認証待ちの状態になっていることがあるので、認証を済ませてください。
