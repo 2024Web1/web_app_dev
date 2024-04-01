@@ -104,16 +104,12 @@ GitHub はGitリポジトリのホスティングサービスです。
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.009.png?raw=true"><br><br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/accept_the_assignment.png?raw=true">
 
-<div style="page-break-before:always"></div>
-
-3. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。<br>
+1. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/repository_link.png?raw=true">
 
-4. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
-5. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。<br>
+1. リポジトリリンク(上記の水色背景の行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
+2. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.013.jpeg?raw=true">
-
-<div style="page-break-before:always"></div>
 
 ### Gitの下準備
 
