@@ -43,15 +43,15 @@ Webページの見た目を指定する言語です。CSSは、HTMLで定義さ�
 
 [今回の課題ページ](https://classroom.github.com/a/Cwkmq6P5)
 
-1. 認証を求められた場合は、GitHubアカウントでログインしてください。</br></br>
-   ※前回の授業までで、Gitがインストールできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`Git`の章を参考に、インストールを行ってください。</br></br>
-  ※前回の授業までで、GitHubアカウントを作成できていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。</br>
-  ※前回の授業までで、GitHubアカウントをGitHub Classroomにリンクできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `課題へのアクセス、受諾`の章を参考にアカウント作成を行なってください。</br>
+1. 認証を求められた場合は、GitHubアカウントでログインしてください。<br><br>
+   ※前回の授業までで、Gitがインストールできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`Git`の章を参考に、インストールを行ってください。<br><br>
+  ※前回の授業までで、GitHubアカウントを作成できていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。<br>
+  ※前回の授業までで、GitHubアカウントをGitHub Classroomにリンクできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `課題へのアクセス、受諾`の章を参考にアカウント作成を行なってください。<br>
 
-1. 招待の受け入れをすると、課題ページに到達できます。ただし即座にできないこともあるため、リロードしてみてと言われたらリロードしてみてください。※下の図のように待たされる場合があります。</br>
+1. 招待の受け入れをすると、課題ページに到達できます。ただし即座にできないこともあるため、リロードしてみてと言われたらリロードしてみてください。※下の図のように待たされる場合があります。<br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.011.jpeg)
 
-1. 待たされたら、リロードするとOKです。</br>
+1. 待たされたら、リロードするとOKです。<br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.012.jpeg)
 
 1. リポジトリリンク(上記の水色背景行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
@@ -68,26 +68,26 @@ Webページの見た目を指定する言語です。CSSは、HTMLで定義さ�
 
 ※前回の授業までで、VSCodeにプラグインの `Git Graph` がインストールできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`プラグインGit Graphインストール`の章を参考にインストールしてください。
 
-1. `Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押してください。するとURLを貼り付けるフォームが出るので、先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。</br>
-<img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png" width="90%"></br>
+1. `Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押してください。するとURLを貼り付けるフォームが出るので、先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。<br>
+<img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png" width="90%"><br>
 1. フォルダの選択画面になるので、`C:¥xampp¥htdocs` フォルダを選択してください。(※認証を求められた場合は、ブラウザでアカウントを入れて認証してください。)
-2. `C:¥xampp¥htdocs` 直下にコード`02_html-css-...`がcloneできています。</br></br>
+2. `C:¥xampp¥htdocs` 直下にコード`02_html-css-...`がcloneできています。<br><br>
 
 #### cloneできなかった場合
 
 現象と解決策は下記のいずれかと考えられます。
 
-1. `repository not found`とエラーが出る。</br>
-  過去に別のGitHubアカウントを作成し、Gitを利用した経験がある方は、`repository not found`のエラーでcloneできない場合があります。その場合は、下記サンプルのように、cloneするリポジトリのURLに`ユーザー名@`を追記し、再度cloneをしてください。※このユーザー名はアカウント作成時に登録したユーザー名です。</br>
+1. `repository not found`とエラーが出る。<br>
+  過去に別のGitHubアカウントを作成し、Gitを利用した経験がある方は、`repository not found`のエラーでcloneできない場合があります。その場合は、下記サンプルのように、cloneするリポジトリのURLに`ユーザー名@`を追記し、再度cloneをしてください。※このユーザー名はアカウント作成時に登録したユーザー名です。<br>
 
 ```
 https://ユーザー名@github.com/〜.git
 ```
 
-1. cloneが終わらない。</br>
+1. cloneが終わらない。<br>
   エラーは出ないが、cloneがいつまで経っても終了しない場合があります。実際は、別ウインドウ・ブラウザで、GitHubアカウントの認証待ちの状態になっていることがあるので、認証を済ませてください。
 
-1. `user.name`と`user.email`が設定できていない。</br>
+1. `user.name`と`user.email`が設定できていない。<br>
   [Gitの下準備](#gitの下準備)に戻って、設定し直してください。
 
 <div style="page-break-before:always"></div>
@@ -261,10 +261,10 @@ img {
 }
 ```
 
-今度は、`src`フォルダ内の`sample.html`をブラウザで開いてみてください。</br>
+今度は、`src`フォルダ内の`sample.html`をブラウザで開いてみてください。<br>
 ![](./images/sampleNoCSS.jpg)
 
-お世辞にも綺麗な画面とは言えませんね...</br>原因はHTMLに、CSSが反映されていないからです。では、CSSを反映しましょう。`sample.html`の下記の部分のコメントを外します。
+お世辞にも綺麗な画面とは言えませんね...<br>原因はHTMLに、CSSが反映されていないからです。では、CSSを反映しましょう。`sample.html`の下記の部分のコメントを外します。
 
 ```html:sample.html
 <!-- <link rel="stylesheet" href="sample.css"> -->
@@ -276,16 +276,16 @@ img {
 <link rel="stylesheet" href="sample.css">
 ```
 
-では、もう一度ブラウザで`sample.html`を開いてみてください。CSSが動き、画面が綺麗になりました。</br>
+では、もう一度ブラウザで`sample.html`を開いてみてください。CSSが動き、画面が綺麗になりました。<br>
 ![](./images/sampleCSS.jpg)
 
 <div style="page-break-before:always"></div>
 
 ## ここまでのまとめ
 
-HTMLとCSSは、Webブラウザ上でテキストを美しく表示するために使われる言語です。HTMLはレイアウト、CSSはデザインの役割を持つと覚えましょう。</br>ただし、厳密にはHTMLやCSSはプログラミング言語ではなく、テキストを構造化するためのマークアップ言語であるため、HTMLやCSSだけでは、皆さんが普段利用しているような、制御構造を持つWebアプリケーションを構築することはできません。</br></br>
-そこでサーバーサイド言語である**PHP**の出番です。本科目でPHPを学びながら、Webアプリケーションを構築する基本的な力を身につけていきましょう。</br>
-※本科目は、PHPがメインのため、HTMLとCSSについてレクチャーするのは今回のみです。CSSについては基本的にこちらで用意します。HTMLについては、皆さんに書いてもらいますが、サンプルコードはあるのでご安心ください。</br>
+HTMLとCSSは、Webブラウザ上でテキストを美しく表示するために使われる言語です。HTMLはレイアウト、CSSはデザインの役割を持つと覚えましょう。<br>ただし、厳密にはHTMLやCSSはプログラミング言語ではなく、テキストを構造化するためのマークアップ言語であるため、HTMLやCSSだけでは、皆さんが普段利用しているような、制御構造を持つWebアプリケーションを構築することはできません。<br><br>
+そこでサーバーサイド言語である**PHP**の出番です。本科目でPHPを学びながら、Webアプリケーションを構築する基本的な力を身につけていきましょう。<br>
+※本科目は、PHPがメインのため、HTMLとCSSについてレクチャーするのは今回のみです。CSSについては基本的にこちらで用意します。HTMLについては、皆さんに書いてもらいますが、サンプルコードはあるのでご安心ください。<br>
 
 ## HTMLの構造について
 
@@ -366,22 +366,22 @@ html
 
 ### テキストファイルの追加(add)とコミット(commit)
 
-1. 課題として提出するファイルをVSCodeで開きます。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、</br>`C:¥xampp¥htdocs¥02_html-css-...`を選択します。
+1. 課題として提出するファイルをVSCodeで開きます。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、<br>`C:¥xampp¥htdocs¥02_html-css-...`を選択します。
 1. VSCodeサイドバーのGit Graphのアイコン![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png)を押します。
-2. 変更の欄に`helloWorld.html`と`sample.html`が表示されていることを確認し、+ボタンを押します。</br>
+2. 変更の欄に`helloWorld.html`と`sample.html`が表示されていることを確認し、+ボタンを押します。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-19%2020.26.59.png)
-3. `helloWorld.html`と`sample.html`が「ステージされている変更」に移動していれば、addは成功です。</br>
+3. `helloWorld.html`と`sample.html`が「ステージされている変更」に移動していれば、addは成功です。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-19%2020.30.07.png)
-4. メッセージの欄にメッセージを入力し、✔のボタンを押すとコミットは完了です。</br></br>
+4. メッセージの欄にメッセージを入力し、✔のボタンを押すとコミットは完了です。<br><br>
 
 ### テキストファイルをプッシュ(push)する
 
 あとは課題を提出するのみです。
 
-1. 変更の同期ボタンを押します。</br>![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.022.png)</br>
+1. 変更の同期ボタンを押します。<br>![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.022.png)<br>
 ※ちなみにこの「変更の同期」ですが、同じローカルリポジトリを繰り返しpushすると、「Branchの発行」という文言に変わることがありますが、どちらもリモートリポジトリにpushできるので問題はありません。
 
-1. ブラウザで、再度課題のリンクにアクセスすると(cloneで使ったURLでも良い)、編集内容が反映されていることがわかります。</br>
+1. ブラウザで、再度課題のリンクにアクセスすると(cloneで使ったURLでも良い)、編集内容が反映されていることがわかります。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-19%2020.55.45.png)
 
 ## 採点について
@@ -390,18 +390,18 @@ html
 
 ### 課題の合格基準について
 
-`helloWorld.html`をブラウザで開いた時、`Hello,World`と表示されること。</br>
+`helloWorld.html`をブラウザで開いた時、`Hello,World`と表示されること。<br>
 
 <div style="page-break-before:always"></div>
 
 ### 合格確認方法
 
 1. 課題を提出した後、下記青色背景のページにアクセスする。※もしこのページを閉じている方は、
-   [今回の課題ページ](https://classroom.github.com/a/Cwkmq6P5)からアクセスすることができます。</br>
+   [今回の課題ページ](https://classroom.github.com/a/Cwkmq6P5)からアクセスすることができます。<br>
    <img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.012.jpeg" width="40%">
-2. 画面上部にある`Actions`をクリックする。</br>
+2. 画面上部にある`Actions`をクリックする。<br>
    <img src="./images/actions.jpg" width="70%">
-3. **一番上**の行のタイトル横に、緑色のチェックが入っていればOKです。確認したところ、自動採点には2,3分かかります。場合によってはもう少しかかるかもしれません。※一番下に赤いばつ印がありますが、無視してください。</br>
+3. **一番上**の行のタイトル横に、緑色のチェックが入っていればOKです。確認したところ、自動採点には2,3分かかります。場合によってはもう少しかかるかもしれません。※一番下に赤いばつ印がありますが、無視してください。<br>
    ![](./images/autograding.jpg)
 
 <div style="page-break-before:always"></div>
@@ -427,7 +427,7 @@ html
   4. `Operation timed out after 180000 milliseconds with 0 bytes received`のメッセージがあればタイムアウトである。
       ![](./images/timeout5.png)
   5. 解決策としては、右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
-      ![](./images/timeout6.png)</br>
+      ![](./images/timeout6.png)<br>
       ![](./images/timeout7.png)
   6. タイムアウトにならず処理が終了したらOK。また、タイムアウトになった場合は、同じことを繰り返す。※タイムアウトでないエラーは、次の解決策を参照。
 
