@@ -170,11 +170,11 @@ git config --list
 
 1. 課題として提出するファイルをVSCodeで開きます。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、`C:¥web_app_dev¥01-git...`を選択します。
 2. `src`フォルダにある`kadai.txt`を開きます。「A.」の横に好きな食べ物を入力し、保存してください。
-3. VSCodeサイドバーのGit Graphのアイコンを押します。![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png)
+3. VSCodeサイドバーのGit Graphのアイコン<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png?raw=true">を押します。
 4. 変更の欄に`kadai.txt`が表示されていることを確認し、+ボタンを押します。<br>
-<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png?raw=true">
+<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.019.png?raw=true">
 
-5. `kadai.txt`がステージされている変更に移動していれば、addは成功です。
+1. `kadai.txt`がステージされている変更に移動していれば、addは成功です。
 
 <div style="page-break-before:always"></div>
 
