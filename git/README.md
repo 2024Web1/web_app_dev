@@ -1,6 +1,6 @@
-﻿# Gitによる課題提出方法
+﻿# Git、GitHub
 
-- [Gitによる課題提出方法](#gitによる課題提出方法)
+- [Git、GitHub](#gitgithub)
   - [事前準備](#事前準備)
     - [Visual Studio Codeのインストール](#visual-studio-codeのインストール)
     - [Winget](#winget)
