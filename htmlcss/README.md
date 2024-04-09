@@ -41,12 +41,12 @@ Webページの見た目を指定する言語です。CSSは、HTMLで定義さ�
 
 ## 課題へのアクセス、受諾
 
-[今回の課題ページ](https://classroom.github.com/a/Cwkmq6P5)
+[課題ページはこちら](https://classroom.github.com/a/Hk7jTwyS)
 
 1. 認証を求められた場合は、GitHubアカウントでログインしてください。<br><br>
-   ※前回の授業までで、Gitがインストールできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`Git`の章を参考に、インストールを行ってください。<br><br>
-  ※前回の授業までで、GitHubアカウントを作成できていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。<br><br>
-  ※前回の授業までで、GitHubアカウントをGitHub Classroomにリンクできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `課題へのアクセス、受諾`の章を参考にアカウント作成を行なってください。<br>
+   ※前回の授業までで、Gitがインストールできていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#git)の`Git`の章を参考に、インストールを行ってください。<br><br>
+  ※前回の授業までで、GitHubアカウントを作成できていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#github)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。<br><br>
+  ※前回の授業までで、GitHubアカウントをGitHub Classroomにリンクできていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#%E8%AA%B2%E9%A1%8C%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E5%8F%97%E8%AB%BE)の `課題へのアクセス、受諾`の章を参考にアカウント作成を行なってください。<br>
 
 1. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。<br>
 ![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.012.jpeg)
