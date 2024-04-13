@@ -48,12 +48,13 @@ Webページの見た目を指定する言語です。CSSは、HTMLで定義さ�
   ※前回の授業までで、GitHubアカウントを作成できていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#github)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。<br><br>
   ※前回の授業までで、GitHubアカウントをGitHub Classroomにリンクできていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#%E8%AA%B2%E9%A1%8C%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E5%8F%97%E8%AB%BE)の `課題へのアクセス、受諾`の章を参考にアカウント作成を行なってください。<br>
 
-1. 招待の受け入れをすると、課題リポジトリのリンクが表示されます。リンクが表示されない場合は、ブラウザをリロードしてください。<br>
-![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.012.jpeg)
+1. 以下の画面で「Accept the assignment」をクリックしてください。<br>
+![](./images/accept_the_assignment.png)
 
-1. リポジトリリンク(上記の水色背景行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
+1. リポジトリリンク(水色背景行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。この画面にならない場合は、ブラウザをリロードしてください。<br>
+![](./images/repository_link.png)
 
-2. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。
+1. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。
 
 <div style="page-break-before:always"></div>
 
