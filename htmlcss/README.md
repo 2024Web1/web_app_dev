@@ -41,7 +41,7 @@ Webページの見た目を指定する言語です。CSSは、HTMLで定義さ�
 
 ## 課題へのアクセス、受諾
 
-[課題ページはこちら](https://classroom.github.com/a/Hk7jTwyS)
+[課題ページはこちら](https://classroom.github.com/a/2vXAUa7-)
 
 1. 認証を求められた場合は、GitHubアカウントでログインしてください。<br><br>
    ※前回の授業までで、Gitがインストールできていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#git)の`Git`の章を参考に、インストールを行ってください。<br><br>
@@ -60,57 +60,35 @@ Webページの見た目を指定する言語です。CSSは、HTMLで定義さ�
 
 ### Gitの下準備
 
-※前回の授業までで、commitの際に使う名前とメールアドレスが登録できていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`Gitの下準備`の章を参考に登録してください。
+※前回の授業までで、commitの際に使う名前とメールアドレスが登録できていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#git%E3%81%AE%E4%B8%8B%E6%BA%96%E5%82%99)の`Gitの下準備`の章を参考に登録してください。
 
 ### VSCode(Visual Studio Code)でのコード取得
 
-※前回の授業までで、VSCodeにプラグインの `Git Graph` がインストールできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`プラグインGit Graphインストール`の章を参考にインストールしてください。
+※前回の授業までで、VSCodeにプラグインの `Git Graph` がインストールできていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3git-graph%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)の`プラグインGit Graphインストール`の章を参考にインストールしてください。
 
 1. `Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押してください。するとURLを貼り付けるフォームが出るので、先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。<br>
 <img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png" width="90%"><br>
-1. フォルダの選択画面になるので、`C:¥xampp¥htdocs` フォルダを選択してください。(※認証を求められた場合は、ブラウザでアカウントを入れて認証してください。)
-2. `C:¥xampp¥htdocs` 直下にコード`02_html-css-...`がcloneできています。<br><br>
+1. フォルダの選択画面になるので、`C:¥web_app_dev` フォルダを選択してください。(※認証を求められた場合は、ブラウザでアカウントを入れて認証してください。)
+2. `C:¥web_app_dev` 直下にコード`02_htmlcss...`がcloneできていればOKです。<br><br>
 
 #### cloneできなかった場合
 
-現象と解決策は下記のいずれかと考えられます。
-
-1. `repository not found`とエラーが出る。<br>
-  過去に別のGitHubアカウントを作成し、Gitを利用した経験がある方は、`repository not found`のエラーでcloneできない場合があります。その場合は、下記サンプルのように、cloneするリポジトリのURLに`ユーザー名@`を追記し、再度cloneをしてください。※このユーザー名はアカウント作成時に登録したユーザー名です。<br>
-
-```
-https://ユーザー名@github.com/〜.git
-```
-
-1. cloneが終わらない。<br>
-  エラーは出ないが、cloneがいつまで経っても終了しない場合があります。実際は、別ウインドウ・ブラウザで、GitHubアカウントの認証待ちの状態になっていることがあるので、認証を済ませてください。
-
-1. `user.name`と`user.email`が設定できていない。<br>
-  [Gitの下準備](#gitの下準備)に戻って、設定し直してください。
-
-<div style="page-break-before:always"></div>
+[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#clone%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E5%A0%B4%E5%90%88)の`cloneできなかった場合`を参考にしてください。
 
 ## HTMLを書いてみましょう
 
-cloneした`02_html-css-...`は下記の構造をしています。※ちなみにcloneした  `02_html-css-...`の`...`には、Githubアカウントのユーザー名が入ります。
+cloneした`02_htmlcss-...`は下記の構造をしています。※ちなみにcloneした  `02_htmlcss-...`の`...`には、Githubアカウントのユーザー名が入ります。
 
 ```text
-02_html-css-...
-├── <中略>
-├── src
-│   ├── helloWorld.html
-│   ├── images
-│   │   ├── pose_gutspose_couple.png
-│   ├── sample.css
-│   └── sample.html
-└── <中略>
+02_htmlcss-...
+├── helloWorld.html
+├── sample.css
+└── sample.html
 ```
-
-**以降の課題でも、`src`フォルダ内のコード以外は編集しませんので、他のファイルやフォルダは無視してください。**
 
 `helloWorld.html`を開き、下記のコードを入力してください。※`<!-- -->`で囲まれている部分はコメントです。書く必要はありません。
 
-`helloWorld.html`
+
 ```html:helloWorld.html
 <!DOCTYPE html>
 <html lang="ja">
@@ -364,7 +342,7 @@ html
 
 ### テキストファイルの追加(add)とコミット(commit)
 
-1. 課題として提出するファイルをVSCodeで開きます。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、<br>`C:¥xampp¥htdocs¥02_html-css-...`を選択します。
+1. 課題として提出するファイルをVSCodeで開きます。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、<br>`C:¥xampp¥htdocs¥02_htmlcss-...`を選択します。
 1. VSCodeサイドバーのGit Graphのアイコン![](./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png)を押します。
 2. 変更の欄に`helloWorld.html`と`sample.html`が表示されていることを確認し、+ボタンを押します。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-19%2020.26.59.png)
