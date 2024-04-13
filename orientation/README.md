@@ -74,7 +74,8 @@
 
 - オープンソースのリレーショナルデータベース管理システム(RDBMS)
 - 幅広いアプリケーションで利用され、豊富なドキュメントとコミュニティサポートあり
-- SQLを使用※忘れている人は2年生のテキスト「スッキリわかるSQL入門」で簡単なselect,insert,update,delete文を要復習！
+- SQLを使用※忘れている人は2年生のテキスト「スッキリわかるSQL入門」で簡単なselect,insert,update,delete文を要復習！<br>
+![](./images/logo-mysql-170x115.png)
 
 ### Docker
 
