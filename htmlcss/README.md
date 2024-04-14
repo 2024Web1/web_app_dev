@@ -233,7 +233,7 @@ img {
 }
 ```
 
-今度は、`src`フォルダ内の`sample.html`をブラウザで開いてみてください。<br>
+今度は、`sample.html`をブラウザで開いてみてください。<br>
 ![](./images/sampleNoCSS.jpg)
 
 お世辞にも綺麗な画面とは言えませんね...<br>
