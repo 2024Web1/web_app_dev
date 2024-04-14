@@ -113,13 +113,12 @@ GitHub はGitリポジトリのホスティングサービスです。
 3. ここから先はUIが英語になります。ユーザー名、メールアドレス、パスワードを入力してください。
 4. Verify your accountから指示に従ってアカウント認証を行ってください。<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.004.png?raw=true">
 5. 認証が完了したらCreateaccountボタンをクリックします。
-6. 登録したメールアドレス宛にEnter codeが送られてきますので、そちらを入力します。<br><img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.006.jpeg?raw=true"><br>
-
+6. 登録したメールアドレス宛にEnter codeが送られてきますので、そちらを入力します。
 7. アンケートに答えてください。(2回あります。)※アンケートが表示されない場合もあるので、その時はこの作業は無視してください。<br><img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.005.png?raw=true"><br>
 8. プランの選択画面になりますので、Free(左側)を 選択しましょう。プランはあとから変更できます。※プランの選択画面が表示されない場合もあるので、その時はこの作業は無視してください。<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.007.jpeg?raw=true">
 
-9. 登録完了です。
+1. 登録完了です。
 
 <div style="page-break-before:always"></div>
 
