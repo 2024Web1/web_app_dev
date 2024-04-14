@@ -5,6 +5,8 @@
     - [Gitの下準備](#gitの下準備)
     - [VSCode(Visual Studio Code)でのコード取得](#vscodevisual-studio-codeでのコード取得)
   - [はじめてのPHP](#はじめてのphp-1)
+    - [プログラムを書く](#プログラムを書く)
+    - [実行環境を準備する(Docker \& Dev Containers)](#実行環境を準備するdocker--dev-containers)
   - [エラーメッセージ](#エラーメッセージ)
   - [課題の作成と提出](#課題の作成と提出)
     - [テキストファイルの追加(add)とコミット(commit)](#テキストファイルの追加addとコミットcommit)
@@ -15,7 +17,10 @@
     - [エラーが出た時の対処法](#エラーが出た時の対処法)
       - [タイムアウトになっていないかを確認する](#タイムアウトになっていないかを確認する)
     - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する)
-  - [付録:PHP Intelephenseの便利機能　フォーマッター](#付録php-intelephenseの便利機能フォーマッター)
+  - [付録: Dev Containers](#付録-dev-containers)
+    - [Dev Containersとは？](#dev-containersとは)
+    - [なぜDev Containersを使うのか？](#なぜdev-containersを使うのか)
+    - [Dev Containersの使用方法](#dev-containersの使用方法)
 
 ## 課題へのアクセス、受諾
 
@@ -24,41 +29,41 @@
 1. 認証を求められた場合は、GitHubアカウントでログインする。<br><br>
    ※前回の授業までで、Gitがインストールできていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#git)の`Git`の章を参考に、インストールを行ってください。<br><br>
   ※前回の授業までで、GitHubアカウントを作成できていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#github)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。<br><br>
-  ※前回の授業までで、GitHubアカウントをGitHub Classroomにリンクできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の `課題へのアクセス、受諾`の章を参考にアカウント作成を行うこと。<br>
 
 1. GitHub Classroomで自分の名前を選んでクリックして進めてください<br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/join_the_classroom.png?raw=true"><br><br>
 <img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.009.png?raw=true"><br><br>
 
-1. 招待の受け入れをすると、課題ページに到達する。ただし即座にできないこともあるため、 リロードしてみてと言われたらリロードすること。<br>
+1. 招待の受け入れをすると、課題ページに到達します。ただし即座にできないこともあるため、 リロードしてみてと言われたらリロードしてください。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2019.59.16.png)<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2020.00.01.png)
 
-1. 待たされたら、リロードするとOK。<br>
+1. 待たされたら、リロードするとOKです。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2020.00.25.png)
 
-1. リポジトリリンク(上記の水色背景行)をクリックすると、課題用に作成されたリポジトリにアクセスできる。
+1. リポジトリリンク(上記の水色背景行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
 
-2. clone(取得)用のURLは、緑のボタン(code)から確認できる。httpsを選び、コピー用のボタンでクリップボードに一度取り込むこと。
+2. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。
 
 <div style="page-break-before:always"></div>
 
 ### Gitの下準備
 
-※前回の授業までで、commitの際に使う名前とメールアドレスが登録できていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`Gitの下準備`の章を参考に登録すること。
+※前回の授業までで、commitの際に使う名前とメールアドレスが登録できていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#git%E3%81%AE%E4%B8%8B%E6%BA%96%E5%82%99)の`Gitの下準備`の章を参考に登録してください。
 
 ### VSCode(Visual Studio Code)でのコード取得
 
-※前回の授業までで、VSCodeにプラグインの `Git Graph` がインストールできていない方は、[01.Git.pdf](https://drive.google.com/file/d/1_RSMVeiXnsyUkVo-QhGpxZbwaxZPmqg7/view?usp=share_link)の`プラグインGit Graphインストール`の章を参考にインストールすること。
+※前回の授業までで、VSCodeにプラグインの `Git Graph` がインストールできていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3git-graph%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)の`プラグインGit Graphインストール`の章を参考にインストールしてください。
 
-1. `Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押す。するとURLを貼り付けるフォームが出るので、先ほどコピーしたリポジトリのURLを貼り付け、Enterを押す。
+1. `Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押してください。するとURLを貼り付けるフォームが出るので、先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。
 <img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png" width="90%"><br>
+
 2. フォルダの選択画面になるので、`C:¥web_app_dev` フォルダを選択すること。(※認証を求められた場合は、ブラウザでアカウントを入れて認証すること。)
-3. 認証に成功すれば、`C:¥web_app_dev` 直下にコード`03_php_for_beginners-GitHubのユーザー名`がcloneできている。cloneしたコードは、下記のような構成となる。
+3. 認証に成功すれば、`C:¥web_app_dev` 直下にコード`03-first-php-GitHubのユーザー名`がcloneできている。cloneしたコードは、下記のような構成となる。
 
 ```text
 C:¥web_app_dev
-    └── 03_php_for_beginners-GitHubのユーザー名
+    └── 03-first-php-GitHubのユーザー名
         ├── 《中略》
         ├── src
         └── 《中略》
@@ -72,23 +77,48 @@ C:¥web_app_dev
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.20.28.png)<br>
 **※出席番号と名前は各自のものが表示されるようにする**
 
+### プログラムを書く
+
 このPHPを作成し、ブラウザで実行確認する手順は次のとおり。
 
 1. 各自の`src`フォルダに`first`フォルダを作成する。
 2. `first`内に、`hello.php`ファイルを作成する。フォルダの構造は下記のようになる。<br>
 
-```text
-C:¥web_app_dev
-    └── 03_php_for_beginners-GitHubのユーザー名
-        ├── 《中略》
-        ├── src
-        │   └── first
-        │       └── hello.php
-        └── 《中略》
-```
+    ```text
+    C:¥web_app_dev
+       └── 03-first-php-GitHubのユーザー名
+           ├── 《中略》
+           ├── src
+           │    └── first
+           │        └── hello.php
+           └── 《中略》
+    ```
 
 3. `hello.php`をVSCodeで開き、下記のコードを書く。<br>
-![](./images/Monosnap%20Schedule%202023-04-12%2017-29-20.jpg)<br>
+
+    ```php
+
+    <!DOCTYPE html> <!-- ① -->
+    <html lang="ja"> <!-- ② -->
+
+    <head>
+        <meta charset="UTF-8">　<!-- ③ -->
+        <title>はじめてのPHP</title>
+    </head>
+
+    <body>
+        <?php　// ④
+        echo '<p>Hello,PHP</p>';　// ⑤
+        ?>　// ⑥
+        <p>0J0X00X神戸電子</p>
+    </body>
+
+    </html>
+
+    ```
+
+**`<!-- ① -->` や、`// ⑤` は注釈です。以降の章でも同様にコード内に番号で注釈を記載しますが、入力する必要はありません。**
+
 ①: この文書がHTMLのバージョン5で作成されたものであることを宣言している。<br>
 ②: `lang="ja"` は、この文書が日本語で書かれていることを示している。<br>
 ③: このPHPファイルが`UTF-8`の文字コードで書かれていることを示している。<br>
@@ -96,13 +126,18 @@ C:¥web_app_dev
 ⑤: 画面に文字列や`<p>`タグなどのHTMLタグを出力するには`echo`コマンドを用い、文字列をシングルクォーテーションで囲む。<br>
 ⑥: PHPスクリプト（プログラムコード）が終わったことを示している。（`?>` で終わる）<br><br>
 
-1. `C:¥xampp¥xampp-control.exe`をクリックし、XAMPPのコントロールパネルを起動する。
-2. ApacheをStartで起動する。<br>![](./images/xampp.png)
-3. `http://localhost/03_php_for_beginners-GitHubのユーザー名/src/` にアクセスすると次のように表示される。
+### 実行環境を準備する(Docker & Dev Containers)
+
+1. Dockerをインストールできていない方は、[こちら](https://classroom.google.com/c/NjYwMjEyMzgyMzQ2/a/NjczMzA3MDU1MTA2/details)の添付資料を参考にインストールをお願いします。
+2. Dockerを起動してください。
+3. VScodeで、cloneしたフォルダ`03-first-php-GitHubのユーザー名`が開かれていることを確認する。
+4. `Ctrl+Shift+P`を押し、フォームに`reopen`と入力しすると、`Dev Containers: Rebuild and Reopen in Container`という項目が出るので選択してください。
+5. VSCodeがこのような画面になれば成功です。
+6. `http://localhost/03-first-php-GitHubのユーザー名/src/` にアクセスすると次のように表示される。
 ![](./images/スクリーンショット%202023-04-21%209.17.13.png)
-1. `http://localhost/03_php_for_beginners-GitHubのユーザー名/src/first` にアクセスすると次のように表示される。
+1. `http://localhost/03-first-php-GitHubのユーザー名/src/first` にアクセスすると次のように表示される。
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.17.35.png)
-1. `http://localhost/03_php_for_beginners-GitHubのユーザー名/src/first/hello.php` にアクセスすると次のように表示される。
+1. `http://localhost/03-first-php-GitHubのユーザー名/src/first/hello.php` にアクセスすると次のように表示される。
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.20.28.png)
 
 <div style="page-break-before:always"></div>
@@ -111,18 +146,18 @@ C:¥web_app_dev
 
 PHPは、スクリプトの文法上の誤りや、動作上の不具合をブラウザの画面に表示してくれる。
 
-1. `error.php`を、`C:¥web_app_dev¥03_php_for_beginners-GitHubのユーザー名¥src¥first`フォルダに保存する。
+1. `error.php`を、`C:¥web_app_dev¥03-first-php-GitHubのユーザー名¥src¥first`フォルダに保存する。
 2. `error.php`に下記コードを書く。<br>
 ![](./images/Monosnap%20Schedule%202023-04-12%2017-32-30.jpg)
 
-1. `http://localhost/03_php_for_beginners-GitHubのユーザー名/src/first/error.php` にアクセスすると次のように表示される。
+1. `http://localhost/03-first-php-GitHubのユーザー名/src/first/error.php` にアクセスすると次のように表示される。
 ![](./images/error.png)<br>
 このメッセージは、次のように解釈することができる。<br>
 
    - `Parse error: syntax error, unexpected '<'`<br>
    予期しない `<` による構文エラー<br><br>
 
-   - `in C:¥web_app_dev¥03_php_for_beginners-GitHubのユーザー名¥src¥first¥error.php on line 12`<br>
+   - `in C:¥web_app_dev¥03-first-php-GitHubのユーザー名¥src¥first¥error.php on line 12`<br>
    その `<` は`error.php`の12行目に書かれている。<br><br>
 
 <div style="page-break-before:always"></div>
@@ -131,7 +166,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
 ### テキストファイルの追加(add)とコミット(commit)
 
-1. 課題として提出するファイルをVSCodeで開く。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、<br>`C:¥web_app_dev¥03_php_for_beginners-GitHubのユーザー名`を選択する。
+1. 課題として提出するファイルをVSCodeで開く。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、<br>`C:¥web_app_dev¥03-first-php-GitHubのユーザー名`を選択する。
 2. VSCodeサイドバーのGit Graphのアイコンを押す。
 3. 変更の欄に`hello.php`,`error.php`が表示されていることを確認し、+ボタンを押す。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-12%2017.04.21.png)
@@ -210,19 +245,23 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
 <div style="page-break-before:always"></div>
 
-## 付録:PHP Intelephenseの便利機能　フォーマッター
+## 付録: Dev Containers
 
-フォーマッターとは、プログラミング言語で記述したソースコードを、一定のルールに従って整形してくれるものである。VSCodeのプラグイン `PHP Intelephense` には、プログラムファイル保存時にコードを自動整形してくれる機能がある。
-デフォルトでは、その機能がオフになっているので設定方法を紹介する。
+### Dev Containersとは？
 
-1. VSCode左下の歯車アイコンをクリックし、設定メニューを押す。<br>
-   ![](./images/スクリーンショット%202023-04-20%2019.26.51.png)
-2. 設定画面が表示されるので、フォームに `formaton` と入力する。
-3. `Editor: Format On Save` という項目にチェックを入れる。<br>
-   ![](./images/スクリーンショット%202023-04-20%2019.28.50.png)
-4. これで設定は完了なので、実際の動きを確認する。最初に示すのは悪い例。ただただ左端に寄せただけのコードの羅列である...<br>
-   <img src="./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2019.37.20.png" width="60%"><br>
-   次は、フォーマッターを使い、自動整形した良い例。HTMLの階層構造に合わせてインデントが挿入され、`<html>`,`<head>`,`<body>`という大きなまとまりの間に空白行を挟むことで、全体が見やすくなっている。<br>
-   <img src="./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2019.37.57.png" width="60%">
+Dev Containers（開発用コンテナ）は、VSCodeで使用できる拡張機能で、プロジェクトの開発環境をコンテナ技術を使って構築・管理することができます。ここで言う「コンテナ」とは、ソフトウェアを実行するための環境をパッケージ化する技術のことです。これにより、プログラミング言語やライブラリ、ツールなどの設定を含めた完全な開発環境を、誰でも簡単に再現・共有することができます。
 
-フォーマッターは、コード量が増えれば増えるほど効果が実感できる良い機能なので、是非導入してみましょう！
+### なぜDev Containersを使うのか？
+
+1. **環境の一貫性**：チームメンバー全員が同じ開発環境を使用できるため、動作するはずのコードが特定のPCでは動かないという問題を防げます。
+
+1. **セットアップの簡単化**：新しいプロジェクトに取り組む際、開発環境のセットアップに必要な手順を大幅に削減できます。必要なツールやライブラリが予めコンテナに組み込まれているため、すぐに開発を始めることができます。
+
+1. **システムの汚染を避ける**：開発に必要な依存関係や設定をローカルのシステムにインストールすることなく、コンテナ内で完結させることができます。これにより、システムを「汚す」ことなく、さまざまなプロジェクトを進行できます。
+
+### Dev Containersの使用方法
+
+VSCodeにRemote - Containers拡張機能をインストール：この拡張機能をVSCodeに追加することで、Dev Containersの機能を利用できるようになります。
+コンテナ設定ファイルの作成：プロジェクトに.devcontainerディレクトリを作成し、そこにdevcontainer.jsonファイルを置きます。このファイルには、使用するコンテナイメージや、インストールするソフトウェア、設定すべき環境変数などが記述されます。
+コンテナの起動と接続：設定が完了したら、VSCodeからコンテナを起動し、自動的にその環境に接続します。これにより、ローカルの環境とは全く独立した状態でコーディングが可能になります。
+Dev Containersは、特にチームでの開発や、多くの依存関係がある複雑なプロジェクトにおいて、非常に有効なツールです。一度設定を行えば、どんな環境でも同じ開発環境を再現できるため、開発の効率が大幅に向上します。
