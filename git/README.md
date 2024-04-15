@@ -13,6 +13,7 @@
   - [課題へのアクセス、受諾](#課題へのアクセス受諾)
     - [Gitの下準備](#gitの下準備)
     - [VSCode(Visual Studio Code)でのコード取得](#vscodevisual-studio-codeでのコード取得)
+      - [プラグインJapanese Language Pack for Visual Studio Codeインストール](#プラグインjapanese-language-pack-for-visual-studio-codeインストール)
       - [プラグインGit Graphインストール](#プラグインgit-graphインストール)
       - [cloneできなかった場合](#cloneできなかった場合)
   - [作成と提出](#作成と提出)
@@ -157,6 +158,14 @@ git config --list
 <br>
 
 ### VSCode(Visual Studio Code)でのコード取得
+
+#### プラグインJapanese Language Pack for Visual Studio Codeインストール
+
+1. VSCodeにて、Ctrl+Shift+Xを同時に押します
+1. "Search Extentions in Marketplace"の欄に"japan"と入力します
+1. "Japanese Language Pack for Visual Studio Code"のInstallボタンを押します
+1. インストール後、再起動を求められるので再起動します
+1. VSCodeのメニューなどが日本語になっていればOK。(なお、VSCode自体の更新がかかると、度々日本語化が失われるときがあります。その場合は、このプラグインを再インストールするとOKです。)
 
 #### プラグインGit Graphインストール
 
