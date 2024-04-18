@@ -109,7 +109,7 @@ C:¥web_app_dev
     <body>
         <?php // ④
         echo '<p>Hello,PHP</p>'; // ⑤
-        ?>　// ⑥
+        ?>　<!-- ⑥ -->
         <p>0J0X00X神戸電子</p>
     </body>
 
