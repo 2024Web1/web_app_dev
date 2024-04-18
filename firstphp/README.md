@@ -107,8 +107,8 @@ C:¥web_app_dev
     </head>
 
     <body>
-        <?php　// ④
-        echo '<p>Hello,PHP</p>';　// ⑤
+        <?php // ④
+        echo '<p>Hello,PHP</p>'; // ⑤
         ?>　// ⑥
         <p>0J0X00X神戸電子</p>
     </body>
