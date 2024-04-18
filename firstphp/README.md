@@ -58,8 +58,8 @@
 1. `Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押してください。するとURLを貼り付けるフォームが出るので、先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。
 <img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png" width="90%"><br>
 
-2. フォルダの選択画面になるので、`C:¥web_app_dev` フォルダを選択すること。(※認証を求められた場合は、ブラウザでアカウントを入れて認証すること。)
-3. 認証に成功すれば、`C:¥web_app_dev` 直下にコード`03-first-php-GitHubのユーザー名`がcloneできている。cloneしたコードは、下記のような構成となる。
+2. フォルダの選択画面になるので、`C:¥web_app_dev` フォルダを選択してください。(※認証を求められた場合は、ブラウザでアカウントを入れて認証してください。)
+3. 認証に成功すれば、`C:¥web_app_dev` 直下にコード`03-first-php-GitHubのユーザー名`がcloneできている。cloneしたコードは、下記のような構成となります。
 
 ```text
 C:¥web_app_dev
@@ -73,7 +73,7 @@ C:¥web_app_dev
 
 ## はじめてのPHP
 
-今回は、次のように画面に表示されるPHPファイルを作成することを目標とする。<br>
+今回は、次のように画面に表示されるPHPファイルを作成することを目標としてください。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.20.28.png)<br>
 **※出席番号と名前は各自のものが表示されるようにする**
 
@@ -81,8 +81,8 @@ C:¥web_app_dev
 
 このPHPを作成し、ブラウザで実行確認する手順は次のとおり。
 
-1. 各自の`src`フォルダに`first`フォルダを作成する。
-2. `first`内に、`hello.php`ファイルを作成する。フォルダの構造は下記のようになる。<br>
+1. 各自の`src`フォルダに`first`フォルダを作成してください
+2. `first`内に、`hello.php`ファイルを作成してください。フォルダの構造は下記のようになる。<br>
 
     ```text
     C:¥web_app_dev
@@ -130,48 +130,48 @@ C:¥web_app_dev
 
 1. Dockerをインストールできていない方は、[こちら](https://classroom.google.com/c/NjYwMjEyMzgyMzQ2/a/NjczMzA3MDU1MTA2/details)の添付資料を参考にインストールをお願いします。
 2. Dockerを起動してください。
-3. VScodeで、cloneしたフォルダ`03-first-php-GitHubのユーザー名`が開かれていることを確認する。
+3. VScodeで、cloneしたフォルダ`03-first-php-GitHubのユーザー名`が開かれていることを確認してください。
 4. `Ctrl+Shift+P`を押し、フォームに`reopen`と入力しすると、`Dev Containers: Rebuild and Reopen in Container`という項目が出るので選択してください。
 5. VSCodeがこのような画面になれば成功です。
-6. `http://localhost/03-first-php-GitHubのユーザー名/src/` にアクセスすると次のように表示される。
+6. `http://localhost/03-first-php-GitHubのユーザー名/src/` にアクセスすると次のように表示されます。
 ![](./images/スクリーンショット%202023-04-21%209.17.13.png)
-1. `http://localhost/03-first-php-GitHubのユーザー名/src/first` にアクセスすると次のように表示される。
+1. `http://localhost/03-first-php-GitHubのユーザー名/src/first` にアクセスすると次のように表示されます。
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.17.35.png)
-1. `http://localhost/03-first-php-GitHubのユーザー名/src/first/hello.php` にアクセスすると次のように表示される。
+1. `http://localhost/03-first-php-GitHubのユーザー名/src/first/hello.php` にアクセスすると次のように表示されます。
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.20.28.png)
 
 <div style="page-break-before:always"></div>
 
 ## エラーメッセージ
 
-PHPは、スクリプトの文法上の誤りや、動作上の不具合をブラウザの画面に表示してくれる。
+PHPは、スクリプトの文法上の誤りや、動作上の不具合をブラウザの画面に表示してくれます。
 
-1. `error.php`を、`C:¥web_app_dev¥03-first-php-GitHubのユーザー名¥src¥first`フォルダに保存する。
-2. `error.php`に下記コードを書く。<br>
+1. `error.php`を、`C:¥web_app_dev¥03-first-php-GitHubのユーザー名¥src¥first`フォルダに保存してください。
+2. `error.php`に下記コードを書いてください。<br>
 
-```php
-<!DOCTYPE html>
+    ```php
+    <!DOCTYPE html>
 
-<html lang="ja">
+    <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <title>エラーPHP</title> <!-- タイトルも変更する -->
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>エラーPHP</title> <!-- タイトルも変更する -->
+    </head>
 
-<body>
-    <?php
-    echo <p>Hello,PHP</p>; // 文字列をシングルクォーテーションで囲まなかった  
-    ?>
-    <p>0J0X0XX神戸電子</p>
-</body>
+    <body>
+        <?php
+        echo <p>Hello,PHP</p>; // 文字列をシングルクォーテーションで囲まなかった  
+        ?>
+        <p>0J0X0XX神戸電子</p>
+    </body>
 
-</html>
-```
+    </html>
+    ```
 
-3. `http://localhost/03-first-php-GitHubのユーザー名/src/first/error.php` にアクセスすると次のように表示される。
+3. `http://localhost/03-first-php-GitHubのユーザー名/src/first/error.php` にアクセスすると次のように表示されます。
 ![](./images/error.png)<br>
-このメッセージは、次のように解釈することができる。<br>
+このメッセージは、次のように解釈することができます。<br>
 
    - `Parse error: syntax error, unexpected '<'`<br>
    予期しない `<` による構文エラー<br><br>
@@ -185,7 +185,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
 ### テキストファイルの追加(add)とコミット(commit)
 
-1. 課題として提出するファイルをVSCodeで開く。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、<br>`C:¥web_app_dev¥03-first-php-GitHubのユーザー名`を選択する。
+1. 課題として提出するファイルをVSCodeで開く。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、<br>`C:¥web_app_dev¥03-first-php-GitHubのユーザー名`を選択してください。
 2. VSCodeサイドバーのGit Graphのアイコンを押す。
 3. 変更の欄に`hello.php`,`error.php`が表示されていることを確認し、+ボタンを押す。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-12%2017.04.21.png)
@@ -199,7 +199,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 あとは課題を提出するのみ。
 
 1. 変更の同期ボタンを押す。<br>![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.35.15.png)<br>
-※ちなみにこの「変更の同期ボタン」は、「Branchの発行」という文言に変わることもあるが、どちらもリポートリポジトリにpushできるので問題はない。
+※ちなみにこの「変更の同期ボタン」は、「Branchの発行」という文言に変わることもあるが、どちらもリポートリポジトリにpushできるので問題ありません。
 
 1. ブラウザで、再度課題のリンクにアクセスすると(cloneで使ったURLでも良い)、編集内容が反映されているのがわかる。<br>
 <img src="./images/push.png" width="90%">
@@ -208,7 +208,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
 ## 採点について
 
-提出した課題がGitHub上で自動採点される。採点自体は皆さんが特に意識するようなことはないが、提出した課題が合格したかは提出後に必ず確認すること。
+提出した課題がGitHub上で自動採点されます採点自体は皆さんが特に意識するようなことはないが、提出した課題が合格したかは提出後に必ず確認してください
 
 ### 課題の合格基準について
 
@@ -216,13 +216,13 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
 ### 合格確認方法
 
-1. 課題を提出する。※既に実施済み
-1. 下記青色背景のページにアクセスする。※もしこのページを閉じている方は、
-   [今回の課題ページ](https://classroom.github.com/a/t3R3ygFY)からアクセスすることができる。<br>
+1. 課題を提出してください。※既に実施済み
+1. 下記青色背景のページにアクセスしてください。※もしこのページを閉じている方は、
+   [今回の課題ページ](https://classroom.github.com/a/t3R3ygFY)からアクセスすることができます<br>
    <img src="./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2020.00.25.png" width="60%">
-2. 画面上部にある`Actions`をクリックする。<br>
+2. 画面上部にある`Actions`をクリックしてください。<br>
    <img src="./images/actions.jpg" width="70%">
-3. **一番上**の行のタイトル横に、緑色のチェックが入っていればOK。※一番下に赤いばつ印があるが、無視すること。<br>
+3. **一番上**の行のタイトル横に、緑色のチェックが入っていればOK。※一番下に赤いばつ印があるが、無視してください。<br>
    ![](./images/autograding.jpg)
 
 <div style="page-break-before:always"></div>
@@ -233,7 +233,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
 #### タイムアウトになっていないかを確認する
 
-※タイムアウト自体はGitHubの仕様上防ぎようがありませんので、あらかじめご了承ください。タイムアウトになっている場合は、GitHub上で処理を再開すると解決できる。<br>
+※タイムアウト自体はGitHubの仕様上防ぎようがありませんので、あらかじめご了承ください。タイムアウトになっている場合は、GitHub上で処理を再開すると解決できます。<br>
 例えば、エラーが出た場合、右端の赤枠で囲まれている箇所に処理時間がる。ここが4分前後かかっている場合は、タイムアウトの可能性を疑うこと。
 ![](./images/timeout1.png)
 
@@ -247,7 +247,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
       ![](./images/timeout4.png)
   4. `Operation timed out after 180000 milliseconds with 0 bytes received`のメッセージがあればタイムアウトである。
       ![](./images/timeout5.png)
-  5. 解決策としては、右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
+  5. 解決策としては、右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックしてください。
       ![](./images/timeout6.png)<br>
       ![](./images/timeout7.png)
   6. タイムアウトにならず処理が終了したらOK。また、タイムアウトになった場合は、同じことを繰り返す。※タイムアウトでないエラーは、次の解決策を参照。
