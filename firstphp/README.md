@@ -5,9 +5,11 @@
     - [Gitの下準備](#gitの下準備)
     - [VSCode(Visual Studio Code)でのコード取得](#vscodevisual-studio-codeでのコード取得)
   - [はじめてのPHP](#はじめてのphp-1)
-    - [プログラムを書く](#プログラムを書く)
-    - [実行環境を準備する(Docker \& Dev Containers)](#実行環境を準備するdocker--dev-containers)
+  - [開発環境の構築](#開発環境の構築)
+  - [今回の課題について](#今回の課題について)
+  - [ページの確認方法](#ページの確認方法)
   - [エラーメッセージ](#エラーメッセージ)
+  - [練習問題](#練習問題)
   - [課題の作成と提出](#課題の作成と提出)
     - [テキストファイルの追加(add)とコミット(commit)](#テキストファイルの追加addとコミットcommit)
     - [テキストファイルをプッシュ(push)する](#テキストファイルをプッシュpushする)
@@ -24,28 +26,21 @@
 
 ## 課題へのアクセス、受諾
 
-[今回の課題ページ]()
+[今回の課題ページ](https://classroom.github.com/a/S1hjL1LX)
 
 1. 認証を求められた場合は、GitHubアカウントでログインしてください。<br><br>
    ※前回の授業までで、Gitがインストールできていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#git)の`Git`の章を参考に、インストールを行ってください。<br><br>
   ※前回の授業までで、GitHubアカウントを作成できていない方は、[Git、GitHub](https://2024web1.github.io/web_app_dev/git/#github)の `GitHub`, `GitHubアカウントの作り方`の章を参考にアカウント作成を行なってください。<br><br>
 
-1. GitHub Classroomで自分の名前を選んでクリックして進めてください<br>
-<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/join_the_classroom.png?raw=true"><br><br>
-<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.009.png?raw=true"><br><br>
-
-1. 招待の受け入れをすると、課題ページに到達します。ただし即座にできないこともあるため、 リロードしてみてと言われたらリロードしてください。<br>
+1. 招待の受け入れをすると、課題ページに到達します。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2019.59.16.png)<br>
-![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2020.00.01.png)
 
-1. 待たされたら、リロードするとOKです。<br>
+1. リポジトリリンク(水色背景行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。この画面にならない場合は、ブラウザをリロードしてください。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-20%2020.00.25.png)
 
 1. リポジトリリンク(上記の水色背景行)をクリックすると、課題用に作成されたリポジトリにアクセスできます。
 
 2. clone(取得)用のURLは、緑のボタン(code)から確認できます。httpsを選び、コピー用のボタンでクリップボードに一度取り込んでください。
-
-<div style="page-break-before:always"></div>
 
 ### Gitの下準備
 
@@ -58,66 +53,57 @@
 1. `Ctrl+Shift+P`を押し、フォームに`git: clone`と入力し、`Git:クローン`を押してください。するとURLを貼り付けるフォームが出るので、先ほどコピーしたリポジトリのURLを貼り付け、Enterを押してください。
 <img src="./images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.017.png" width="90%"><br>
 
-2. フォルダの選択画面になるので、`C:¥web_app_dev` フォルダを選択してください。(※認証を求められた場合は、ブラウザでアカウントを入れて認証してください。)
-3. 認証に成功すれば、`C:¥web_app_dev` 直下にコード`03-first-php-GitHubのユーザー名`がcloneできている。cloneしたコードは、下記のような構成となります。
-
-```text
-C:¥web_app_dev
-    └── 03-first-php-GitHubのユーザー名
-        ├── 《中略》
-        ├── src
-        └── 《中略》
-```
-
-<div style="page-break-before:always"></div>
+2. ディレクトリの選択画面になるので、`C:¥web_app_dev` ディレクトリを選択してください。(※認証を求められた場合は、ブラウザでアカウントを入れて認証してください。)
+3. 認証に成功すれば、`C:¥web_app_dev` 直下にコード`03-first-php-GitHubのユーザー名`がcloneできていればOKです。
 
 ## はじめてのPHP
 
-今回は、次のように画面に表示されるPHPファイルを作成することを目標としてください。<br>
+今回は、次のように画面に表示されるPHPファイルを作成することを目標とします。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.20.28.png)<br>
 **※出席番号と名前は各自のものが表示されるようにする**
 
-### プログラムを書く
+## 開発環境の構築
 
-このPHPを作成し、ブラウザで実行確認する手順は次のとおり。
+このままでも課題コードを書けますが、確認が全然できない状況ですので、開発環境に切り替えるための作業をおこないます。
 
-1. 各自の`src`フォルダに`first`フォルダを作成してください
-2. `first`内に、`hello.php`ファイルを作成してください。フォルダの構造は下記のようになる。<br>
+1. Dockerをインストールできていない方は、[こちら](https://classroom.google.com/c/NjYwMjEyMzgyMzQ2/a/NjczMzA3MDU1MTA2/details)の添付資料を参考にインストールをお願いします。
+1. VScodeで、cloneしたディレクトリ`03-first-php-GitHubのユーザー名`が開かれていることを確認してください。
+2. コマンドパレットを開き(Ctrl-Shift-P Macは、(Cmd-Shift-P))、といれ、`rebuild`と入れてみてください。これで、 `Dev Container: Rebuild and Reopen in Container` が出てくるので選んでください。 ![](./images/type-rebuild.png)
+3. 構成を読み取り、選択肢が出てきます、 **PHP実習環境** の側を選んでください。 ![](./images/select-phpdev.png)
+4. しばらく構成処理が行われ(CPUパワーとネットワークに依存)、構成が行われます。 ![](./images/reconfiguring-window.png)
+  - 気になる方はログを出すようにすると進行状況がわかります。 ![](./images/reconfigure-view-log.png)
+5. `03-FIRST-PHP-ユーザー名[開発コンテナー...`というプルダウンをクリックし、`public`ディレクトリがあればOKです。他のディレクトリやファイルは授業中にはさわりません。![](./images/done.png)
 
-    ```text
-    C:¥web_app_dev
-       └── 03-first-php-GitHubのユーザー名
-           ├── 《中略》
-           ├── src
-           │    └── first
-           │        └── hello.php
-           └── 《中略》
-    ```
+あとは課題にあわせてファイルを作成し、commitしてからpushしてください。
 
-3. `hello.php`をVSCodeで開き、下記のコードを書く。<br>
+## 今回の課題について
 
+- `public` ディレクトリ内の `hello.php` を以下のとおりに編集します。<br><br>
+`hello.php`
     ```php
-
     <!DOCTYPE html> <!-- ① -->
+    <!-- 今回は初回なので、仮のファイルを用意しましたが、今後は指示に従い、自分でファイルを作っていって下さい -->
     <html lang="ja"> <!-- ② -->
-
     <head>
-        <meta charset="UTF-8">　<!-- ③ -->
-        <title>はじめてのPHP</title>
+        <meta charset="UTF-8"> <!-- ③ -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
     </head>
-
     <body>
+        <!-- この領域(bodyタグ内)に処理内容を入れてください -->
         <?php // ④
-        echo '<p>Hello,PHP</p>'; // ⑤
+          echo '<p>Hello,PHP</p>'; // ⑤
         ?>　<!-- ⑥ -->
         <p>0J0X00X神戸電子</p>
+        <!-- 今回はここまで -->
     </body>
-
     </html>
-
     ```
 
-**`<!-- ① -->` や、`// ⑤` は注釈です。以降の章でも同様にコード内に番号で注釈を記載しますが、入力する必要はありません。**
+- `hello.php` の中には**HTMLとPHPのコードが混在**します。(それがPHP)
+- 出力させるべき部分(今回だったら、`Hello,PHP`)については**PHPの命令コード**になるようにしてください。
+  - 出力されるべき文字は必ず **pタグでくくる** ようにしてください、これができていないとどんなに正しく出力しても検出ができない仕組みになっています。
+- **`<!-- ① -->` や、`// ⑤` は注釈です。以降の章でも同様にコード内に番号で注釈を記載しますが、入力する必要はありません。**
 
 ①: この文書がHTMLのバージョン5で作成されたものであることを宣言している<br>
 ②: `lang="ja"` は、この文書が日本語で書かれていることを示している<br>
@@ -126,27 +112,31 @@ C:¥web_app_dev
 ⑤: 画面に文字列や`<p>`タグなどのHTMLタグを出力するには`echo`コマンドを用い、文字列をシングルクォーテーションで囲む<br>
 ⑥: PHPスクリプト（プログラムコード）が終わったことを示している（`?>` で終わる）<br><br>
 
-### 実行環境を準備する(Docker & Dev Containers)
+## ページの確認方法
 
-1. Dockerをインストールできていない方は、[こちら](https://classroom.google.com/c/NjYwMjEyMzgyMzQ2/a/NjczMzA3MDU1MTA2/details)の添付資料を参考にインストールをお願いします。
-2. Dockerを起動してください。
-3. VScodeで、cloneしたフォルダ`03-first-php-GitHubのユーザー名`が開かれていることを確認してください。
-4. `Ctrl+Shift+P`を押し、フォームに`reopen`と入力しすると、`Dev Containers: Rebuild and Reopen in Container`という項目が出るので選択してください。
-5. VSCodeがこのような画面になれば成功です。
-6. `http://localhost/03-first-php-GitHubのユーザー名/src/` にアクセスすると次のように表示されます。
-![](./images/スクリーンショット%202023-04-21%209.17.13.png)
-1. `http://localhost/03-first-php-GitHubのユーザー名/src/first` にアクセスすると次のように表示されます。
-![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.17.35.png)
-1. `http://localhost/03-first-php-GitHubのユーザー名/src/first/hello.php` にアクセスすると次のように表示されます。
-![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.20.28.png)
+開発環境で操作しているとき、**ポート**にて、Webサーバーとの接続先が出るようになっています。
 
-<div style="page-break-before:always"></div>
+![](./images/port-view.png)
+
+今回は1行しかないので、マウスカーソルをあてる(ホバーする)と、地球マークが出てくるので選んでください。
+
+![](./images/port-view-hover.png)
+
+これでブラウザに渡されて結果の確認ができます。
+
+![](./images/view-using-browser.png)
+
+今回の課題は `hello.php` なので、表示中のページのリンクに `hello.php` を追加してみてください。
+
+1. Ctrl-L(Cmd-L)を押すと大抵のブラウザはアドレス欄を編集できるようになります。
+2. アドレスの末尾に `hello.php` を付けてください。 ![](./images/add-hello.png)
+3. ファイルを作成していれば内容が出てきます。 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-21%209.20.28.png)
 
 ## エラーメッセージ
 
 PHPは、スクリプトの文法上の誤りや、動作上の不具合をブラウザの画面に表示してくれます。
 
-1. `error.php`を、`C:¥web_app_dev¥03-first-php-GitHubのユーザー名¥src¥first`フォルダに保存してください。
+1. `error.php`を、`C:¥web_app_dev¥03-first-php-GitHubのユーザー名¥src¥first`ディレクトリに保存してください。
 2. `error.php`に下記コードを書いてください。<br>
 
     ```php
@@ -181,11 +171,22 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
 <div style="page-break-before:always"></div>
 
+## 練習問題
+
+`public`ディレクトリ以下に`hello.php`というPHPファイルがあります。
+
+`hello.php` において、PHPの出力命令を用いて、ページとして `Hello,PHP` と返すようにプログラムを組んでください。
+ただし条件があります。
+
+1. PHPの出力命令を用いて出すこと
+2. **最初の**「pタグ」の要素として出してください。
+3. ズルして単純なHTMLで書かないこと(簡易的なチェックはします)
+
 ## 課題の作成と提出
 
 ### テキストファイルの追加(add)とコミット(commit)
 
-1. 課題として提出するファイルをVSCodeで開く。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、<br>`C:¥web_app_dev¥03-first-php-GitHubのユーザー名`を選択してください。
+1. 課題として提出するファイルをVSCodeで開く。VSCodeのメニューから「ファイル->ディレクトリーを開く」を選択し、<br>`C:¥web_app_dev¥03-first-php-GitHubのユーザー名`を選択してください。
 2. VSCodeサイドバーのGit Graphのアイコンを押す。
 3. 変更の欄に`hello.php`,`error.php`が表示されていることを確認し、+ボタンを押す。<br>
 ![](./images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-04-12%2017.04.21.png)
@@ -208,7 +209,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
 ## 採点について
 
-提出した課題がGitHub上で自動採点されます採点自体は皆さんが特に意識するようなことはないが、提出した課題が合格したかは提出後に必ず確認してください
+提出した課題がGitHub上で自動採点されます。採点自体は皆さんが特に意識するようなことはありませんが、提出した課題が合格したかは提出後に必ず確認してください。
 
 ### 課題の合格基準について
 
