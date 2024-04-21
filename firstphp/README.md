@@ -60,7 +60,11 @@
 ## 開発環境の構築
 
 このままでも課題コードを書けますが、確認が全然できない状況ですので、開発環境に切り替えるための作業をおこないます。
-**今回のDockerを使った開発環境について説明すると、PHPでの開発がぼやけてしまうので、しばらく経ってからまとめて説明します。**
+**今回のDockerを使った開発環境について説明すると、PHPでの開発がぼやけてしまうので、詳しくはしばらく経ってからまとめて説明します。**
+
+現段階では以下の図のように、Dockerコンテナの中に、LinuxOS、PHP、WebサーバのApacheが搭載された開発環境があるという理解のみで問題ありません。
+
+![](./images/container.png)
 
 1. Dockerをインストールできていない方は、[こちら](https://classroom.google.com/c/NjYwMjEyMzgyMzQ2/a/NjczMzA3MDU1MTA2/details)の添付資料を参考にインストールをお願いします。
 2. VSCodeの拡張プラグイン「Dev Containers」をインストールします。VSCode上でCtrl-Shift-X(Macは、Cmd-Shift-X)と押し、検索バーに「Dev Containers」と入力し、インストールしてください。
