@@ -60,6 +60,7 @@
 ## 開発環境の構築
 
 このままでも課題コードを書けますが、確認が全然できない状況ですので、開発環境に切り替えるための作業をおこないます。
+**今回のDockerを使った開発環境についての説明を元段階で説明すると、PHPでの開発がぼやけてしまうので、しばらく経ってからまとめて説明します。**
 
 1. Dockerをインストールできていない方は、[こちら](https://classroom.google.com/c/NjYwMjEyMzgyMzQ2/a/NjczMzA3MDU1MTA2/details)の添付資料を参考にインストールをお願いします。
 1. VScodeで、cloneしたディレクトリ`03-first-php-GitHubのユーザー名`が開かれていることを確認してください。
@@ -143,6 +144,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>エラーPHP</title> <!-- タイトルも変更する -->
     </head>
 
