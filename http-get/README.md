@@ -6,27 +6,19 @@
   - [URL （Uniform Resource Locator）](#url-uniform-resource-locator)
   - [HTTPのメソッド](#httpのメソッド)
     - [GETとPOSTの特徴](#getとpostの特徴)
-  - [GETメソッドで送信](#getメソッドで送信)
+  - [GETメソッドでデータ送信](#getメソッドでデータ送信)
   - [GETメソッドで複数のデータを送信](#getメソッドで複数のデータを送信)
   - [付録: `var_dump()`で連想配列を理解する](#付録-var_dumpで連想配列を理解する)
 
 ## 事前準備
 
-[こちらのページ](https://classroom.github.com/a/164OGl-G)から、ソースコードを`C:¥xampp¥htdocs`へcloneすること。
-
-```text
-C:¥xampp¥htdocs
-    └── 05_http_get-GitHubのユーザー名
-        └── src
-            ├── get.php
-            └── gets.php
-```
+[こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneすること。
 
 ## HTTP（HyperText Transfer Protocol）
 
-クライアント（Webブラウザ）からWebサーバーへHTTPのプロトコルを使ってデータを送信する。
+Webアプリケーションでは、クライアント（Webブラウザ）からWebサーバーへHTTPのプロトコルを使ってデータを送信しています。
 
-![](./images/05/08.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%B2%E5%8C%96.jpg)
+![](./images/08.Web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E9%80%B2%E5%8C%96.jpg)
 
 HTTPの特徴は次の通り。
 
@@ -35,55 +27,66 @@ HTTPの特徴は次の通り。
 3. オーバーヘッドが少ない
 4. ステートレス （ステート：状態、レス：ない）
 
-<div style="page-break-before:always"></div>
-
 ## URL （Uniform Resource Locator）
 
-URLとは、インターネットのリソースに対する統一的な名前付けの手法。例えば、前回作成した`hello.php`にアクセスする場合のURLは下記のようになる。
+URLとは、インターネットのリソースに対する統一的な名前付けの手法です。
+
+例えば、前回作成した`hello.php`にアクセスする場合のURLは以下のようになっていましたね。
 
 ```text
-http：//localhost/03_php_for_beginners-GitHubのユーザー名/src/first/hello.php
+http：//localhost:ポート番号/03-first-php-GitHubのユーザー名/hello.php
 ```
 
-URLは大きく3つの要素で構成される。
+上記URLもルールに則り構成されており、大きく3つの要素に分類されます。
 
-1. **スキーム(http://):** スキームには、そのリソースにたどり着くまでの手段(通信プロトコル)が含まれている。よく見るものとしてはhttp、TLS/SSLによって通信経路が暗号化されるhttpsなどがある。</br></br>
-1. **ホスト名(localhost):** ホスト名には、リクエスト先のサーバの名前が入る。</br></br>
-2. **パス(/03_php_for_beginners-GitHubのユーザー名/src/first/hello.php):** パスには、ホスト名で指定されたサーバーのリソースへのパスが入る。
+1. **スキーム(http://):** スキームには、そのリソースにたどり着くまでの手段(通信プロトコル)が含まれています。よく見るものとしてはhttpや、TLS/SSLによって通信経路が暗号化されるhttpsなどがあります。</br></br>
+1. **ホスト名(localhost:ポート番号):** ホスト名には、リクエスト先のサーバの名前が入ります。</br></br>
+1. **パス(03-first-php-GitHubのユーザー名/hello.php):** パスには、ホスト名で指定されたサーバーのリソースへのパスが入ります。
 
 ## HTTPのメソッド
 
-クライアントからWebサーバへリクエスト送信時にサーバでの処理方法も併せて送信する。
+クライアントからWebサーバへリクエスト送信時にサーバでの処理方法も併せて送信します。
 
-![](./images/05/Aspose.Words.cf7819cc-80f9-4d0e-bf25-cc3f18f6faf3.005.jpeg)
+![](./images/Aspose.Words.cf7819cc-80f9-4d0e-bf25-cc3f18f6faf3.005.jpeg)
 
 ### GETとPOSTの特徴
 
-![](./images/05/Aspose.Words.cf7819cc-80f9-4d0e-bf25-cc3f18f6faf3.006.jpeg)
+![](./images/Aspose.Words.cf7819cc-80f9-4d0e-bf25-cc3f18f6faf3.006.jpeg)
 
-<div style="page-break-before:always"></div>
+## GETメソッドでデータ送信
 
-## GETメソッドで送信
+それでは、まずGETメソッドを使って、データを送信してみましょう。
 
-`get.php`ファイルを編集する。
+1. `public`ディテクトリ内に、`get.php`ファイルを作成し、以下のコードを入力してください。
 
-```text
-C:¥xampp¥htdocs
-    └── 05_http_get-GitHubのユーザー名
-        └── src
-            ├── get.php
-            └── gets.php
+`get.php`
+
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GETメソッドのデータ</title>
+</head>
+
+<body>
+    <h4>0J0X0XX神戸電子</h4>
+    <p>GETメソッドで送られてきたパラメータ名dataの値は、
+        <?php
+        echo $_GET['data'] . " です。</p>";
+        ?>
+</body>
+
+</html>
 ```
 
-**get.php**
-
-![](./images/05/get_code.png)
-
-`$_GET['data']`: HTTPのGETメソッドで送られてきたパラメータ名 `data` の値を受け取る処理。 </br>この `$_GET[ ]`は、PHPの定義済み変数の一つで、その実態は連想配列である。
+`$_GET['data']`: HTTPのGETメソッドで送られてきたパラメータ名 `data` の値を受け取る処理です。 </br>この `$_GET[ ]`は、PHPの定義済み変数の一つで、その実態は連想配列です。
 
 この `get.php` に、ブラウザから`http://localhost/05_http_get-GitHubのユーザー名/src/get.php` でアクセスすると、次のようなエラー画面となる。
 
-![](./images/05/get_error_display.jpg)
+![](./images/get_error_display.jpg)
 
 これは、`$_GET['data']`でパラメータ名 `data` の値を受け取ろうとしているが、実際には値が送られてきていないため。
 
@@ -91,7 +94,7 @@ GETメソッドでデータを送信するときは、「クエリパラメー�
 
 そこで、`http://localhost/05_http_get-GitHubのユーザー名/src/get.php?data=神戸` でアクセスすると次のように表示される。
 
-![](./images/05/get_display.jpg)
+![](./images/get_display.jpg)
 
 ## GETメソッドで複数のデータを送信
 
@@ -103,14 +106,14 @@ GETメソッドでデータを送信するときは、「クエリパラメー�
 
 **gets.php**
 
-![](./images/05/gets_code.png)
+![](./images/gets_code.png)
 
 <div style="page-break-before:always"></div>
 
 `http://localhost/05_http_get-GitHubのユーザー名/src/gets.php?course=0J&class=01&number=050&name=神戸電子` </br>
 このURLでアクセスすると次のように表示される
 
-![](./images/05/gets_display.jpg)
+![](./images/gets_display.jpg)
 
 ## 付録: `var_dump()`で連想配列を理解する
 
@@ -147,7 +150,7 @@ GETメソッドでデータを送信するときは、「クエリパラメー�
 ```
 
 `http://localhost/05_http_get-GitHubのユーザー名/src/gets.php?course=0J&class=01&number=050&name=神戸電子` にアクセスすると、下記の画面が表示される。
-![](./images/05/var_dump.png)
+![](./images/var_dump.png)
 
 赤枠が、`var_dump()`によって出力された`$_GET`の中身である。配列の中に4つの要素があり、「キー」と「値」のペアで格納されていることがわかる。また、`var_dump()`では、格納されている「値」の型の情報も出力される。
 

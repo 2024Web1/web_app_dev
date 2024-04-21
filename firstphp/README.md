@@ -60,15 +60,16 @@
 ## 開発環境の構築
 
 このままでも課題コードを書けますが、確認が全然できない状況ですので、開発環境に切り替えるための作業をおこないます。
-**今回のDockerを使った開発環境についての説明を元段階で説明すると、PHPでの開発がぼやけてしまうので、しばらく経ってからまとめて説明します。**
+**今回のDockerを使った開発環境について説明すると、PHPでの開発がぼやけてしまうので、しばらく経ってからまとめて説明します。**
 
 1. Dockerをインストールできていない方は、[こちら](https://classroom.google.com/c/NjYwMjEyMzgyMzQ2/a/NjczMzA3MDU1MTA2/details)の添付資料を参考にインストールをお願いします。
-1. VScodeで、cloneしたディレクトリ`03-first-php-GitHubのユーザー名`が開かれていることを確認してください。
-2. コマンドパレットを開き(Ctrl-Shift-P Macは、(Cmd-Shift-P))、といれ、`rebuild`と入れてみてください。これで、 `Dev Container: Rebuild and Reopen in Container` が出てくるので選んでください。 ![](./images/type-rebuild.png)
-3. 構成を読み取り、選択肢が出てきます、 **PHP実習環境** の側を選んでください。 ![](./images/select-phpdev.png)
-4. しばらく構成処理が行われ(CPUパワーとネットワークに依存)、構成が行われます。 ![](./images/reconfiguring-window.png)
+2. VSCodeの拡張プラグイン「Dev Containers」をインストールします。VSCode上でCtrl-Shift-X(Macは、Cmd-Shift-X)と押し、検索バーに「Dev Containers」と入力し、インストールしてください。
+3. VScodeで、cloneしたディレクトリ`03-first-php-GitHubのユーザー名`が開かれていることを確認してください。
+4. コマンドパレットを開き(Ctrl-Shift-P Macは、(Cmd-Shift-P))、といれ、`rebuild`と入れてみてください。これで、 `Dev Container: Rebuild and Reopen in Container` が出てくるので選んでください。 ![](./images/type-rebuild.png)
+5. 構成を読み取り、選択肢が出てきます、 **PHP実習環境** の側を選んでください。 ![](./images/select-phpdev.png)
+6. しばらく構成処理が行われ(CPUパワーとネットワークに依存)、構成が行われます。 ![](./images/reconfiguring-window.png)
   - 気になる方はログを出すようにすると進行状況がわかります。 ![](./images/reconfigure-view-log.png)
-5. `03-FIRST-PHP-ユーザー名[開発コンテナー...`というプルダウンをクリックし、`public`ディレクトリがあればOKです。他のディレクトリやファイルは授業中にはさわりません。![](./images/done.png)
+7. `03-FIRST-PHP-ユーザー名[開発コンテナー...`というプルダウンをクリックし、`public`ディレクトリがあればOKです。他のディレクトリやファイルは授業中にはさわりません。![](./images/done.png)
 
 あとは課題にあわせてファイルを作成し、commitしてからpushしてください。
 
