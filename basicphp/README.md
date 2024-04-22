@@ -122,8 +122,8 @@ PHPで主に使う演算子は次のとおり。
 |+&nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;&nbsp;.(ドット)|加算、　減算、　文字列の結合|
 |<&nbsp;&nbsp;&nbsp;&nbsp;<=&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;>=|比較（より小さい、　以下、　より大きい、　以上）|
 |==&nbsp;&nbsp;&nbsp;&nbsp;!=&nbsp;&nbsp;&nbsp;&nbsp;===|比較（等しい、　等しくない、　データ型も含め等しい）|
-|`   `&&|論理（かつ）|
-|`   `|||論理（または）|
+|&&|論理（かつ）|
+|\|\||論理（または）|
 
 <div style="page-break-before:always"></div>
 
