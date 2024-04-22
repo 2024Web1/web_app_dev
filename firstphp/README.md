@@ -142,7 +142,9 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
 3. `error.php`に下記コードを書いてください。<br>
 
   `error.php`
-    ```php
+
+  ```php
+
     <!DOCTYPE html>
 
     <html lang="ja">
@@ -161,7 +163,7 @@ PHPは、スクリプトの文法上の誤りや、動作上の不具合をブ�
     </body>
 
     </html>
-    ```
+  ```
 1. 先ほどと同様VSCode下部の**ポート**をクリックしてください。
 
 ![](./images/port-view.png)
