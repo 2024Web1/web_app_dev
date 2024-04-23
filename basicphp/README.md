@@ -26,7 +26,7 @@
 
 ## 留意事項
 
-今後の資料では、</br>
+今後の資料では、<br>
 
 1. Git, GitHubの環境構築手順
 2. 課題ページへアクセスし、ソースコードをcloneするまでの手順
@@ -323,7 +323,7 @@ foreach ( $area  as  $key  =>  $value ) { // 配列$area のキーを$key、値�
 - **for文を２つ用いて**作成してください。
 - 改行に関しては`<p>`タグを用いて、行ってください。※`</p>`も忘れないように！
 
-<img src="./images/ninebynine_display.png" width="40%"></br>
+<img src="./images/ninebynine_display.png" width="40%"><br>
 
 **ninebynine.php**
 
