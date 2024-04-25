@@ -26,18 +26,63 @@
 
 ## 今回の課題について
 
-今回の課題では、**授業中では紹介されていない入力フォームを使って**プログラムを作成する。そのため、各自で調査し作成する必要がある。</br>
-入力フォーム以外の箇所は、これまでの「06_POSTメソッド1.pdf」、「06_POSTメソッド2.pdf」のサンプルプログラムと同様である。具体的には以下を参照すること。
+今回の課題では、**授業中では紹介されていない入力フォームを使って**プログラムを作成します。そのため、各自で調査し作成する必要があります。</br>
+入力フォーム以外の箇所は、これまでの、[入力フォーム①](../http-post-i/README.md)、[入力フォーム②](../http-post-ii/README.md)のサンプルプログラムと同様です。具体的には以下を参照してください。
 
-**各種htmlファイル(xxx.html)の書き方**
-![](./images/06/xxx_html_code.png)</br>
+**各種htmlファイル(xxx.html)の雛形**
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xxx.html</title> <!-- ファイル名を修正 -->
+</head>
+
+<body>
+  <h4>0J0X0XX神戸電子</h4> <!-- 自身の出席番号と氏名に修正する-->
+  xxxxxxxxxxxxxxxxxx<br> <!-- この行は課題に記載があれば修正する、なければ削除 -->
+  <form method="POST" action="xxx.php"> <!-- action属性のファイル名を修正-->
+
+    <!-- 入力フォームの中身は各自で調べ記載すること-->
+
+    <input type="submit" value="送信">
+  </form>
+</body>
+
+</html>
+```
+
 
 **各種phpファイル(xxx.php)の書き方**
-![](./images/06/xxx_php_code.png)</br>
+```php
+<!DOCTYPE html>
+<html lang="ja">
 
-<div style="page-break-before:always"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xxx.php</title> <!-- ファイル名を記載 -->
+</head>
 
-※各種php(xxx.php)ファイルにて、`echo`で出力する文字列は、1行ごとに `<p>` と `</p>` でくくること。(※くくらないと採点されないので注意！)例えば、`echo`で出力する文字列が2行の場合は、下記のように記載する。※XXXXXXの箇所は必要に応じて修正すること。
+<body>
+    <h4>0J0X0XX神戸電子</h4>
+		xxxxxxxxxxxxxxxxxx<br> <!-- この行は、課題の画像に記載があれば修正する、なければ削除 -->
+    <?php
+    /* 
+			phpのプログラムは各自で調べ記載すること
+			なお、echoで出力する文字列は、1行ごとに <p> と </p> でくくること
+      (※くくらないと採点されないので注意！)
+		*/
+    ?>
+    <a href='xxx.html'>戻る</a>　<!-- ファイル名を修正-->
+</body>
+
+</html>
+```
+
+※各種php(xxx.php)ファイルにて、`echo`で出力する文字列は、1行ごとに `<p>` と `</p>` でくくってください。(※くくらないと採点されないので注意！)例えば、`echo`で出力する文字列が2行の場合は、以下のように記載してください。※XXXXXXの箇所は必要に応じて修正すること。
 
 ```PHP
 <?php
@@ -50,31 +95,29 @@
 
 **password.html**
 
-下記のサンプル画像では、「パスワード」入力欄に「denshi」と入力している。
+以下のサンプル画像では、「パスワード」入力欄に「denshi」と入力しています。
 
-![](./images/06/password_html_display.png)</br>
+![](./images/password_html_display.png)</br>
 
 **password.php**</br>
-※戻るをクリックすると前の画面に戻る。
-![](./images/06/password_php_display.png)</br>
-
-<div style="page-break-before:always"></div>
+※戻るをクリックすると前の画面に戻ります。
+![](./images/password_php_display.png)</br>
 
 ## プルダウンメニュー
 
-**pulldown.html** 
+**pulldown.html**
 
-※ここでは、リンゴを選択している。
+※ここでは、リンゴを選択しています。
 
-![](./images/06/pulldown_html_display.png)
+![](./images/pulldown_html_display.png)
 
-プルダウンのリストは次のように設定すること。
+プルダウンのリストは次のように設定してください。
 
 <img src="./images/06/pulldown_list.png" width="20%">
 
 **pulldown.php**
-※戻るをクリックすると前の画面に戻る。
-![](./images/06/pulldown_php_display.png)
+※戻るをクリックすると前の画面に戻ります。
+![](./images/pulldown_php_display.png)
 
 【追記】リストの値それぞれにvalue属性を設定すること。value属性のパラメータは、以下のようにプルダウンのリストである"オレンジ"、"リンゴ"、"メロン"とそれぞれ一致させること。
 
@@ -86,19 +129,17 @@
 <!-- 中略 -->
 ```
 
-<div style="page-break-before:always"></div>
-
 ## テキストエリア
 
 **textarea.html**
 
-※横幅=50、縦幅（行数）=4 を指定している。横幅は「cols属性」、縦幅は「rows属性」を使用する。</br>
-**テキストエリアの入力欄の初期値は空欄であること。下記画面に入力されている文字列は、ブラウザで後から入力したものである。**</br>
+※横幅=50、縦幅（行数）=4 を指定している。横幅は「cols属性」、縦幅は「rows属性」を使用します。</br>
+**テキストエリアの入力欄の初期値は空欄としてください。下記画面に入力されている文字列は、ブラウザで後から入力したものです。**</br>
 
-![](./images/06/textarea_html_display.png)
+![](./images/textarea_html_display.png)
 
 **textarea.php**</br>
-**※「入力された文章は次の通りです。」の部分は、`<p></p>`タグではなく、`<br>`タグで改行すること。【追記】具体的には以下のように記述する。**
+**※「入力された文章は次の通りです。」の部分は、`<p></p>`タグではなく、`<br>`タグで改行すること。【追記】具体的には以下のように記述してください。**
 
 ```html
 <!-- 中略 -->
@@ -109,9 +150,7 @@
 <!-- 中略 -->
 ```
 
-![](./images/06/textarea_php_display.png)
-
-<div style="page-break-before:always"></div>
+![](./images/textarea_php_display.png)
 
 ## 課題の作成と提出
 
@@ -120,21 +159,21 @@
 1. 課題として提出するファイルをVSCodeで開く。VSCodeのメニューから「ファイル->フォルダーを開く」を選択し、`C:¥xampp¥htdocs¥06_post_kadai-GitHubのユーザー名`を選択する。
 2. VSCodeサイドバーのGit Graphのアイコンを押す。
 3. 変更の欄に作成したファイルが表示されていることを確認し、+ボタンを押す。</br>
-![](./images/06/add1.png)
+![](./images/add1.png)
 1. 作成したファイルが「ステージされている変更」に移動していれば、addは成功。</br>
-![](./images/06/add2.png)
+![](./images/add2.png)
 1. メッセージの欄にメッセージを入力し、✔のボタンを押すとコミットは完了。
-![](./images/06/commit.png)</br></br>
+![](./images/commit.png)</br></br>
 
 ### テキストファイルをプッシュ(push)する
 
 あとは課題を提出するのみ。
 
-1. 「変更の同期」ボタンを押す。</br>![](./images/06/push.png)</br>
+1. 「変更の同期」ボタンを押す。</br>![](./images/push.png)</br>
 ※ちなみにこの「変更の同期」は、同じローカルリポジトリを繰り返しpushすると、「Branchの発行」という文言に変わることがあるが、どちらもリモートリポジトリにpushできるので問題はない。
 
 1. ブラウザで、再度課題のリンクにアクセスすると(cloneで使ったURLでも良い)、編集内容が反映されていることがわかる。</br>
-![](./images/06/push_confirm.png)
+![](./images/push_confirm.png)
 
 ## 採点について
 
@@ -148,9 +187,9 @@
 
 1. 本課題の[課題ページ](https://classroom.github.com/a/IFzVC66a)に再度アクセスする。
 2. 画面上部にある`Actions`をクリックする。</br>
-![](./images/06/acions.png)
+![](./images/acions.png)
 1. **一番上**の行に、緑色のチェックが入っていればOK。※その下に赤いばつ印が入っているものがあるが、それは無視する。</br>
-![](./images/06/pass.png)
+![](./images/pass.png)
 
 ### エラーが出た時の対処法
 
@@ -159,25 +198,25 @@
 ### タイムアウトになっていないかを確認する
 
 ※右端の赤枠で囲まれている箇所に処理時間がでるが、**1分以上**かかっている場合はタイムアウトである。
-![](./images/06/timeout.png)
+![](./images/timeout.png)
 
 なお、タイムアウトの場合は、GitHub上で処理を再開すると解決できる。具体的なタイムアウト解決方法は、
 
   1. Actionsタブをクリック
-  2. タイトルが下記のようにリンクになっているので、クリック
-      ![](./images/06/timeout2.png)
+  2. タイトルが以下のようにリンクになっているので、クリック
+      ![](./images/timeout2.png)
   3. Autogradingをクリック
-   ![](./images/06/timeout3.png)
+   ![](./images/timeout3.png)
   4. 赤いばつ印が出ている箇所をクリック
-  ![](./images/06/timeout4.png)
+  ![](./images/timeout4.png)
   5. `::error::Setup timed out in 60000 milliseconds`のメッセージがあればタイムアウト
-   ![](./images/06/timeout8.png)
+   ![](./images/timeout8.png)
 
-<div style="page-break-before:always"></div>
+
 
   6. 右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
-  ![](./images/06/timeout6.png)</br>
-  ![](./images/06/timeout7.png)
+  ![](./images/timeout6.png)</br>
+  ![](./images/timeout7.png)
   7. タイムアウトにならず1分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
 
 ### プログラムが正確に書かれているか確認する
@@ -189,16 +228,16 @@
 今回は3つの入力フォーム(password, pulldown, textarea)があるので、以下の手順で、どの入力フォームがエラーか確認する必要がある。
 
 1. Actionsタブをクリック
-2. タイトルが下記のようにリンクになっているので、クリック
-      ![](./images/06/timeout2.png)
+2. タイトルが以下のようにリンクになっているので、クリック
+      ![](./images/timeout2.png)
 3. Autogradingをクリック
-   ![](./images/06/timeout3.png)
+   ![](./images/timeout3.png)
 4. 赤いばつ印が出ている箇所をクリック
-  ![](./images/06/timeout4.png)
+  ![](./images/timeout4.png)
 1. エラーがある入力フォームには、下記画像のように、`SampleTest::testXXXXXX`というエラーメッセージが表示される。testXXXXXXには,Password,Pulldown, Textareaのいずれかが入り、これによってどの入力フォームでエラーとなっているか特定できる。</br>
 <img src="./images/06/error_message.png" width="75%">
 
-<div style="page-break-before:always"></div>
+
 
 #### スペルミス、入力ミスがないか
 
@@ -212,7 +251,7 @@
 ## GitHub上での採点についてのお願い
 
 今回、再度GitHub上での採点をするにあたりお願いがあります。それは、</br>
-GitHubに課題をpushする前に、**必ずブラウザで動作確認をしてください。**　理由は下記の2つです。</br>
+GitHubに課題をpushする前に、**必ずブラウザで動作確認をしてください。**　理由は以下の2つです。</br>
 
 1. Webアプリケーションはブラウザ上で動作することが前提であるため。
 2. GitHubの採点処理時間に上限があるため。<br>
