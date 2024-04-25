@@ -14,6 +14,7 @@
     - [テキストファイルをプッシュ(push)する](#テキストファイルをプッシュpushする)
     - [(※追記)Dev Containersを起動した状態で、add、commit、pushができない場合](#追記dev-containersを起動した状態でaddcommitpushができない場合)
       - [ワークスペースの信頼を管理](#ワークスペースの信頼を管理)
+      - [(追記)Dev Containers一旦停止してpush](#追記dev-containers一旦停止してpush)
   - [採点について(今回の課題から)](#採点について今回の課題から)
     - [課題の合格基準について](#課題の合格基準について)
     - [合格確認方法](#合格確認方法)
@@ -218,6 +219,12 @@ Dev Containersを起動した状態で、commitなどしようとした際、`Ma
 1. コマンドパレットを開いて(Ctrl-Shift-P MacはCmd-Shift-P)、`workspace trust`と入力 ![](./images/seigen2.png)
 2. 「親ディレクトリを信頼」を押す
    ![](./images/seigen3.png)
+
+#### (追記)Dev Containers一旦停止してpush
+
+1. コマンドパレットを開いて、`dev containers local`と入力
+2. 「フォルダーを再度ローカルで開く(Dev Containers: Reopen Folder Locally)」を選択
+3. すると普通にadd、commit、pushができるようになります
 
 ## 採点について(今回の課題から)
 
