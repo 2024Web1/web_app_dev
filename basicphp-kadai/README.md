@@ -5,6 +5,7 @@
   - [課題内容](#課題内容)
     - [ヒント](#ヒント)
     - [ブラウザ上での確認方法を忘れた方へ](#ブラウザ上での確認方法を忘れた方へ)
+    - [Dev Containersを起動した状態で、add、commit、pushができない方へ](#dev-containersを起動した状態でaddcommitpushができない方へ)
   - [採点について](#採点について)
     - [課題の合格基準について](#課題の合格基準について)
     - [合格確認方法](#合格確認方法)
@@ -52,7 +53,11 @@
 
 ### ブラウザ上での確認方法を忘れた方へ
 
-[『PHPの基本』の「ブラウザ上での確認」](https://2024web1.github.io/web_app_dev/basicphp/#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E4%B8%8A%E3%81%A7%E3%81%AE%E7%A2%BA%E8%AA%8D)を参考に`ninebynine.php`を確認にチャレンジしてください。
+[『PHPの基本』の「ブラウザ上での確認」](https://2024web1.github.io/web_app_dev/basicphp/#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E4%B8%8A%E3%81%A7%E3%81%AE%E7%A2%BA%E8%AA%8D)を参考に`ninebynine.php`の確認にチャレンジしてください。
+
+### Dev Containersを起動した状態で、add、commit、pushができない方へ
+
+[『はじめてのPHP』の「Dev Containersを起動した...」](https://2024web1.github.io/web_app_dev/firstphp/#%E8%BF%BD%E8%A8%98dev-containers%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%9F%E7%8A%B6%E6%85%8B%E3%81%A7addcommitpush%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88)を参考にしてください。
 
 ## 採点について
 
