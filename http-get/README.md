@@ -12,7 +12,7 @@
 
 ## 事前準備
 
-[こちらのページ](https://classroom.github.com/a/OZe5yajh)から、ソースコードを`C:¥web_app_dev`へcloneすること。
+[こちらのページ](https://classroom.github.com/a/OZe5yajh)から、ソースコードを`C:¥web_app_dev`へcloneしてください。
 
 ## HTTP（HyperText Transfer Protocol）
 
