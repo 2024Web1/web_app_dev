@@ -113,7 +113,7 @@
 
 プルダウンのリストは次のように設定してください。
 
-<img src="./images/06/pulldown_list.png" width="20%">
+<img src="./images/pulldown_list.png" width="20%">
 
 **pulldown.php**
 ※戻るをクリックすると前の画面に戻ります。
