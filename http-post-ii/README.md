@@ -19,7 +19,7 @@
 `public`ディレクトリに、`radio.html`、`radio.php`を作成し、以下のコードを入力してください。
 
 `radio.html`
-![](./images/radio_html_display.png)</br>
+![](./images/radio_html_display.png)<br>
 ※画面を開いた時点で「リンゴ」にチェックが入っている状態にします。
 
 `radio.php`
@@ -156,7 +156,7 @@
 
 `hidden.php`
 
-※パラメータ=data、値=PHP でデータが送られてくるので、`$_POST['data']`で値を受け取ることができる。</br>
+※パラメータ=data、値=PHP でデータが送られてくるので、`$_POST['data']`で値を受け取ることができる。<br>
 
 ![](./images/hidden_php_display.png)
 
@@ -212,7 +212,7 @@
 
 フォームの送信時に、ブラウザに非表示のデータをサーバーに送信することができます。ユーザーには表示されないため、UIの見栄えを損ねずに必要なデータを送信できます。
 
-※作成した`hidden.html`をブラウザに表示し、右クリック→「ソースの表示」でソースコードを確認すると、送信データ(パラメータ=data、値=PHP)が確認できます。</br>
+※作成した`hidden.html`をブラウザに表示し、右クリック→「ソースの表示」でソースコードを確認すると、送信データ(パラメータ=data、値=PHP)が確認できます。<br>
 
 ![](./images/hidden_data.png)
 
