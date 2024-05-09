@@ -4,8 +4,14 @@
   - [事前準備](#事前準備)
   - [今回の課題について](#今回の課題について)
   - [パスワード](#パスワード)
-  - [プルダウンメニュー](#プルダウンメニュー)
+    - [password.html](#passwordhtml)
+    - [password.php](#passwordphp)
+  - [プルダウン](#プルダウン)
+    - [pulldown.html](#pulldownhtml)
+    - [pulldown.php](#pulldownphp)
   - [テキストエリア](#テキストエリア)
+    - [textarea.html](#textareahtml)
+    - [textarea.php](#textareaphp)
   - [課題の作成と提出](#課題の作成と提出)
     - [テキストファイルの追加(add)とコミット(commit)](#テキストファイルの追加addとコミットcommit)
     - [テキストファイルをプッシュ(push)する](#テキストファイルをプッシュpushする)
@@ -22,90 +28,55 @@
 
 ## 事前準備
 
-[こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneしてください。
+[こちらのページ](https://classroom.github.com/a/5z3Je8ku)から、ソースコードを`C:¥web_app_dev`へcloneしてください。
 
 ## 今回の課題について
 
-今回の課題では、**授業中では紹介されていない入力フォームを使って**プログラムを作成します。そのため、各自で調査し作成する必要があります。<br>
-入力フォーム以外の箇所は、これまでの、[入力フォーム①](../http-post-i/README.md)、[入力フォーム②](../http-post-ii/README.md)のサンプルプログラムと同様です。具体的には以下を参照してください。
+今回の課題では、**授業中では紹介されていない入力フォームを使って**プログラムを作成します。そのため、**各自で調査し作成する必要があります。**
 
-**各種htmlファイル(xxx.html)の雛形**
-```php
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>xxx.html</title> <!-- ファイル名を修正 -->
-</head>
-
-<body>
-  <h4>0J0X0XX神戸電子</h4> <!-- 自身の出席番号と氏名に修正する-->
-  xxxxxxxxxxxxxxxxxx<br> <!-- この行は課題に記載があれば修正する、なければ削除 -->
-  <form method="POST" action="xxx.php"> <!-- action属性のファイル名を修正-->
-
-    <!-- 入力フォームの中身は各自で調べ記載すること-->
-
-    <input type="submit" value="送信">
-  </form>
-</body>
-
-</html>
-```
-
-
-**各種phpファイル(xxx.php)の書き方**
-```php
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xxx.php</title> <!-- ファイル名を記載 -->
-</head>
-
-<body>
-    <h4>0J0X0XX神戸電子</h4>
-		xxxxxxxxxxxxxxxxxx<br> <!-- この行は、課題の画像に記載があれば修正する、なければ削除 -->
-    <?php
-    /* 
-			phpのプログラムは各自で調べ記載すること
-			なお、echoで出力する文字列は、1行ごとに <p> と </p> でくくること
-      (※くくらないと採点されないので注意！)
-		*/
-    ?>
-    <a href='xxx.html'>戻る</a>　<!-- ファイル名を修正-->
-</body>
-
-</html>
-```
-
-※各種php(xxx.php)ファイルにて、`echo`で出力する文字列は、1行ごとに `<p>` と `</p>` でくくってください。(※くくらないと採点されないので注意！)例えば、`echo`で出力する文字列が2行の場合は、以下のように記載してください。※XXXXXXの箇所は必要に応じて修正すること。
-
-```PHP
-<?php
-    echo '<p>XXXXXX' . $_POST['パラメータ名'] . 'XXXXXX</p>';
-    echo '<p>XXXXXX'  . $_POST['パラメータ名'] . 'XXXXXX</p>';
-?>
-```
+また、作成する各ファイルには、それぞれ作成条件が記載されておりますので、そちらには必ず従ってください。**GitHub上の自動テストでエラーになります。**
 
 ## パスワード
 
-**password.html**
+### password.html
 
-以下のサンプル画像では、「パスワード」入力欄に「denshi」と入力しています。
+- 作成条件
+  - H4タグに自分の `出席番号 氏名` を入れる
+  - フォームの送り先を `password.php` に設定する
+  - 入力フォームとして、以下のものを設定する
+    - テキスト「ユーザーID:」として変数`user`に`text`形式
+    - テキスト「パスワード:」として変数`pass`に`password`形式
+    - 初期値は設定しない
+  - フォーム要素はそれぞれ改行する
 
-![](./images/password_html_display.png)<br>
+![](./images/password_html_display.png)
 
-**password.php**<br>
+### password.php
+
+- 作成条件
+  - H4タグに自分の`出席番号 氏名`を入れる
+  - フォームとして受け取った`user`,`pass`の値をそれぞれPHPの命令で出力する
+        - 以下の文章は、それぞれ**別々にpタグでくくる**こと
+        - 「入力されたユーザーIDは、XXXX(`user`の値)です」
+        - 「入力されたパスワードは、XXXX(`pass`の値)です」
+
 ※戻るをクリックすると前の画面に戻ります。
 ![](./images/password_php_display.png)<br>
 
-## プルダウンメニュー
+## プルダウン
 
-**pulldown.html**
+### pulldown.html
+
+- 作成条件
+  - H4タグに自分の `出席番号 氏名` を入れる
+  - フォームの送り先を `pulldown.php` に設定する
+  - 入力フォームとして、以下のものを設定する
+    - 入力された値は変数名`fruit`に入る
+    - 果物(fruit)の候補として、以下の値を挿入すること(順番は気にしないでよい)
+      - オレンジ
+      - リンゴ
+      - メロン
+    - 送信ボタンには名前 `submit` を付与する
 
 ※ここでは、リンゴを選択しています。
 
@@ -115,40 +86,38 @@
 
 <img src="./images/pulldown_list.png" width="20%">
 
-**pulldown.php**
+### pulldown.php
+
+- 作成条件
+  - H4タグに自分の`出席番号 氏名`を入れる
+    - フォームとして受け取った`frult`を出力する
+    - 出力するテキストは`p`タグでくくる
+    - `p`タグ内のテキストは「あなたの好きなフルーツは、XXX(fruitで受け取ったもの)ですね。」とする
+  
 ※戻るをクリックすると前の画面に戻ります。
 ![](./images/pulldown_php_display.png)
 
-【追記】リストの値それぞれにvalue属性を設定すること。value属性のパラメータは、以下のようにプルダウンのリストである"オレンジ"、"リンゴ"、"メロン"とそれぞれ一致させること。
-
-```html
-<!-- 中略 -->
-<option value="オレンジ">オレンジ</option>
-<option value="リンゴ">リンゴ</option>
-<option value="メロン">メロン</option>
-<!-- 中略 -->
-```
-
 ## テキストエリア
 
-**textarea.html**
+### textarea.html
 
-※横幅=50、縦幅（行数）=4 を指定している。横幅は「cols属性」、縦幅は「rows属性」を使用します。<br>
-**テキストエリアの入力欄の初期値は空欄としてください。下記画面に入力されている文字列は、ブラウザで後から入力したものです。**<br>
+- 作成条件
+  - H4タグに自分の `出席番号 氏名` を入れる
+  - フォームの送り先を `textarea.php` に設定する
+  - 入力フォームとして、以下のものを設定する
+    - 横幅(1桁の文字数)50、縦幅(行数)4に設定する
+    - 入力テキストの渡される変数名を `input_text` とする
+    - 送信ボタンには名前 `submit` を付与する
+    - テキストエリアの初期値は設定しない
 
 ![](./images/textarea_html_display.png)
 
-**textarea.php**<br>
-**※「入力された文章は次の通りです。」の部分は、`<p></p>`タグではなく、`<br>`タグで改行すること。【追記】具体的には以下のように記述してください。**
+### textarea.php
 
-```html
-<!-- 中略 -->
-<body>
-    <h4>0J0X0XX神戸電子</h4>
-    入力された文章は次の通りです。<br>
-    <?php
-<!-- 中略 -->
-```
+- 作成条件
+  - H4タグに自分の`出席番号 氏名`を入れる
+  - フォームとして受け取った`input_text`の値を出力する
+    - 出力するテキストは`p`タグでくくる
 
 ![](./images/textarea_php_display.png)
 
