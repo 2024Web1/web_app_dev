@@ -18,48 +18,34 @@
 
 ## 事前準備
 
-[こちらのページ](https://classroom.github.com/a/HvLGxhXL)から、ソースコードを`C:¥xampp¥htdocs`へcloneすること。
-
-```text
-C:¥xampp¥htdocs
-    └── 08_function-GitHubのユーザー名
-        ├── <中略>
-        ├── src
-        |   ├── escape.html
-        |   ├── escape.php
-        |   ├── function.php
-        |   ├── unescape.html
-        |   └── unescape.php
-        └── <中略>
-
-```
+[こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneしてください。
 
 ## PHPの2種類の関数
 
 1. 組み込み関数　・・・　プログラム言語としてPHPであらかじめ用意されている関数
 1. ユーザー定義関数　・・・　ユーザー（プログラマー）が自分で作成する関数
 
-<div style="page-break-before:always"></div>
-
 ## 組み込み関数
 
-PHPには様々な関数があらかじめ用意されているが、これを最初から全部覚える必要はない。 次のサイトなどを参考に、必要に応じて自分で調べて利用できるようになればよい。
+PHPには様々な関数があらかじめ用意されていますが、全部覚える必要はありません。
+以下のサイトなどを参考に、必要に応じて自分で調べて利用できるようになれば良いです。
 
 [PHPマニュアル　関数リファレンス](http://php.net/manual/ja/funcref.php)<br>
 [PHP入門　PHP関数リファレンス](https://webkaru.net/php/function-reference/)<br>
 
-以下、関数のサンプルを紹介していくが、動作確認用として「function.php」を活用すること。※提出物ではない。
+以下、関数のサンプルを紹介していきます。
+動作確認用として、`public`ディレクトリに、`function.php`を作成しこれから紹介する関数を実際に動かしてみましょう。
 
 ### header
 
-指定したページにリダイレクト（遷移）する。 自分のサイトのページだけでなく、外部のサイトにあるページへもリダイレクトできる。
+指定したページにリダイレクト（遷移）します。自分のサイトのページだけでなく、外部のサイトにあるページへもリダイレクトできます。
 
 構文:
-```PHP
+```php
 header( 'Location： リダイレクト先のURL' );
 ```
 
-なお、リダイレクトする際には、それ以降のコードが実行されないように`exit( )`を指定して処理を終了する。<br>
+なお、リダイレクトする際には、それ以降のコードが実行されないように`exit( )`を指定して処理を終了する必要があります。<br>
 
 【使用例】<br>
 自分のサイトのページにリダイレクトする場合
@@ -80,20 +66,18 @@ exit( );
 ?>
 ```
 
-<div style="page-break-before:always"></div>
-
 ### isset、empty、is_null
 
 `isset ( )`<br>
-変数がセットされており、それが NULL でないならば `TRUE` を返し、それ以外は `FALSE` を返す。`is_null( )` と反対の結果を返す。<br>
+変数がセットされており、それが NULL でないならば `TRUE`、それ以外は `FALSE` を返します。`is_null( )` とは反対の結果を返します。<br>
 
 `empty ( )`<br>
-変数が空(空文字、0、NULL、FALSE、空の配列)だったら `TRUE` それ以外は `FALSE` を返す。<br>
+変数が空(空文字、0、NULL、FALSE、空の配列)であれば `TRUE` 、それ以外は `FALSE` を返します。<br>
 
 `is_null ( )`<br>
-変数が NULL かどうか調べ、変数が NULL なら `TRUE`、それ以外は `FALSE` を返す。変数が未定義の時も `TRUE` を返すが、未定義のチェックは `isset( )` を使ったほうが良い。<br>
+変数が NULL かどうか調べ、変数が NULL なら `TRUE`、それ以外は `FALSE` を返します。変数が未定義の時も `TRUE` を返しますが、未定義のチェックは `isset( )` を使ったほうが良いです。<br>
 
-各関数の判定結果は次の通り。 なお、変数を宣言したが値を設定してない場合はNULLとなる。
+各関数の判定結果は以下のとおりです。 なお、変数を宣言したが値を設定してない場合はNULLとなります。
 
 ||未定義|NULL|0|""(空文字)|"abc"|
 | :- | - | - | - | - | - |
@@ -112,8 +96,6 @@ if ( isset ( $_POST[ 'パラメータ名' ] ) ) {
 
 ?>
 ```
-
-<div style="page-break-before:always"></div>
 
 ### is_numeric
 
@@ -162,7 +144,7 @@ echo  ( float ) $c  +  ( double ) $d; // 「57.9」と表示
 
 `echo $a + $b;` は数値文字列の足し算なので、Javaのように「123456」と表示されるように思われるが、 PHPの場合、自動型変換の機能があるためこのような結果となる。 だからといって、手を抜いて数値文字列を型変換せずに四則演算しないように。
 
-<div style="page-break-before:always"></div>
+
 
 ### strlen、 mb_strlen
 
@@ -212,7 +194,7 @@ echo mb_substr("PHP入門",  3,  2,  "UTF-8"); // 「入門」と表示
 ?>
 ```
 
-<div style="page-break-before:always"></div>
+
 
 ### explode、 implode
 
@@ -263,7 +245,7 @@ mktime ([時 [ , 分 [ , 秒 [ , 月 [ , 日 [, 年 ] ] ] ] ] ] )
 
 引数は右から省略可能で、省略した場合は現在の値が使われる。
 
-<div style="page-break-before:always"></div>
+
 
 フォーマットはいろいろなものがあり、必要に応じて使い分ける。
 
@@ -339,7 +321,7 @@ echo  date ( "Y年m月d日", mktime(0, 0, 0, date("m") + 1, 0, date("Y"))); // 2
 ?> 
 ```
 
-<div style="page-break-before:always"></div>
+
 
 ### htmlspecialchars
 
@@ -378,7 +360,7 @@ echo htmlspecialchars ( $new,  ENT_QUOTES,  "UTF-8");
 
 【重要】授業のサンプルでは、この処理を省略しているが、実際のWebアプリケーションを作成するときは 必ずこの関数を使用し、値をエスケープしてブラウザ上に表示すること。
 
-<div style="page-break-before:always"></div>
+
 
 ## ユーザー定義関数
 
@@ -433,7 +415,7 @@ echo  $a . ' + ' . $b . ' = ' . $c; // 「10 + 25 = 35」と表示される
 ?>
 ```
 
-<div style="page-break-before:always"></div>
+
 
 「組み込み関数」の「htmlspecialchars」でセキュリティ対策のため実際のWebアプリケーション作成時には 送信されてきたデータをブラウザに表示する場合には必ず実行すると紹介した。 しかしながら、この関数の文字列が長いので、いちいち記述するのが面倒なため、この関数を関数化して 次のように利用する方法がよくとられる。
 
@@ -449,7 +431,7 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 ?>
 ```
 
-<div style="page-break-before:always"></div>
+
 
 ## エスケープ処理のサンプルコード
 
@@ -461,7 +443,7 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 **unescape.php**<br>
 ![](./images/08/unescape_php.png)<br>
 
-<div style="page-break-before:always"></div>
+
 
 2. ブラウザで unescape.html にアクセスし、氏名として次の２つの値を入力して送信してみる。
 
@@ -471,7 +453,7 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 ![](./images/08/unescape_html_display_text.png)<br>
 ![](./images/08/unescape_php_display_text.png)<br><br>
 
-<div style="page-break-before:always"></div>
+
 
 「`<body  onload="alert('Hack, Now!!');">`」を送信した場合<br>
 ![](./images/08/unescape_html_display_javascript.png)<br><br>
@@ -482,7 +464,7 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 この画面の何も書かれていない場所で右クリックし、「ページのソースを表示」させた画面を次に示す。入力されたJavaScriptのコードが確認できる。<br>
 ![](./images/08/unescape_php_display_source.png)<br>
 
-<div style="page-break-before:always"></div>
+
 
 3. そこで、JavaScriptのコードが実行されないように修正する。以下の escape.html と escape.php を作成する。<br><br>
 **escape.html**<br>
@@ -490,14 +472,14 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 **escape.php**<br>
 ![](./images/08/escape_php.png)<br>
 
-<div style="page-break-before:always"></div>
+
 
 4. ブラウザで escape.html にアクセスし、`<body  onload="alert('Hack, Now!!');">` を入力して送信する。<br>
 ![](./images/08/escape_html_display.png)<br>
 ![](./images/08/escape_php_display.png)<br>
 **JavaScriptのコードが実行されずに、テキストして画面に表示されている。** この画面の何も書かれていない場所で右クリックし、「ページのソースを表示」させた画面を次に示す。
 
-<div style="page-break-before:always"></div>
+
 
 
 ![](./images/08/escape_php_display_source.png)<br>
