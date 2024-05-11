@@ -364,7 +364,7 @@ echo htmlspecialchars ( $new,  ENT_QUOTES,  "UTF-8");
 ```php
 function  関数名 ( 引数リスト ) {
     具体的な処理を記述
-    return  戻り値； // 戻り値がある場合（なければ記述不要）
+    return  戻り値; // 戻り値がある場合（なければ記述不要）
 }
 ```
 
