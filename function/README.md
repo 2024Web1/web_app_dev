@@ -447,7 +447,6 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 </head>
 
 <body>
-  <h4><!-- ここに"出席番号 名前"を入れてください --></h4>
   氏名を送信する。<br>
   <form method="POST" action="unescape.php">
     氏名：<input type="text" name="name"><br>
@@ -466,11 +465,11 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>unescape.php</title>
 </head>
 
 <body>
-  <h4>0J0X0XX神戸電子</h4>
   <p>送られてきた氏名は「<?php echo $_POST['name']; ?>」です。</p>
   <a href="unescape.html">戻る</a>
 </body>
@@ -485,7 +484,6 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 「神戸電子」を送信した場合<br>
 ![](./images/unescape_html_display_text.png)<br>
 ![](./images/unescape_php_display_text.png)<br><br>
-
 
 「`<body  onload="alert('Hack, Now!!');">`」を送信した場合<br>
 ![](./images/unescape_html_display_javascript.png)<br><br>
@@ -502,15 +500,59 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 
 ### エスケープ処理ありの場合
 
-1. そこで、JavaScriptのコードが実行されないように修正する。以下の escape.html と escape.php を作成する。<br><br>
-**escape.html**<br>
-![](./images/escape_html.png)<br>
-**escape.php**<br>
-![](./images/escape_php.png)<br>
+そこで、JavaScriptのコードが実行されないように修正します。以下の escape.html と escape.php を作成します。
+
+`escape.html`
+
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>escape.html</title>
+</head>
+
+<body>
+  氏名を送信する。<br>
+  <form method="POST" action="escape.php"> <!-- action="escape.php"に修正 -->
+    氏名：<input type="text" name="name"><br>
+    <input type="submit" value="送信">
+  </form>
+</body>
+
+</html>
+```
+
+`escape.php`
+
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>escape.php</title>
+</head>
+
+<body>
+  <?php
+  function h($data)
+  {
+    return htmlspecialchars($data, ENT_QUOTES, "UTF-8");
+  }
+  ?>
+  <p>送られてきた氏名は「<?php echo h($_POST['name']); ?>」です。</p>
+  <a href="escape.html">戻る</a> <!-- href="escape.html"に修正 -->
+</body>
+
+</html>
+```
 
 
-
-4. ブラウザで escape.html にアクセスし、`<body  onload="alert('Hack, Now!!');">` を入力して送信する。<br>
+1. ブラウザで escape.html にアクセスし、`<body  onload="alert('Hack, Now!!');">` を入力して送信する。<br>
 ![](./images/escape_html_display.png)<br>
 ![](./images/escape_php_display.png)<br>
 **JavaScriptのコードが実行されずに、テキストして画面に表示されている。** この画面の何も書かれていない場所で右クリックし、「ページのソースを表示」させた画面を次に示す。
