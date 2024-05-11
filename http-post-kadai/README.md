@@ -22,9 +22,11 @@
 
 ## 事前準備
 
-[こちらのページ](https://classroom.github.com/a/5z3Je8ku)から、ソースコードを`C:¥web_app_dev`へcloneしてください。
+[こちらのページ](https://classroom.github.com/a/js1MUStN)から、ソースコードを`C:¥web_app_dev`へcloneしてください。
 
 ## 今回の課題について
+
+**本課題以降、ソースコードへの`出席番号 氏名`の記入をやめます。**
 
 今回の課題では、**授業中では紹介されていない入力フォームを使って**プログラムを作成します。そのため、**各自で調査し、作成する必要があります。**
 
@@ -123,7 +125,7 @@
 
 ### 合格確認方法
 
-1. 本課題の[課題ページ](https://classroom.github.com/a/5z3Je8ku)に再度アクセスしてください。
+1. 本課題の[課題ページ](https://classroom.github.com/a/js1MUStN)に再度アクセスしてください。
 2. 画面上部にある`Actions`をクリックしてください。<br>
 ![](./images/acions.png)
 1. **一番上**の行に、緑色のチェックが入っていればOKです。<br>
