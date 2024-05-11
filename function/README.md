@@ -20,7 +20,7 @@
 
 ## 事前準備
 
-[こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneしてください。
+[こちらのページ](https://classroom.github.com/a/0EKCeTCR)から、ソースコードを`C:¥web_app_dev`へcloneしてください。
 
 ## PHPの2種類の関数
 
@@ -486,21 +486,23 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 ![](./images/unescape_php_display_text.png)<br><br>
 
 「`<body  onload="alert('Hack, Now!!');">`」を送信した場合<br>
-![](./images/unescape_html_display_javascript.png)<br><br>
+![](./images/unescape_html_display_html.png)<br><br>
 
 ![](./images/unescape_php_display_dialog.png)<br><br>
-**JavaScriptのコードが実行されてしまいます。** ここでは、単にダイアログを表示しているだけですが、これを悪用すると不正プログラムの感染、ユーザを騙す表示によるフィッシング詐欺、クッキー情報の取得によるセッションハイジャック、情報詐取、他の不正サイトへの誘導、などの被害に繋がります。
-![](./images/unescape_php_display_javascript.png)<br>
+**HTMLのコードが実行されてしまいます。** ここでは、単にダイアログを表示しているだけですが、これを悪用すると不正プログラムの感染、ユーザを騙す表示によるフィッシング詐欺、クッキー情報の取得によるセッションハイジャック、情報詐取、他の不正サイトへの誘導、などの被害に繋がります。
 
-この画面の余白部分で右クリックし、「ページのソースを表示」でソースコードを確認すると、入力されたJavaScriptがHTMLに埋め込まれているのがわかります。
+OKをクリックすると以下の画面が表示されます。HTMLはプログラムなので、画面にはなにも表示されていないことがわかります。
+![](./images/unescape_php_display_HTML.png)<br>
+
+この画面の余白部分で右クリックし、「ページのソースを表示」でソースコードを確認すると、入力されたHTMLがHTMLに埋め込まれているのがわかります。
 
 ![](./images/unescape_php_display_source.png)<br>
 
-このようにして、エスケープ処理をしていないと、アプリケーション開発者の意図に反した、JavaScriptのプログラムが実行されてしまいます。
+このようにして、エスケープ処理をしていないと、アプリケーション開発者の意図に反した、HTMLのプログラムが実行されてしまいます。
 
 ### エスケープ処理ありの場合
 
-そこで、JavaScriptのコードが実行されないように修正します。以下の escape.html と escape.php を作成します。
+そこで、HTMLのコードが実行されないように修正します。以下の escape.html と escape.php を作成します。
 
 `escape.html`
 
@@ -551,18 +553,14 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 </html>
 ```
 
-
-1. ブラウザで escape.html にアクセスし、`<body  onload="alert('Hack, Now!!');">` を入力して送信する。<br>
+ブラウザで `escape.html` にアクセスし、`<body  onload="alert('Hack, Now!!');">` を入力し送信します。<br>
 ![](./images/escape_html_display.png)<br>
 ![](./images/escape_php_display.png)<br>
-**JavaScriptのコードが実行されずに、テキストして画面に表示されている。** この画面の何も書かれていない場所で右クリックし、「ページのソースを表示」させた画面を次に示す。
-
-
-
+**HTMLのコードが実行されずに、テキストして画面に表示されています。** この画面の何も書かれていない場所で右クリックし、「ページのソースを表示」させた画面が以下です。
 
 ![](./images/escape_php_display_source.png)<br>
 
-エスケープ処理されたJavaScriptのコードが確認できる。エスケープ処理された特殊文字については、以下の表を参照。<br><br>
+エスケープ処理されたHTMLのコードが確認できます。エスケープ処理された特殊文字については、以下の表を参照してください。<br><br>
 |変換前|変換後|
 | - | - |
 |& （アンパサンド）|`&amp;`|
@@ -571,4 +569,4 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 |< （小なり）|`&lt;`|
 |> （大なり）|`&gt;`|
 
-**本章「08_関数」では課題の提出はございません。**
+**本章「関数」では課題の提出はございません。**
