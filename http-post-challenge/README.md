@@ -8,7 +8,7 @@
 [「入力フォーム」の課題](../http-post-kadai/README.md)が早めに終わった方はこちらをチャレンジしてみてください。
 (※あくまでチャレンジ問題ですので、評価には含まれません。)
 
-- 『「入力フォーム」の課題』のcloneした、`public`ディレクトリに、`tour.html`、`tour.php`、`tour.html`作成し、以下のようにブラウザに表示される見積もりフォームを作成してください。
+- 『「入力フォーム」の課題』のcloneした、`public`ディレクトリに、`tour.html`、`tour.php`、`tour.css`作成し、以下のようにブラウザに表示される見積もりフォームを作成してください。
 
 `tour.html`
 ![](./images/tour_html.png)
