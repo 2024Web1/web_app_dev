@@ -480,21 +480,25 @@ echo  h ( $_POST['name'] ); // 関数hを実行、つまりhtmlspecialschars( )�
 1. ブラウザで `unescape.html` にアクセスし、氏名として次の２つの値を入力し、送信します。
 
 - 神戸電子
-- `<body  onload="alert('Hack, Now!!');">`<br><br>
-「神戸電子」を送信した場合<br>
-![](./images/unescape_html_display_text.png)<br>
-![](./images/unescape_php_display_text.png)<br><br>
+- `<body  onload="alert('Hack, Now!!');">`
+
+<br>
+
+「神戸電子」を送信した場合
+![](./images/unescape_html_display_text.png)
+![](./images/unescape_php_display_text.png)
+
+<br>
 
 「`<body  onload="alert('Hack, Now!!');">`」を送信した場合<br>
 ![](./images/unescape_html_display_html.png)<br><br>
-
 ![](./images/unescape_php_display_dialog.png)<br><br>
 **HTMLのコードが実行されてしまいます。** ここでは、単にダイアログを表示しているだけですが、これを悪用すると不正プログラムの感染、ユーザを騙す表示によるフィッシング詐欺、クッキー情報の取得によるセッションハイジャック、情報詐取、他の不正サイトへの誘導、などの被害に繋がります。
 
 OKをクリックすると以下の画面が表示されます。HTMLはプログラムなので、画面にはなにも表示されていないことがわかります。
 ![](./images/unescape_php_display_HTML.png)<br>
 
-この画面の余白部分で右クリックし、「ページのソースを表示」でソースコードを確認すると、入力されたHTMLがHTMLに埋め込まれているのがわかります。
+この画面の余白部分で右クリックし、「ページのソースを表示」でソースコードを確認すると、入力されたHTMLが埋め込まれているのがわかります。
 
 ![](./images/unescape_php_display_source.png)<br>
 
