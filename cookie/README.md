@@ -33,73 +33,135 @@ Chromeの場合だと、以下の手順で確認できます。
 
 ## Cookieの基本仕様
 
-HTTPレスポンス・メッセージの「Set-Cookie:」ヘッダーで発行するCookie情報を送信する。 発行するCookieには、「名前(Cookie名)とその値」、「有効期限」「適用範囲（ドメイン名とパス名）」などが記述されている。
+HTTPレスポンス・メッセージの「Set-Cookie:」ヘッダーで発行するCookie情報を送信します。Webアプリケーション上におけるCookieについての流れは以下のイラストのとおりです。
 
 ![](./images/cookie_image.png)<br>
 
-- 名前(Cookie名)とその値（必須情報）<br>
-Cookie名は、Webサーバ側で決定し、名前を変えて複数のCookieを発行することができる。値はCookieそのものを表し、この値でユーザーを識別する。
+発行するCookieには、「名前(Cookie名)とその値」、「有効期限」「適用範囲（ドメイン名とパス名）」などが記述されています。
 
-- 有効期限<br>
-有効期限がセットされている場合、そのCookieをハードディスクに保存する。（固定Cookie） 有効期限がセットされていない場合、パソコン内のメモリーにだけ保持し、Webブラウザを閉じると同時に消える。（セッションCookie）
+- 名前(Cookie名)とその値 **（必須）**<br>
+Cookie名は、Webサーバ側で決定し、名前を変えて複数のCookieを発行することができます。
+値はCookieそのものを表し、この値でユーザーを識別します。
+
+- 有効期限
+  - 固定Cookie
+    - 有効期限がセットされている場合、そのCookieをハードディスクに保存します。
+  - セッションCookie
+    - 有効期限がセットされていない場合、パソコン内のメモリーにだけ保持し、Webブラウザを閉じると同時に消えます。
 
 - 適用範囲<br>
-Cookieの適用範囲とは、WebブラウザがCookieを送り返すWebサーバーを指し、ドメイン名とパス名で表す。 Webサーバーから「domain=sample.com; path＝/auth」とCookieが送られてきた場合、sample.comの/auth ディレクトリ以下にアクセスする場合のみCookieを送る。同じsample.comのサイトでも、他のディレクトリへアクセスする場合には送らない。Webサーバーのドメイン名と異なるドメイン名を適用範囲とするCookieは無効と判断する。（保存しない） 適用範囲の情報がセットされていなかった場合、受信したWebサーバーのドメイン名とパス名を自動的にセットする。
+Cookieの適用範囲とは、WebブラウザがCookieを送り返すWebサーバーを指し、ドメイン名とパス名で表します。<br><br>
+例えばWebサーバーから、`domain=sample.com; path＝/auth` といった適用範囲のCookieが発行された場合、「sample.com」の「/auth」ディレクトリ以下にアクセスする場合のみCookieを送ります。
+同じ「sample.com」のサイトでも、他のディレクトリへアクセスする場合には送りません。<br><br>
+Webサーバーのドメイン名と異なるドメイン名を適用範囲とするCookieは無効と判断し、Cookieはブラウザに保存されません。
+適用範囲の情報がセットされていなかった場合、受信したWebサーバーのドメイン名とパス名を自動的にセットします。
 
 ## サンプル
 
-作成するファイルは、`cookie1.php`、`cookie2.php`、`cookie3.php`、`cookie4.php`。<br>
+`public`ディレクトリに、`cookie1.php`、`cookie2.php`、`cookie3.php`、`cookie4.php`を作成してください。
 
 ### cookie1
 
-ブラウザ（クライアント）からApacheサーバに `cookie1.php` へのリクエストを送信する。Apacheサーバは `cookie1.php` のHTMLをレスポンスするが、この時点ではまだCookieは生成されていない。イラストで表すと次のようになる。<br>
+ブラウザ（クライアント）からApacheサーバに `cookie1.php` へのリクエストを送信します。Apacheサーバは `cookie1.php` のHTMLをレスポンスしますが、この時点ではまだCookieは生成されていません。イラストで表すと以下のようになります。<br>
 ![](./images/cookie_image_12.png)<br><br>
 ブラウザは、`cookie1.php` の内容を画面に表示する。（下図はユーザー名「神戸」を入力した状態）<br>
 ![](./images/cookie1_display.png)<br><br>
 
+`cookie1.php`
 
+```php
+<!DOCTYPE html>
+<html lang="ja">
 
-ソースコードは下記となる。<br>
-**cookie1.php**
-![](./images/cookie1_code.png)<br>
-この画面で、ユーザー名に「神戸」と入力し、送信ボタンを押すと、`cookie2.php`にデータが送信される。<br><br>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie1</title>
+</head>
 
+<body>
+  <h3>Cookie1</h3>
+  <form method="POST" action="cookie2.php">
+    ユーザー名：<input type="text" name="user_name">
+    <input type="submit" value="送信">
+  </form>
+</body>
 
+</html>
+```
+
+この画面で、ユーザー名に「神戸」と入力し、送信ボタンを押すと、`cookie2.php`にデータが送信されます。
 
 ### cookie2
 
-`cookie2.php` は、受信した「ユーザー名」の値（神戸）をもとにクッキー名`cookie_name` でCookieを生成する。そして、「神戸さん、ようこそ！」のHTMLとともに、生成したCookieをクライアントにレスポンスする。<br>
-ブラウザは、送信されてきたCookieを保存し、`cookie2.php` の内容を画面に表示する。イラストと画面表示は次のようになる。<br>
+`cookie2.php` は、受信した「ユーザー名」の値（神戸）をもとにクッキー名`cookie_name` でCookieを生成します。
+そして、「神戸さん、ようこそ！」のHTMLとともに、生成したCookieをクライアントにレスポンスします。
+
+ブラウザは、送信されてきたCookieを保存し、`cookie2.php` の内容を画面に表示します。イラストと画面表示は次のようになります。
 ![](./images/cookie_image_3456.png)<br><br>
 ![](./images/cookie2_display.png)<br><br>
-「クッキーデータを確認する」リンクをクリックすると、保存したCookieデータとともに `cookie3.php` へのリクエストをApacheサーバに送信する。（保存したデータとは、クッキー名：cookie_name、値：神戸の組み合わせ）<br><br>
-ソースコードは下記となる。<br>
+「クッキーデータを確認する」リンクをクリックすると、保存したCookieデータとともに `cookie3.php` へのリクエストをApacheサーバに送信します。（保存したデータとは、クッキー名：cookie_name、値：神戸の組み合わせ）<br><br>
 
-**cookie2.php**
+`cookie2.php`
 
-<img src="./images/cookie2_code.png" width="75%">
+```php
+<?php
+if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ① 
+  $user_name  =  $_POST['user_name'];　// ②
+  setcookie("cookie_name",  $user_name,  time() + 10);　// ③
+}
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie2</title>
+</head>
+
+<body>
+  <h3>Cookie2</h3>
+  <?php
+  if (isset($user_name)) {
+    echo '<p>' . $user_name . 'さん、ようこそ！</p>';
+    echo '<a href="cookie3.php">クッキーデータを確認する</a>';
+  } else {
+    echo '<p>名前が入力されていません。</p>';
+    echo '<a href="cookie1.php">cookie1.phpに戻る</a>';
+  }
+  ?>
+</body>
+
+</html>
+```
 
 ①: `if(isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') {`<br>
-パラメータ名 `user_name` でデータが送られてきていることを確認している<br>
+パラメータ名 `user_name` でデータが送られてきていることを確認しています。<br>
 
 - `isset($_POST['user_name'])`
-  - PHPの `isset( )` 関数で、 `$_POST['user_name']` の値があれば `True` を返す
+  - PHPの `isset( )` 関数で、 `$_POST['user_name']` の値があれば `True` を返します。
 - `$_POST['user_name'] != ''`
-  - `$_POST['user_name']` の値が「空文字」でなければ `True` を返す<br>
-  
+  - `$_POST['user_name']` の値が「空文字」でなければ `True` を返します。
+
 ②: `$user_name = $_POST['user_name'];`<br>
-パラメータ名 `user_name` で送られてきた値を取得している。<br>
+パラメータ名 `user_name` で送られてきた値を取得しています。
 
 ③: `setcookie("cookie_name", $user_name, time( ) + 10);`<br>
-送られてきた値をクッキー名 `cookie_name` で保存するクッキーデータを用意する。<br>
-このとき、第3引数の `time( ) + 10` でクッキーの有効期限を設定している。<br>
-`time( )` 関数は、PHPで定義されている関数で、現在時刻をUnixエポック(1970年1月1日 00:00:00 GMT)からの 通算秒 として返す関数で、`time( ) + 10` で現在時刻から10秒間だけ有効なクッキーとしている。<br>
-有効期限を指定しない場合、クライアント側のブラウザが閉じられる消えてしまうクッキーとなる。<br>
-（例）有効期限を現在時刻から3日間とする場合、つぎのように指定する。<br>
-`　　　time( ) + 60 * 60 * 24 * 3`<br>
-`　　　`※60(秒) \* 60(分) \* 24(時間) \* 3(日)  = 259,200(秒)
+送られてきた値をクッキー名 `cookie_name` で保存するクッキーデータを用意します。
+このとき、第3引数の `time( ) + 10` でクッキーの有効期限を設定しています。
 
+`time( )` 関数は、PHPで定義されている関数で、現在時刻をUnixエポック(1970年1月1日 00:00:00 GMT)からの 通算秒 として返す関数で、`time( ) + 10` で現在時刻から10秒間だけ有効なクッキーとしています。以下はもう少し複雑な例です。
 
+- 有効期限を現在時刻から3日間とする場合
+
+  ```php
+  time( ) + 60 * 60 * 24 * 3
+  // ※60(秒) * 60(分) * 24(時間) * 3(日) = 259,200(秒)
+  ```
+
+なお、有効期限を指定しない場合は、**クライアント側のブラウザが閉じられると消えてしまう**クッキーとなります。
 
 ### cookie3
 
@@ -110,12 +172,41 @@ Cookieの適用範囲とは、WebブラウザがCookieを送り返すWebサー�
 
 「破棄後のクッキーデータを確認する」リンクをクリックすると、`cookie4.php` へのリクエストをApacheサーバに送信する。このとき、クッキーデータは破棄されているので、送信されない。
 
-
-
 ソースコードは下記となる。<br>
-**cookie3.php**
+`cookie3.php`
 
-<img src="./images/cookie3_code.png" width="75%">
+```php
+<?php
+if (isset($_COOKIE['cookie_name'])) { // ①
+  $cookie_name = $_COOKIE['cookie_name'];
+  setcookie("cookie_name", '', time() - 10);　// ②
+}
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie3</title>
+</head>
+
+<body>
+  <h3>Cookie3</h3>
+  <?php
+  if (isset($cookie_name)) {
+    echo '<p>Cookieに保存されている名前は「' . $cookie_name . '」ですが、ここで破棄します。</p>';
+    echo '<a href="cookie4.php">破棄後のクッキーデータを確認する</a>';
+  } else {
+    echo '<p>Cookieデータが保存されていません。</p>';
+    echo '<a href="cookie1.php">cookie1.phpに戻る</a>';
+  }
+  ?>
+</body>
+
+</html>
+```
 
 ①: `$_COOKIE['cookie_name']`<br>
 `$_COOKIE[ ]` は連想配列。（`$_GET[ ]` や `$_POST[ ]` も連想配列）<br>
@@ -126,8 +217,6 @@ Cookieの適用範囲とは、WebブラウザがCookieを送り返すWebサー�
 ちなみに、`cookie2.php` でCookieの有効期限を `time( ) + 10`で10秒間に設定したが、10秒以上経過した後、`cookie2.php` から `cookie3.php` にアクセスすると、Cookieが保存されていないので以下のような画面になる。
 
 ![](./images/cookie3_display_ng.png)<br>
-
-
 
 ### cookie4
 
@@ -141,15 +230,32 @@ Cookieの適用範囲とは、WebブラウザがCookieを送り返すWebサー�
 未定義の配列キーである `cookie_name` が `cookie4.php` の X行目(on line X)に書かれている。
 ※画像のエラーメッセージは、Windowsとは違う環境で確認しているため、リソースへのパスがWindowsとは異なる。
 
+`cookie4.php`
 
+```php
+<!DOCTYPE html>
+<html lang="ja">
 
-ソースコードは下記となる。<br>
-**cookie4.php**
-![](./images/cookie4_code.png)<br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie4</title>
+</head>
+
+<body>
+    <h3>Cookie4</h3>
+    <?php
+    echo $_COOKIE['cookie_name'];
+    echo '<p>Cookieデータが破棄されているので、$_COOKIE["cookie_name"]の値は取得できません。</p>';
+    echo '<a href="cookie1.php">cookie1.phpに戻る</a>';
+    ?>
+</body>
+
+</html>
+```
 
 `echo $_COOKIE['cookie_name'];`<br>
 クッキー名`cookie_name`の値を画面に表示しようとしているが、すでに破棄されているため 値を取得できない旨のメッセージが表示される。
 
-
-
-**cookie1~4のプログラムを作成完了しても、まだGitHubにpushはしないでください。次章の「07.Session」で作成するプログラムを完成させなければpushしてはいけません。**
+**cookie1~4のプログラムを作成完了しても、まだGitHubにpushはしないでください。**<br>
+次章の「Session」で作成するプログラムを完成させ、pushしてください。
