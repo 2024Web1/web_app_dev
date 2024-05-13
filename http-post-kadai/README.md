@@ -43,6 +43,7 @@
     - テキスト「ユーザーID:」として変数`user`に`text`形式
     - テキスト「パスワード:」として変数`pass`に`password`形式
     - 初期値は設定しない
+  - 送信ボタンには名前 `submit` を付与する
 
 ![](./images/password_html_display.png)
 
