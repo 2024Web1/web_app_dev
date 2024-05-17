@@ -165,14 +165,13 @@ if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ①
 
 ### cookie3
 
-`cookie3.php` は、Cookieデータを取得したのち、Cookieデータを破棄するデータとともにレスポンスを返す。イラストと画面表示は次のようになる。
+`cookie3.php` は、Cookieデータを取得したのち、Cookieデータを破棄するデータとともにレスポンスを返します。イラストと画面表示は以下のようになります。
 
 <img src="./images/cookie_image_7891911.png" width="75%"><br>
 ![](./images/cookie3_display.png)<br><br>
 
-「破棄後のクッキーデータを確認する」リンクをクリックすると、`cookie4.php` へのリクエストをApacheサーバに送信する。このとき、クッキーデータは破棄されているので、送信されない。
+「破棄後のクッキーデータを確認する」リンクをクリックすると、`cookie4.php` へのリクエストをApacheサーバに送信します。このとき、クッキーデータは破棄されているので、送信されません。
 
-ソースコードは下記となる。<br>
 `cookie3.php`
 
 ```php
@@ -211,24 +210,24 @@ if (isset($_COOKIE['cookie_name'])) { // ①
 ①: `$_COOKIE['cookie_name']`<br>
 `$_COOKIE[ ]` は連想配列。（`$_GET[ ]` や `$_POST[ ]` も連想配列）<br>
 ②: `setcookie("cookie_name", '', time( ) - 10);`<br>
-クッキーを破棄するには、有効期限を昔の時間に設定する。<br>
-ここでは、現在時刻から10秒前の時間を設定している。
+クッキーを破棄するには、有効期限を昔の時間に設定します。<br>
+ここでは、現在時刻から10秒前の時間を設定しています。
 
-ちなみに、`cookie2.php` でCookieの有効期限を `time( ) + 10`で10秒間に設定したが、10秒以上経過した後、`cookie2.php` から `cookie3.php` にアクセスすると、Cookieが保存されていないので以下のような画面になる。
+ちなみに、`cookie2.php` でCookieの有効期限を `time( ) + 10`で10秒間に設定したが、10秒以上経過した後、`cookie2.php` から `cookie3.php` にアクセスすると、Cookieが保存されていないので以下のような画面になります。
 
 ![](./images/cookie3_display_ng.png)<br>
 
 ### cookie4
 
-クッキーデータは送信されてこないので、`cookie4.php` がクッキーデータを取得しようとすると、そのようなデータがないという注意メッセージが表示される。
+クッキーデータは送信されてこないので、`cookie4.php` がクッキーデータを取得しようとすると、そのようなデータがないという注意メッセージが表示されます。
 
 ![](./images/cookie_image_121314.png)<br><br>
 ![](./images/cookie4_display.png)<br>
 
 **エラーメッセージの意味（要約）**
 
-未定義の配列キーである `cookie_name` が `cookie4.php` の X行目(on line X)に書かれている。
-※画像のエラーメッセージは、Windowsとは違う環境で確認しているため、リソースへのパスがWindowsとは異なる。
+未定義の配列キーである `cookie_name` が `cookie4.php` の X行目(on line X)に書かれています。
+※画像のエラーメッセージは、Windowsとは違う環境で確認しているため、リソースへのパスがWindowsとは異なります。
 
 `cookie4.php`
 
@@ -255,7 +254,7 @@ if (isset($_COOKIE['cookie_name'])) { // ①
 ```
 
 `echo $_COOKIE['cookie_name'];`<br>
-クッキー名`cookie_name`の値を画面に表示しようとしているが、すでに破棄されているため 値を取得できない旨のメッセージが表示される。
+クッキー名`cookie_name`の値を画面に表示しようとしていますが、すでに破棄されているため、値を取得できない旨のメッセージが表示されます。
 
 **cookie1~4のプログラムを作成完了しても、まだGitHubにpushはしないでください。**<br>
 次章の「Session」で作成するプログラムを完成させ、pushしてください。
