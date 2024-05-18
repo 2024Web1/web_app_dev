@@ -12,7 +12,7 @@
 
 ## 事前準備
 
-[こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneしてください。
+[こちらのページ](https://classroom.github.com/a/31s8rcaA)から、ソースコードを`C:¥web_app_dev`へcloneしてください。
 
 ## Cookieとは
 
@@ -256,5 +256,7 @@ if (isset($_COOKIE['cookie_name'])) { // ①
 `echo $_COOKIE['cookie_name'];`<br>
 クッキー名`cookie_name`の値を画面に表示しようとしていますが、すでに破棄されているため、値を取得できない旨のメッセージが表示されます。
 
-**cookie1~4のプログラムを作成完了しても、まだGitHubにpushはしないでください。**<br>
-次章の「Session」で作成するプログラムを完成させ、pushしてください。
+**本章の「Cookie」では課題の提出はございません。**<br>
+次章「Session」で、本章のCookieと組み合わせることで、**ステートフル**な通信を持つWebアプリケーションを実装していきます！(※HTTP通信は元々、「ステート**レス**」な通信でしたね。)
+
+お楽しみに！
