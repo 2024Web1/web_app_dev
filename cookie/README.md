@@ -178,7 +178,7 @@ if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ①
 <?php
 if (isset($_COOKIE['cookie_name'])) { // ①
   $cookie_name = $_COOKIE['cookie_name'];
-  setcookie("cookie_name", '', time() - 10);　// ②
+  setcookie("cookie_name", '', time() - 10); // ②
 }
 ?>
 
