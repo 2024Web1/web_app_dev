@@ -108,7 +108,7 @@ Webサーバーのドメイン名と異なるドメイン名を適用範囲と�
 <?php
 if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ① 
   $user_name  =  $_POST['user_name']; // ②
-  setcookie("cookie_name",  $user_name,  time() + 10); // ③
+  setcookie("cookie_name",  $user_name,  time() + 10, "/"); // ③
 }
 ?>
 
@@ -213,7 +213,7 @@ if (isset($_COOKIE['cookie_name'])) { // ①
 クッキーを破棄するには、有効期限を昔の時間に設定します。<br>
 ここでは、現在時刻から10秒前の時間を設定しています。
 
-ちなみに、`cookie2.php` でCookieの有効期限を `time( ) + 10`で10秒間に設定したが、10秒以上経過した後、`cookie2.php` から `cookie3.php` にアクセスすると、Cookieが保存されていないので以下のような画面になります。
+ちなみに、`cookie2.php` でCookieの有効期限を `time( ) + 10`で10秒間に設定しましたが、10秒以上経過した後、`cookie2.php` から `cookie3.php` にアクセスすると、Cookieが保存されていないので以下のような画面になります。
 
 ![](./images/cookie3_display_ng.png)<br>
 
