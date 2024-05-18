@@ -107,8 +107,8 @@ Webサーバーのドメイン名と異なるドメイン名を適用範囲と�
 ```php
 <?php
 if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ① 
-  $user_name  =  $_POST['user_name'];　// ②
-  setcookie("cookie_name",  $user_name,  time() + 10);　// ③
+  $user_name  =  $_POST['user_name']; // ②
+  setcookie("cookie_name",  $user_name,  time() + 10); // ③
 }
 ?>
 
