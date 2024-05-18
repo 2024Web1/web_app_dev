@@ -227,7 +227,6 @@ if (isset($_COOKIE['cookie_name'])) { // ①
 **エラーメッセージの意味（要約）**
 
 未定義の配列キーである `cookie_name` が `cookie4.php` の X行目(on line X)に書かれています。
-※画像のエラーメッセージは、Windowsとは違う環境で確認しているため、リソースへのパスがWindowsとは異なります。
 
 `cookie4.php`
 
