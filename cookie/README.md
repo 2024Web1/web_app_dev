@@ -108,7 +108,7 @@ Webサーバーのドメイン名と異なるドメイン名を適用範囲と�
 <?php
 if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ① 
   $user_name  =  $_POST['user_name']; // ②
-  setcookie("cookie_name",  $user_name,  time() + 10, "/"); // ③
+  setcookie('cookie_name',  $user_name,  time() + 10, '/'); // ③
 }
 ?>
 
@@ -148,7 +148,7 @@ if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ①
 ②: `$user_name = $_POST['user_name'];`<br>
 パラメータ名 `user_name` で送られてきた値を取得しています。
 
-③: `setcookie("cookie_name", $user_name, time( ) + 10);`<br>
+③: `setcookie('cookie_name', $user_name, time( ) + 10, '/');`<br>
 送られてきた値をクッキー名 `cookie_name` で保存するクッキーデータを用意します。
 このとき、第3引数の `time( ) + 10` でクッキーの有効期限を設定しています。
 
@@ -178,7 +178,7 @@ if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ①
 <?php
 if (isset($_COOKIE['cookie_name'])) { // ①
   $cookie_name = $_COOKIE['cookie_name'];
-  setcookie("cookie_name", '', time() - 10); // ②
+  setcookie('cookie_name', '', time() - 10); // ②
 }
 ?>
 
@@ -255,7 +255,7 @@ if (isset($_COOKIE['cookie_name'])) { // ①
 `echo $_COOKIE['cookie_name'];`<br>
 クッキー名`cookie_name`の値を画面に表示しようとしていますが、すでに破棄されているため、値を取得できない旨のメッセージが表示されます。
 
-**本章の「Cookie」では課題の提出はございません。課題提出は次章「Session」で行います。**<br>
-次章「Session」で、本章のCookieと組み合わせることで、**ステートフル**な通信を持つWebアプリケーションを実装していきます！(※HTTP通信は元々、「ステート**レス**」な通信でしたね。)
+**本章の「Cookie」では課題の提出はございません。課題提出は次章「セッション」で行います。**<br>
+次章「セッション」で、本章のCookieと組み合わせることで、**ステートフル**な通信を持つWebアプリケーションを実装していきます！(※HTTP通信は元々、「ステート**レス**」な通信でしたね。)
 
 お楽しみに！
