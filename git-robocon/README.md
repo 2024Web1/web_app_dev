@@ -1,6 +1,6 @@
-﻿# Git、GitHub
+﻿# ロボコン用開発環境構築
 
-- [Git、GitHub](#gitgithub)
+- [ロボコン用開発環境構築](#ロボコン用開発環境構築)
   - [Visual Studio Codeのインストール](#visual-studio-codeのインストール)
     - [VSCode(Visual Studio Code)拡張プラグイン取得](#vscodevisual-studio-code拡張プラグイン取得)
       - [Japanese Language Pack for Visual Studio Code](#japanese-language-pack-for-visual-studio-code)
