@@ -2,16 +2,14 @@
 
 - [ロボコン用開発環境構築](#ロボコン用開発環境構築)
   - [Visual Studio Codeのインストール](#visual-studio-codeのインストール)
-    - [VSCode(Visual Studio Code)拡張プラグイン取得](#vscodevisual-studio-code拡張プラグイン取得)
+    - [VSCode(Visual Studio Code)日本語化プラグイン取得](#vscodevisual-studio-code日本語化プラグイン取得)
       - [Japanese Language Pack for Visual Studio Code](#japanese-language-pack-for-visual-studio-code)
-      - [Git Graph](#git-graph)
     - [Winget](#winget)
   - [Gitのインストール](#gitのインストール)
     - [インストールしたけどgitコマンドが見つからない場合](#インストールしたけどgitコマンドが見つからない場合)
     - [Gitの追加設定](#gitの追加設定)
   - [GitHub](#github)
     - [GitHubアカウント作成(※既にGitHubアカウントを作成済の方は不要)](#githubアカウント作成既にgithubアカウントを作成済の方は不要)
-  - [付録(Git関連の用語説明)](#付録git関連の用語説明)
 
 ## Visual Studio Codeのインストール
 
@@ -41,7 +39,7 @@ Visual Studio Code(以下、「VSCode」と呼ぶ)のWebサイトにアクセス
 「Visual Studio Codeを実行する」にチェックを入れ、「完了」をクリックして、起動させる。<br>
 ![](./images/Aspose.Words.a262145e-b3c2-4e51-a607-826ad36f58eb.005.png)
 
-### VSCode(Visual Studio Code)拡張プラグイン取得
+### VSCode(Visual Studio Code)日本語化プラグイン取得
 
 #### Japanese Language Pack for Visual Studio Code
 
@@ -50,13 +48,6 @@ Visual Studio Code(以下、「VSCode」と呼ぶ)のWebサイトにアクセス
 1. "Japanese Language Pack for Visual Studio Code"のInstallボタンを押します
 1. インストール後、再起動を求められるので再起動します
 1. VSCodeのメニューなどが日本語になっていればOK。(なお、VSCode自体の更新がかかると、度々日本語化が失われるときがあります。その場合は、このプラグインを再インストールするとOKです。)
-
-#### Git Graph
-
-1. VSCodeにて、Ctrl+Shift+Xを同時に押します。
-2. "Search Extentions in Marketplace"の欄に"Git Graph"と入力します。
-3. "Git Graph"のInstallボタンを押します
-4. インストールが完了し、サイドバーにGit Graphのアイコン<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/Aspose.Words.aedafcf0-3819-4263-af12-50337a38362b.016.png?raw=true">が追加されていることを確認します。
 
 ### Winget
 
@@ -135,23 +126,4 @@ GitHub はGitリポジトリのホスティングサービスです。
 
 1. 登録完了です。
 
-## 付録(Git関連の用語説明)
-
-- **リポジトリ（Repository）**: Gitで管理されるプロジェクトの全ての変更履歴やファイルを保存するデータベースのようなものです。
-
-- **ローカルリポジトリ（Local Repository）**: プロジェクトを自分のローカル環境に複製したリポジトリのことです。自分のPCやサーバーに保存されており、ローカルで変更を加え、コミットやプッシュを行うことができます。
-
-- **リモートリポジトリ（Remote Repository）**: プロジェクトを共有するために、複数の開発者がアクセスできるリポジトリのことです。一般的には、オンラインのGitリポジトリホスティングサービス（例: GitHub, GitLab, Bitbucketなど）に保存されています。
-  
-- **ステージングエリア(staging area)**: リポジトリにコミットする前に変更を一時的に準備する場所です。ステージングエリアを使用することで、コミットする前に変更の内容を選択的に追加 (ステージ) し、コミットすることができます。
-
-- **クローン(clone)**: リモートリポジトリを自分のローカル環境に複製することを指すコマンドです。リモートリポジトリの全ての履歴やファイルを自分のPCにコピーし、ローカルリポジトリを作成します。
-
-- **プル(pull)**: リモートリポジトリから最新の変更を取得して自分のローカルリポジトリを更新する操作です。
-
-- **アド(add)**: Gitで変更をステージングエリアに追加するコマンドです。ステージングエリアに追加された変更は、次のコミットに含まれます。
-
-- **コミット(commit)**: ステージングエリアにある変更をローカルリポジトリに記録するコマンドです。コミットは、変更の履歴を残し、特定のスナップショットを作成します。
-
-- **プッシュ(push)**: ローカルリポジトリの変更をリモートリポジトリに反映するコマンドです。変更をリモートリポジトリに送信し、共有されたプロジェクトに変更を適用します。<br><br>
-<img src="https://github.com/2024Web1/web_app_dev/blob/main/git/images/git_image.jpg?raw=true">
+これで、Git、GitHub、Visual Studio Code の環境構築は終了です。詳細な使い方等はこの資料には記載しませんので、各自で調べてみましょう！
