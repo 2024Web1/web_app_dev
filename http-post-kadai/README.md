@@ -168,6 +168,6 @@
    - `TestPulldown.py`: pulldownに関するテスト
    - `TestTextarea.py`: textareaに関するテスト
    ![](./images/3tests.png)
-4. 各テストエラーがあった場合、それぞれのテストでFILEDと表示される。以下は、`TestPassword.py`(passwordに関するテスト)でエラーが出ている場合の表示例
+4. 各テストエラーがあった場合、それぞれのテストでFAILEDと表示される。以下は、`TestPassword.py`(passwordに関するテスト)でエラーが出ている場合の表示例
    ![](./images/testpassword.png)
 
