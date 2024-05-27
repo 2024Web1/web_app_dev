@@ -54,7 +54,7 @@ Cookieの適用範囲とは、WebブラウザがCookieを送り返すWebサー�
 例えばWebサーバーから、`domain=sample.com; path＝/auth` といった適用範囲のCookieが発行された場合、「sample.com」の「/auth」ディレクトリ以下にアクセスする場合のみCookieを送ります。
 同じ「sample.com」のサイトでも、他のディレクトリへアクセスする場合には送りません。<br><br>
 Webサーバーのドメイン名と異なるドメイン名を適用範囲とするCookieは無効と判断し、Cookieはブラウザに保存されません。
-適用範囲の情報がセットされていなかった場合、受信したWebサーバーのドメイン名とパス名を自動的にセットします。
+適用範囲の情報がセットされていなかった場合、ソースコードと同じパスが自動で設定されます。
 
 ## サンプル
 
@@ -167,7 +167,7 @@ if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ①
 
 `cookie3.php` は、Cookieデータを取得したのち、Cookieデータを破棄するデータとともにレスポンスを返します。イラストと画面表示は以下のようになります。
 
-<img src="./images/cookie_image_7891911.png" width="75%"><br>
+![](./images/cookie_image_7891911.png)<br><br>
 ![](./images/cookie3_display.png)<br><br>
 
 「破棄後のクッキーデータを確認する」リンクをクリックすると、`cookie4.php` へのリクエストをApacheサーバに送信します。このとき、クッキーデータは破棄されているので、送信されません。
@@ -178,7 +178,7 @@ if (isset($_POST['user_name'])  &&  $_POST['user_name']  !=  '') { // ①
 <?php
 if (isset($_COOKIE['cookie_name'])) { // ①
   $cookie_name = $_COOKIE['cookie_name'];
-  setcookie('cookie_name', '', time() - 10); // ②
+  setcookie('cookie_name', '', time() - 10, '/'); // ②
 }
 ?>
 
@@ -209,7 +209,7 @@ if (isset($_COOKIE['cookie_name'])) { // ①
 
 ①: `$_COOKIE['cookie_name']`<br>
 `$_COOKIE[ ]` は連想配列。（`$_GET[ ]` や `$_POST[ ]` も連想配列）<br>
-②: `setcookie("cookie_name", '', time( ) - 10);`<br>
+②: `setcookie("cookie_name", '', time( ) - 10, '/');`<br>
 クッキーを破棄するには、有効期限を昔の時間に設定します。<br>
 ここでは、現在時刻から10秒前の時間を設定しています。
 
