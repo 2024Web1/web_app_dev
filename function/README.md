@@ -506,7 +506,7 @@ OKをクリックすると以下の画面が表示されます。HTMLはプロ�
 
 ### エスケープ処理ありの場合
 
-そこで、HTMLのコードが実行されないように修正します。以下の escape.html と escape.php を作成します。
+そこで、HTMLのコードが実行されないように修正します。以下の `escape.html` と `escape.php` を作成します。
 
 `escape.html`
 
