@@ -21,7 +21,7 @@
 
 ## 本章の進め方について
 
-本章については、別途Web資料「[Webアプリケーション開発 学習用コンテナについて](https://densuke.github.io/xampp-devenv-doc/guide/)」を中心に進めます。
+本章については、別途Web資料「[Webアプリケーション開発 学習用コンテナについて](https://densuke.github.io/xampp-devenv-doc/)」を中心に進めます。
 
 以下の「課題について」は、上記資料でデータベース環境を起動できるようになった後に取り組んでください。
 
