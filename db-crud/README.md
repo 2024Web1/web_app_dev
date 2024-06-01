@@ -1,29 +1,24 @@
-﻿# データベースの利用
+﻿# データベース利用
 
-- [データベースの利用](#データベースの利用)
+- [データベース利用](#データベース利用)
   - [事前準備](#事前準備)
   - [基本のSQL文](#基本のsql文)
-  - [PDO（PHP　Data　Object）の利用](#pdophpdataobjectの利用)
+  - [PDO（PHP　Data　Object）クラスの利用](#pdophpdataobjectクラスの利用)
   - [SELECT文](#select文)
   - [UPDATE文](#update文)
   - [INSERT文](#insert文)
   - [DELETE文](#delete文)
-  - [条件付きSELECT文](#条件付きselect文)
-  - [課題の作成と提出](#課題の作成と提出)
-    - [作成したソースコードをpush](#作成したソースコードをpush)
+  - [条件付きSELECT文にチャレンジ](#条件付きselect文にチャレンジ)
   - [採点について](#採点について)
     - [課題の合格基準](#課題の合格基準)
     - [合格確認方法](#合格確認方法)
     - [エラーが出た時の対処法](#エラーが出た時の対処法)
     - [タイムアウトになっていないかを確認する](#タイムアウトになっていないかを確認する)
     - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する)
-      - [どこでエラーがでているか確認する](#どこでエラーがでているか確認する)
-      - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する-1)
-  - [GitHub上での採点についてのお願い](#github上での採点についてのお願い)
 
 ## 事前準備
 
-[こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneしてください。
+[こちらのページ](https://classroom.github.com/a/_EUpxz7R)から、ソースコードを`C:¥web_app_dev`へcloneしてください。
 
 ## 基本のSQL文
 
@@ -32,23 +27,46 @@
 - UPDATE文: テーブルのデータ内容を更新する
 - DELETE文: テーブルからデータを削除する
 
-## PDO（PHP　Data　Object）の利用
+## PDO（PHP　Data　Object）クラスの利用
 
-PHPからデータベースへ接続するには「PDO」（PHP Data Objects）クラスを使用します。このPDOクラスのオブジェクトは次の構文で作成します。<br>
+PHPからデータベースへ接続するには `PDO`（PHP Data Objects）クラスを使用します。
+この`PDO`クラスのオブジェクトは次の構文で作成します。<br>
 ※日本語の部分(「接続するデータベース」「接続するデータベースを利用するユーザー名」「そのパスワード」)は接続するデータベース環境によって異なります。
 
 ```php
-// dsnは、Data Source Name(データソース名)の略称
-$dsn = 'mysql:host=localhost;dbname=接続するデータベース;charset=utf8'; 
+// dsn(Data Source Name(データソース名))は、プログラム側が操作対象のデータベースを指定するための識別名
 $user = '接続するデータベースを利用するユーザー名';
 $password = 'そのパスワード';
+$dsn = 'mysql:host=ホスト名;dbname=接続するデータベース名;charset=utf8'; 
 $pdo = new PDO($dsn, $user, $password);
 ```
 
 **【注意】**<br>
-- `$dsn`に設定する値には、決してスペースを間に入れないこと！エラーが発生する場合があります！
-- `$dsn`に設定する値で、「：」（コロン）と「；」（セミコロン）を間違わないように！<br><br>
-なお、実際にPDOオブジェクトを作成するときは例外が発生する可能性があるので、`try ～ catch` 構文を利用します。
+- `$dsn`に設定する値には、決してスペースを間に入れないように！エラーが発生する場合があります！
+- `$dsn`に設定する値で、「：」（コロン）と「；」（セミコロン）を間違わないように！
+
+また、以降のサンプルプログラムで出てくる`person`テーブルは、`db`ディレクトリ内のSQLによって、Dev Container起動時に既に構築済みです。
+テーブル構造は、前章の[データベース利用](../db-create/README.md)で作成した`person`テーブルとほぼ同じものです。
+いかに改めてテーブル構造を記載しておきます。
+
+`person`テーブル構造
+
+* `uid`: int型、主キーとして設定、 auto_increment付き
+* `name`: varchar型、最大文字数20
+* `company_id`: int型
+* `age`: int型
+
+以下が、初期値です。
+なお`uid`は自動採番(auto_increment)されるため省略しています。
+
+|  name |company_id|age|
+|-------|---------:|--:|
+|財津一郎|          1| 5|
+|田宮二郎|          2|15|
+|北島三郎|          3|25|
+|伊東四朗|          3|35|
+|糸井五郎|          1|45|
+|鶴田六郎|          2|55|
 
 ## SELECT文
 
@@ -68,64 +86,71 @@ $pdo = new PDO($dsn, $user, $password);
 
 <body>
     <?php
-    // $dsnにスペースは入れないこと。GitHub上でエラーとなる。
-    $dsn = 'mysql:host=localhost;dbname=php;charset=utf8'; // データソース名・・データベースは「php」 ①
-    $user = 'kobe'; // ユーザー名 ①
-    $password = 'denshi'; // パスワード ①
+    // データベースの接続アカウント情報・・・①
+    $user = 'sampleuser';
+    $password = 'samplepass';
+    $host = 'db';
+    $dbName = 'SAMPLE';
+    $dsn = 'mysql:host=' . $host . ';dbname=' . $dbName . ';charset=utf8';
 
+    // 例外処理・・・②
     try {
-        $pdo = new PDO($dsn, $user, $password); // データベースへ接続するオブジェクト作成    
-        $sql = 'select  *  from  person'; // SQL文の定義    
-        $stmt = $pdo->query($sql); // SELECT文の実行 ②
-        $results = $stmt->fetchAll(); // 実行結果を連想配列の形で取り出す ③    
-        foreach ($results  as  $result) { // 配列のデータを1件ずつ処理する    
-            echo 'uid=' . $result['uid'] . ', name=' . $result['name'] . '<br>';
-        }
-    } catch (Exception $e) {
-        echo 'Error:' . $e->getMessage();
-        die();
+        // PDOを用いてデータベースに接続する
+        $pdo = new PDO($dsn, $user, $password);
+    } catch (PDOException $e) {
+        // 接続できなかった場合のエラーメッセージ
+        exit('データベースに接続できませんでした：' . $e->getMessage());
     }
-    $pdo = null; // データベースへの接続を閉じる ④    
+
+    // SQLの定義: personテーブルから全てのレコードを取得する
+    $sql = 'SELECT * FROM person';
+
+    // $pdoを用いて$sqlを実行する・・・③
+    $stmt = $pdo->query($sql);
+    // 実行結果を $results に格納する
+    $results = $stmt->fetchAll();
+    // 配列をループして、各要素を出力する 'uid=UID, name=NAME'の形式で
+    foreach ($results as $row) {
+        echo 'uid=' . $row['uid'] . ', name=' . $row['name'] . '<br>';
+    }
+    // データベースを切断する
+    $pdo = null;
     ?>
+
 </body>
 
 </html>
 ```
 
-①: <br>
-`$dsn = 'mysql:host=localhost;dbname=php;charset=utf8';`<br>
-`$user = 'kobe';`<br>
-`$password = 'denshi';`
+①: データベース「SAMPLE」を利用するための設定値です。
 
-データベース「php」を利用するための設定値です。
+以下の3つは、`env.txt`で設定した環境変数です。
+`$user = 'sampleuser';`(ユーザー名)<br>
+`$password = 'samplepass';`(パスワード)<br>
+`$dbName = 'SAMPLE';`(データベース名)<br>
 
-**ここ今回のDcoker環境での変更箇所**
+以下の`$host`はホスト名であり、`composer.yml` で設定されたデータベースコンテナのサービス名を使用します。
+`$host = 'db';`<br>
 
-******************************
-ユーザー名「kobe」、パスワード「denshi」は、データベース「php」作成時の以下のgrant文で宣言した
+②: PDOオブジェクトを作成するときは、データベースへの接続不良等のの例外が発生する可能性があるので、`try ～ catch` 構文を利用します。
 
-`grant all privileges on php.* to kobe@localhost identified by 'denshi';`
-******************************
-
-②: `$stmt = $pdo->query($sql);`
-
-単純なSELECT文を実行する場合には、PDOクラスの `query( )` メソッドを使用します。<br>
+③: `$stmt = $pdo->query($sql);`<br>
+単純なSELECT文を実行する場合には、`PDO`クラスの `query( )` メソッドを使用します。<br>
 戻り値は「`PDOStatement`（ピー・ディー・オー・ステートメント）オブジェクト」です。<br>
-`->`（ハイフンと小なり記号）は「シングルアロー」と読み、Javaの「．」（ドット演算子）に相当するします。
-つまり、 `$pdo` がPDOクラスのオブジェクトであり、このオブジェクトが持つ `query` メソッドを呼び出しているのです。
+`->`（ハイフンと小なり記号）は「シングルアロー」と読み、Javaの「．」（ドット演算子）に相当します。
+つまり、 `$pdo` が`PDO`クラスのオブジェクトであり、このオブジェクトが持つ `query` メソッドを呼び出しているのです。
 
-③: `$results = $stmt->fetchAll( );`
-
+④: `$results = $stmt->fetchAll( );`<br>
 `PDOStatement`クラスの`fetchAll( )`メソッドで、SELECT文で取り出したデータを連想配列の形式で取り出します。
 
-④: `$pdo = null;`
-
+⑤: `$pdo = null;`<br>
 処理が終了した後はデータベースへの接続を閉じておきます。
 
 ## UPDATE文
 
 UPDATEのSQL文を定義するとき、更新する値の箇所に **「?」（プレースホルダという）** を使用します。
-定義したSQL文をデータベース側に送信する前にPDOクラスの `prepare( )` メソッド（プリペアー・メソッド）を実行し、 `PDOStatement`オブジェクトを作成します。
+定義したSQL文をデータベース側に送信する前に`PDO`クラスの `prepare( )` （プリペアー）メソッドを実行し、`PDOStatement`オブジェクトを作成します。
+
 作成した`PDOStatement`オブジェクトの `execute( )`（エクゼキュート）メソッドでデータベース側にSQL文を送ります。
 そして、この `execute( )` メソッド実行時に、**「?」** の箇所に代入する値を指定しています。
 
@@ -145,46 +170,62 @@ UPDATEのSQL文を定義するとき、更新する値の箇所に **「?」（�
 
 <body>
     <?php
-    // $dsnにスペースは入れないこと。GitHub上でエラーとなる。
-    $dsn = 'mysql:host=localhost;dbname=php;charset=utf8';
-    $user = 'kobe';
-    $password = 'denshi';
+    // データベースの接続アカウント情報
+    $user = 'sampleuser';
+    $password = 'samplepass';
+    $host = 'db';
+    $dbName = 'SAMPLE';
+    $dsn = 'mysql:host=' . $host . ';dbname=' . $dbName . ';charset=utf8';
 
     try {
+        // PDOを用いてデータベースに接続する
         $pdo = new PDO($dsn, $user, $password);
-        $sql = 'update person set name = ? where  uid  =  ?'; // ①
-        $stmt = $pdo->prepare($sql); // ②
-        $stmt->execute(['野口五郎',  5]); // ③
-
-        $sql = 'select * from person';
-        $stmt = $pdo->query($sql);
-        $results = $stmt->fetchAll();
-        foreach ($results  as  $result) {
-            echo 'uid=' . $result['uid'] . ', name=' . $result['name'] . '<br>';
-        }
-    } catch (Exception $e) {
-        echo 'Error:' . $e->getMessage();
-        die();
+    } catch (PDOException $e) {
+        // 接続できなかった場合のエラーメッセージ
+        exit('データベースに接続できませんでした：' . $e->getMessage());
     }
-    $pdo = null;
+
+    // 指定したuidのnameを変更するためのプレースホルダー入りのSQL文・・・①
+    $sql = 'UPDATE person SET name = ? WHERE uid = ?';
+
+    $stmt = $pdo->prepare($sql); // ・・・②
+
+    // uid=5のnameを'野口五郎'に変更する・・・③
+    $stmt->execute(['野口五郎', 5]);
+
+    // SQLの定義: personテーブルから全てのレコードを取得する
+    $sql = 'SELECT * FROM person';
+
+    // $pdoを用いて$sqlを実行する
+    $stmt = $pdo->query($sql);
+
+    // 実行結果を $results に格納する
+    $results = $stmt->fetchAll();
+
+    // 配列をループして、各要素を出力する 'uid=UID, name=NAME'の形式で
+    foreach ($results as $row) {
+        echo 'uid=' . $row['uid'] . ', name=' . $row['name'] . '<br>';
+    }
     ?>
+
 </body>
 
 </html>
 ```
 
-①: `$sql = 'update person set name = ? where uid = ?';`<br>
+①: `$sql = 'UPDATE person SET name = ? WHERE uid = ?';`<br>
 UPDATE文を定義するときに、値の部分を「?」（プレースホルダ）を用いて記述しています。
-プレースホルダを用いた記述は、SQLインジェクション対策にもなります。
+プレースホルダを用いた記述は、**SQLインジェクション対策**にもなります。
 
 ②: `$stmt = $pdo->prepare($sql);`<br>
-定義したSQL文をデータベースに送信する前にPDOクラスの `prepare( )` メソッドを実行し、 `PDOStatement`クラスのオブジェクトを作成します。
+定義したSQL文をデータベースに送信する前に`PDO`クラスの `prepare( )` メソッドを実行し、 `PDOStatement`クラスのオブジェクトを作成します。
 
 ③: `$stmt->execute(['野口五郎',  5]);`<br>
 作成したPDOStatementオブジェクトの `execute( )` メソッドでデータベース側へSQL文を送信します。
-このとき、「?」（プレースホルダ）の部分に値を代入するため、配列の形式でデータを引数として渡しますが、「?」（プレースホルダ）の順番と配列のデータの順番を対応させるようにしてください。
 
-サンプルコード場合、`name = ?` の「?」に「野口五郎」を、`uid = ?` の「?」に「5」の値を代入しています。
+このとき、「?」（プレースホルダ）の部分に値を代入するため、配列の形式でデータを引数として渡しますが、「?」（プレースホルダ）の順番と配列のデータの**順番を対応させる**ようにしてください。
+
+サンプルコードの場合、`name = ?` の「?」に「野口五郎」を、`uid = ?` の「?」に「5」の値を代入しています。
 つまり、『`uid=5`のデータの氏名を「糸居五郎」から「野口五郎」に変更する』というSQL文を実行しているのです。
 
 なお、この`execute( )`メソッドの戻り値は、成功した場合に `TRUE` を、失敗した場合に `FALSE` を返します。
@@ -212,39 +253,57 @@ INSERT文もUPDATE文と同様に、**「?」（プレースホルダ）**　を
 
 <body>
     <?php
-    // $dsnにスペースは入れないこと。GitHub上でエラーとなる。
-    $dsn = 'mysql:host=localhost;dbname=php;charset=utf8';
-    $user = 'kobe';
-    $password = 'denshi';
-    try {
-        $pdo = new PDO($dsn, $user, $password);
-        $sql = 'insert into person(name, company_id, age) values(?, ?, ?)'; // ①
-        $stmt = $pdo->prepare($sql); // ②
-        $stmt->execute(['深沢七郎',  3,  29]); // ③
+    // データベースの接続アカウント情報
+    $user = 'sampleuser';
+    $password = 'samplepass';
+    $host = 'db';
+    $dbName = 'SAMPLE';
+    $dsn = 'mysql:host=' . $host . ';dbname=' . $dbName . ';charset=utf8';
 
-        $sql = 'select * from person';
-        $stmt = $pdo->query($sql);
-        $results = $stmt->fetchAll();
-        foreach ($results  as  $result) {
-            echo 'uid=' . $result['uid'] . ', name=' . $result['name'] . '<br>';
-        }
-    } catch (Exception $e) {
-        echo 'Error:' . $e->getMessage();
-        die();
+    try {
+        // PDOを用いてデータベースに接続する
+        $pdo = new PDO($dsn, $user, $password);
+    } catch (PDOException $e) {
+        // 接続できなかった場合のエラーメッセージ
+        exit('データベースに接続できませんでした：' . $e->getMessage());
     }
+
+    // --- データの挿入
+    // プレースホルダーを用いてpersonテーブルに値を挿入するSQL文を定義・・・①
+    $sql = 'INSERT INTO person (name, company_id, age) VALUES (?, ?, ?)';
+    $stmt = $pdo->prepare($sql); // ②
+    // $stmtを使い、プレースホルダーに値を入れてSQL文を実行する・・・③
+    // name = 深沢七郎, company_id = 3, age = 29
+    $stmt->execute(['深沢七郎', 3, 29]);
+
+    // --- 結果の取得
+    // SQLの定義: personテーブルから全てのレコードを取得する
+    $sql = 'SELECT * FROM person';
+
+    // $pdoを用いて$sqlを実行する
+    $stmt = $pdo->query($sql);
+    // 実行結果を $results に格納する
+    $results = $stmt->fetchAll();
+    // 配列をループして、各要素を出力する 'uid=UID, name=NAME'の形式で
+    foreach ($results as $row) {
+        echo 'uid=' . $row['uid'] . ', name=' . $row['name'] . '<br>';
+    }
+    // データベースを切断する
     $pdo = null;
     ?>
+
 </body>
 
 </html>
 ```
 
-①: `$sql = 'insert  into  person(name,  company_id,  age)  values(?, ?, ?)';`<br>
+①: `$sql = 'INSERT INTO person (name, company_id, age) VALUES (?, ?, ?)';`<br>
 INSERT文を定義するときも、値の部分を「?」（プレースホルダ）を用いて記述します。
 最初の「?」が「`name`」、2番目の「?」が「`company_id`」、3番目の「?」が「`age`」の値に対応します。
+なお、`person`テーブルのカラム`uid`については、自動採番(auto increment)のため、省略できます。
 
 ②: `$stmt = $pdo->prepare($sql);`<br>
-定義したSQL文をデータベースに送信する前にPDOクラスの `prepare( )` メソッドを実行し、 `PDOStatement`クラスのオブジェクトを作成します。
+定義したSQL文をデータベースに送信する前に`PDO`クラスの `prepare( )` メソッドを実行し、 `PDOStatement`クラスのオブジェクトを作成します。
 
 ③: `$stmt->execute( ['深沢七郎',  3,  29] );`<br>
 作成した`PDOStatement`クラスの `execute( )` メソッドで実際にデータベースへSQL文を送信します。
@@ -278,65 +337,83 @@ INSERT文を定義するときも、値の部分を「?」（プレースホル�
 
 <body>
     <?php
-    // $dsnにスペースは入れないこと。GitHub上でエラーとなる。
-    $dsn = 'mysql:host=localhost;dbname=php;charset=utf8';
-    $user = 'kobe';
-    $password = 'denshi';
-    try {
-        $pdo = new PDO($dsn, $user, $password);
-        $sql = 'delete from person where name = ?'; // ①
-        $stmt = $pdo->prepare($sql); // ②
-        $stmt->execute(['深沢七郎']); // ③
+    // データベースの接続アカウント情報
+    $user = 'sampleuser';
+    $password = 'samplepass';
+    $host = 'db';
+    $dbName = 'SAMPLE';
+    $dsn = 'mysql:host=' . $host . ';dbname=' . $dbName . ';charset=utf8';
 
-        $sql = 'select * from person';
-        $stmt = $pdo->query($sql);
-        $results = $stmt->fetchAll();
-        foreach ($results  as  $result) {
-            echo 'uid=' . $result['uid'] . ', name=' . $result['name'] . '<br>';
-        }
+    try {
+        // PDOを用いてデータベースに接続する
+        $pdo = new PDO($dsn, $user, $password);
     } catch (PDOException $e) {
-        echo 'Error:' . $e->getMessage();
-        die();
+        // 接続できなかった場合のエラーメッセージ
+        exit('データベースに接続できませんでした：' . $e->getMessage());
     }
+
+    // --- データの挿入
+    // プレースホルダーを用いてpersonテーブルから該当するnameを持つレコードを削除するSQLを準備・・・①
+    $sql = 'DELETE FROM person WHERE name = ?';
+    $stmt = $pdo->prepare($sql); // ②
+    // 深沢七郎のレコードを削除・・・③
+    $stmt->execute(['深沢七郎']);
+
+    // --- 結果の取得
+    // SQLの定義: personテーブルから全てのレコードを取得する
+    $sql = 'SELECT * FROM person';
+
+    // $pdoを用いて$sqlを実行する
+    $stmt = $pdo->query($sql);
+    // 実行結果を $results に格納する
+    $results = $stmt->fetchAll();
+    // 配列をループして、各要素を出力する 'uid=UID, name=NAME'の形式で
+    foreach ($results as $row) {
+        echo 'uid=' . $row['uid'] . ', name=' . $row['name'] . '<br>';
+    }
+    // データベースを切断する
     $pdo = null;
     ?>
+
 </body>
 
 </html>
 ```
 
-①: `$sql = 'delete from person where name = ?';`
+①: `$sql = 'DELETE FROM person WHERE name = ?';`
 
 DELETE文を定義するときも、値の部分を「?」（プレースホルダ）を用いて記述します。
 このSQL文は、名前が一致するデータを削除するDELETE文を定義しています。
 
 ②: `$stmt = $pdo->prepare($sql);`
 
-定義したSQL文をデータベースに送信する前にPDOクラスの `prepare( )` メソッドを実行し、 `PDOStatement`クラスのオブジェクトを作成する。
+定義したSQL文をデータベースに送信する前に`PDO`クラスの `prepare( )` メソッドを実行し、 `PDOStatement`クラスのオブジェクトを作成する。
 
 ③: `$stmt->execute(['深沢七郎']);`
 
 作成した`PDOStatement`クラスの `execute( )` メソッドで実際にデータベースへSQL文を送信する。 このとき、「?」（プレースホルダ）の部分に値を代入するため、配列の形式でデータを引数として渡すが、 ここでは、名前が「深沢七郎」のデータを削除するDELETE文を実行する。
 
-③以降は、dbselect.phpと同じ処理内容で、テーブルpersonの全データを表示する処理を行っている。
+③の行以降は、dbselect.phpと同じ処理内容で、テーブルpersonの全データを表示する処理を行っている。
 
-## 条件付きSELECT文
+## 条件付きSELECT文にチャレンジ
 
-前段の[SELECT文](#select文)では、対象となるテーブルのすべてのデータを抽出したが、実際にはある条件でデータを抽出することのほうがよく使われる。
+前段の[SELECT文](#select文)では、対象となるテーブルのすべてのデータを抽出しましたが、実際にはある条件でデータを抽出することのほうがよく使われます。
 
-ここでは、ユーザーID（uid）を指定して、データを抽出するサンプルを示す。なお、uidが指定されていない場合や、データのないuidが指定された場合にも対処する。
+ここでは、ユーザーID（uid）を指定して、データを抽出する検索ページを作成してください。
+なお、このチャレンジ問題は自動採点の評価対象外です。
+SELECT〜DELETE文が早めに終了した方は、是非チャレンジしてください！
 
-1. uid=2が指定されたとき<br>
+1. `person`テーブルにデータのあるユーザーIDを入力し、「検索」ボタンを押した時<br>
 `http://localhost/10_database_sql-GitHubのユーザー名/src/dbselect1.php?uid=2`<br>
 ![](./images/dbselect1_display1.png)
 
-2. uidが指定されていないとき<br>
-`http://localhost/10_database_sql-GitHubのユーザー名/src/dbselect1.php`<br>
-![](./images/dbselect1_display2.png)
-
-3. データのないuidが指定されたとき<br>
+1. `person`テーブルにデータのないユーザーIDを入力し、「検索」ボタンを押した時<br>
 `http://localhost/10_database_sql-GitHubのユーザー名/src/dbselect1.php?uid=9`<br>
 ![](./images/dbselect1_display3.png)
+
+1. ユーザーIDを入力せず、「検索」ボタンを押した時<br>
+`http://localhost/10_database_sql-GitHubのユーザー名/src/dbselect1.php`<br>
+![](./images/dbselect1_display2.png)
 
 `dbselect1.php`
 
@@ -351,154 +428,120 @@ DELETE文を定義するときも、値の部分を「?」（プレースホル�
 </head>
 
 <body>
+    <h1>条件付きSELECTの例</h1>
     <?php
-    if (!isset($_GET['uid'])) { // ①
-        echo 'uidが指定されていません。';
+    // もしも$_GET['uid']が空なら、uidを求めるフォームを表示(GETメソッド使用)
+    if (                   ) {
+    ?>
+        <!-- 検索フォームを以下に記述 -->
+
+
+
+        <!-- ここまで -->
+    <?php
     } else {
-        $uid = $_GET['uid'];
-        // $dsnにスペースは入れないこと。GitHub上でエラーとなる。
-        $dsn = 'mysql:host=localhost;dbname=php;charset=utf8';
-        $user = 'kobe';
-        $password = 'denshi';
+        // ---データベースに接続するためのアカウント情報を以下の変数に設定
+        $user = '';
+        $password = '';
+        $host = '';
+        $dbName = '';
+        $dsn = '';
 
         try {
-            $pdo = new PDO($dsn, $user, $password);
-            $sql = 'select * from person where uid = ?'; // ②
-            $stmt = $pdo->prepare($sql); // ③
-            $stmt->execute([$uid]); // ④
-            $result = $stmt->fetch(); // ⑤ ※データが1件だけの場合は「fetch( )」メソッドを使う                
-
-            if (empty($result['uid'])) { // ⑥
-                echo '指定されたuid=' . $uid . 'のデータはありません。';
-            } else {
-                echo '指定されたuid=' . $result['uid'] . ', name=' . $result['name'] . '<br>';
-            }
-        } catch (Exception $e) {
-            echo 'Error:' . $e->getMessage();
-            die();
+            // PDOを用いてデータベースに接続する
+            
+        } catch (PDOException $e) {
+            // 接続できなかった場合のエラーメッセージ
+            
         }
-        $pdo = null;
+        
+        // uidをキーにして、GETメソッドで受け取ったuidを代入
+        $uid = 
+        // SQLの定義: personテーブルからuidが一致するレコードを取得する
+        $sql = 
+        $stmt = 
+        // SQLプレースホルダーに値をバインド
+        $stmt->
+        // 一件だけなのでfetch()を使って結果レコードを取得・・・①
+        $row = 
+        // 結果が空ならば、該当するユーザがいない旨を表示
+        if (           ) {
+            echo 
+        } else {
+            // 結果があれば、uidとnameを表示
+            echo 
+        }
+        // データベースを切断する
+        $pdo = 
     }
     ?>
+
 </body>
 
 </html>
 ```
 
-①: `isset($_GET['uid'] )`
+**【捕捉説明】**
+SELECT文の実行結果で何を取得するかに応じて `fetchAll( )` と `fetch( )` の使い分けが必要です。
 
-パラメータ名 uid で値が送られてきているかどうかを `isset( )` 関数を利用してチェックする。値が送られてきている場合は「True」、送られてきていない場合は「False」の戻り値が返ってくる。
+今回の検索条件ユーザーID(`uid`)は、`person`テーブルの**主キー**であり、取得データは**必ず1件のみ**です。
+このように、取得データが1件のみと確定している場合は、`fetch( )`を使用します。
 
-②: `$sql = 'select ¥* from person where uid = ?';`
+`fetchAll( )`は、1件以上取得データがある場合に使用します。
 
-uid が一致するデータを抽出するSELECT文を「?」（プレースホルダ）を使用して定義している。
+また、`fetch( )`の戻り値は「1件の連想配列」であるため取得したデータから`uid`などの要素を取り出す場合はループ処理は不要です。
+以下にそれぞれの違いを表にまとめております。
 
-
-
-③: `$stmt = $pdo->prepare($sql);`
-
-定義したSQL文をデータベースに送信する前にPDOクラスの `prepare( )` メソッドを実行し、 `PDOStatement`クラスのオブジェクトを作成する。
-
-④: `$stmt->execute([$uid]);`
-
-作成した`PDOStatement`クラスの `execute( )` メソッドで実際にデータベースへSQL文を送信する。 ここでは、uid の値が**①**で受け取ったパラメータ名 uid の値と一致するデータを抽出するSELECT文を実行する。
-
-⑤: `$result = $stmt->fetch( );`
-
-`PDOStatement`クラスの `fetch( )` メソッドは、SELECT文で取り出したデータを**1件だけ**取り出す。取り出したデータは、やはり連想配列の形式で格納されている。
-
-**【重要】SELECT文の実行結果で何を取得するかに応じて `fetchAll( )` と `fetch( )` を使い分ける。**
-
-⑥: `empty($result['uid'])`
-
-`empty( )` 関数は、引数で指定された値が空であるかどうかをチェックする。値が存在し、かつその値が空や0でなければ FALSE を返し、それ以外の場合は TRUE を返す。
-
-## 課題の作成と提出
-
-### 作成したソースコードをpush
-
-今回の資料から、pushまでの説明は省略する。忘れた場合は、これより以前の資料を見返し確認すること。
+|  メソッド名 |取得データ|戻り値|要素を取り出す際のループ処理|
+|---------|---------|-----------|------------|
+|fetch|1件のみ|1件の連想配列|不要|
+|fetchAll|1件以上|1件以上の連想配列|必要|
 
 ## 採点について
 
-提出した課題はGitHub上で自動採点される。提出後、課題が合格しているかを確認すること。合格していない場合は修正後pushし、再提出すること。
+提出した課題がGitHub上で自動採点されます。
+pushした課題が合格したかはpush後に必ず確認してください。
 
 ### 課題の合格基準
 
-以下の3つを合格基準とする。
+以下の3つを合格基準とします。
 
 1. dbupdate.phpにて、データが正しく更新されること
 1. dbinsert.phpにて、データが正しく挿入されること
 1. dbdelete.phpにて、データが正しく削除されること
 
-
-
 ### 合格確認方法
 
-1. 本課題の[課題ページ](https://classroom.github.com/a/aRogXsGL)に再度アクセスする。
-1. 画面上部にある`Actions`をクリックする。<br>
+1. 本課題の[課題ページ](https://classroom.github.com/a/_EUpxz7R)に再度アクセスする。
+2. 画面上部にある`Actions`をクリックしてください。<br>
 ![](./images/acions.png)
-1. **一番上**の行に、緑色のチェックが入っていればOK。※その下に赤いばつ印が入っているものがあるが、それは無視する。<br>
+1. **一番上**の行に、緑色のチェックが入っていればOKです。<br>
 ![](./images/pass.png)
 
 ### エラーが出た時の対処法
 
-自動採点がエラーになると、**一番上**の行に赤いばつ印がでる。その場合の解決策を以下に示す。
+自動採点がエラーになると、**一番上**の行に赤いばつ印がでます。その場合の解決策を以下に示します。
 
 ### タイムアウトになっていないかを確認する
 
-※右端の赤枠で囲まれている箇所に処理時間がでるが、**2分以上**かかっている場合はタイムアウトとなる。
+※右端の赤枠で囲まれている箇所に処理時間がでますが、**4分前後**かかっている場合には、まずタイムアウトの可能性を疑ってください。
 ![](./images/timeout.png)
 
-なお、タイムアウトの場合は、GitHub上で処理を再開すると解決できる。具体的なタイムアウト解決方法は、
+具体的なタイムアウトの確認・解決方法は、
 
-  1. Actionsタブをクリック
-  2. タイトルが下記のようにリンクになっているので、クリック<br>
-      ![](./images/timeout2.png)<br>
-  3. Autogradingをクリック<br>
-   <img src="./images/timeout3.png" width="75%"><br>
-   
-
-  4. 赤いばつ印が出ている箇所をクリック<br>
-   <img src="./images/timeout4.png" width="75%"><br>
-  1. `::error::Setup timed out in 120000 milliseconds`のメッセージがあればタイムアウト
-
-  6. 右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
+  1. `Actions`のタイトルが以下のようにリンクになっているので、クリック
+      ![](./images/timeout2.png)
+  2. `run-autograding-tests.png`をクリック
+   ![](./images/run-autograding-tests.png)
+  3. 赤いばつ印が出ている箇所をクリック
+  ![](./images/timeout4.png)
+  1. `::error::Setup timed out in XXXXXX milliseconds`のメッセージがあればタイムアウト
+   ![](./images/timeout8.png)
+  6. 解決策としては、右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
   ![](./images/timeout6.png)<br>
   ![](./images/timeout7.png)
-  7. タイムアウトにならず2分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
-
-
+  7. タイムアウトにならず3分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
 
 ### プログラムが正確に書かれているか確認する
 
-プログラムが正確に書かれているかを確認すること。たとえ、ブラウザの画面でそれっぽく表示されても、自動採点なので融通がきかない。エラーが出た際は、以下を確認すること。
-
-#### どこでエラーがでているか確認する
-
-今回は3つの自動採点(update, insert, delete)があるので、以下の手順で、どごでエラーが出ているか確認する。
-
-1. Actionsタブをクリック
-2. タイトルが下記のようにリンクになっているので、クリック
-      ![](./images/timeout2.png)<br>
-3. Autogradingをクリック<br>
-   <img src="./images/timeout3.png" width="65%"><br>
-4. 赤いばつ印が出ている箇所をクリック<br>
-  <img src="./images/timeout4.png" width="65%"><br>
-1. エラーがあるソースコードは、下記画像のように、エラーメッセージが表示されるので、これにエラーが出ているソースコードを特定できる。<br>
-<img src="./images/error_message.png" width="75%"><br>
-
-#### プログラムが正確に書かれているか確認する
-
-プログラムが正確に書かれているかを確認する。たとえ、ブラウザの画面でそれっぽく表示されても、自動採点ですので融通はききません。エラーが出た際は、サンプルコードと差異がないか確認してください。
-
-
-
-## GitHub上での採点についてのお願い
-
-今回、再度GitHub上での採点をするにあたりお願いがあります。それは、<br>
-GitHubに課題をpushする前に、**必ずブラウザで動作確認をしてください。**　理由は下記の2つです。<br>
-
-1. Webアプリケーションはブラウザ上で動作することが前提であるため。
-2. GitHubの採点処理時間に上限があるため。<br>
-以前の自動採点プログラムと比べ、処理時間の高速化には成功したものの、GitHubの合計処理時間には毎月上限があります。むやみやたらにpushすると、上限に達しかねないので、必ずブラウザ上で正常に動作することを確認してからpushしてください。**エラーの原因が特定できない場合は、お気軽に質問してください。**
+プログラムが正確に書かれているかを確認してください。たとえ、ブラウザの画面でそれらしく表示されても、自動採点なので融通は効きません。エラーが出た際は、以下の点を確認してください。
