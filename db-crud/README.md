@@ -401,19 +401,22 @@ DELETE文を定義するときも、値の部分を「?」（プレースホル�
 
 ここでは、ユーザーID（uid）を指定して、データを抽出する検索ページを作成してください。
 なお、このチャレンジ問題は自動採点の評価対象外です。
-SELECT〜DELETE文が早めに終了した方は、是非チャレンジしてください！
+SELECT〜DELETE文を完了した方は、是非チャレンジしてください！
 
 1. `person`テーブルにデータのあるユーザーIDを入力し、「検索」ボタンを押した時<br>
-`http://localhost/10_database_sql-GitHubのユーザー名/src/dbselect1.php?uid=2`<br>
+→該当する`uid`と`name`が表示される
 ![](./images/dbselect1_display1.png)
+![](./images/dbselect1_display2.png)
 
 1. `person`テーブルにデータのないユーザーIDを入力し、「検索」ボタンを押した時<br>
-`http://localhost/10_database_sql-GitHubのユーザー名/src/dbselect1.php?uid=9`<br>
+→該当するデータが無い旨のメッセージが表示される
 ![](./images/dbselect1_display3.png)
+![](./images/dbselect1_display4.png)
 
 1. ユーザーIDを入力せず、「検索」ボタンを押した時<br>
-`http://localhost/10_database_sql-GitHubのユーザー名/src/dbselect1.php`<br>
-![](./images/dbselect1_display2.png)
+→検索フォームが表示のまま
+![](./images/dbselect1_display5.png)
+![](./images/dbselect1_display6.png)
 
 `dbselect1.php`
 
