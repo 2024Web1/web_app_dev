@@ -19,6 +19,7 @@
     - [タイムアウトになっていないかを確認する](#タイムアウトになっていないかを確認する)
     - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する)
       - [どの入力フォームでエラーがでているか確認する](#どの入力フォームでエラーがでているか確認する)
+  - [(追記)解答例](#追記解答例)
 
 ## 事前準備
 
@@ -171,3 +172,210 @@
 4. 各テストエラーがあった場合、それぞれのテストでFAILEDと表示される。以下は、`TestPassword.py`(passwordに関するテスト)でエラーが出ている場合の表示例
    ![](./images/testpassword.png)
 
+## (追記)解答例
+
+`password.html`
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワードの練習課題</title>
+</head>
+
+<body>
+    <!--
+    * フォームの送り先を `password.php` に設定する
+    * 入力フォームとして、以下のものを設定する
+        * テキスト「ユーザーID:」として変数`user`に`text`形式
+        * テキスト「パスワード:」として変数`pass`に`password`形式
+    * フォーム要素はそれぞれ改行すること
+    -->
+    <h4>パスワード練習課題</h4>
+    <!-- フォームコードは以下に記述-->
+    <form method="POST" action="password.php"> <!-- action属性のファイル名を修正-->
+
+        ユーザーID：<input type="text" name="user"><br>
+        パスワード：<input type="password" name="pass"><br>
+
+        <input type="submit" name="submit" value="送信">
+    </form>
+    <!-- ここまで -->
+</body>
+
+</html>
+
+```
+
+`password.php`
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワードの練習(送信後)</title>
+</head>
+
+<body>
+
+    <!--
+    * フォームとして受け取った`user`,`pass`の値をそれぞれPHPの命令で出力する
+        * それぞれを**pタグでくくる**こと
+        * 「入力されたユーザーIDは、XXXX(`user`の値)です」
+        * 「入力されたパスワードは、XXXX(`pass`の値)です」
+-->
+
+
+    <?php
+    // PHPのコードは以下に記述
+    echo '<p>入力されたユーザーIDは、' . $_POST['user'] . 'です。</p>';
+    echo '<p>入力されたパスワードは、' . $_POST['pass'] . 'です。</p>';
+    ?>
+    <a href='password.html'>戻る</a>
+</body>
+
+</html>
+```
+
+`pulldown.html`
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プルダウンの練習</title>
+</head>
+
+<body>
+
+    <!--
+* フォームの送り先を `pulldown.php` に設定する
+* 入力フォームとして、以下のものを設定する
+    * 入力された値は変数名fruitに入る
+    * 果物(fruit)の候補として、以下の値を挿入すること(順番は気にしないでよい)
+        * オレンジ
+        * リンゴ
+        * メロン
+    * 送信ボタンには名前 `submit` を付与する
+-->
+    <h4>プルダウン練習課題</h4>
+
+    <!-- フォームコードは以下に記述-->
+    あなたの好きなフルーツを選んでください。<br> <!-- この行は課題に記載があれば修正する、なければ削除 -->
+    <form method="POST" action="pulldown.php"> <!-- action属性のファイル名を修正-->
+        <select name="fruit">
+            <option>オレンジ</option>
+            <option>リンゴ</option>
+            <option>メロン</option>
+        </select>
+        <input type="submit" name="submit" value="送信">
+    </form>
+    <!-- ここまで -->
+</body>
+
+</html>
+```
+
+`pulldown.php`
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プルダウンメニューの練習(結果)</title>
+</head>
+
+<body>
+    <!--
+        * フォームとして受け取った`frult`を出力する
+        * 出力するテキストはpタグでくくる
+        * pタグ内のテキストは「あなたの好きなフルーツは、XXX(fruitで受け取ったもの)ですね。」とする
+    -->
+
+    <?php
+    // PHPのコードは以下に記述
+    echo '<p>あなたの好きなフルーツは、' . $_POST['fruit'] . 'ですね。</p>';
+    ?>
+    <a href='pulldown.html'>戻る</a>
+</body>
+
+</html>
+```
+
+`textarea.html`
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テキストエリアの練習問題</title>
+</head>
+
+<body>
+    <!--
+* フォームの送り先を `textarea.php` に設定する
+* 入力フォームとして、以下のものを設定する
+    * 横幅(1桁の文字数)50、縦幅(行数)4に設定する
+    * 入力テキストの渡される変数名を `input_text` とする
+    * 送信ボタンには名前 `submit` を付与する
+-->
+    <h4>テキストエリア練習課題</h4>
+    <!-- フォームコードは以下に記述-->
+    <form method="POST" action="textarea.php"> <!-- action属性のファイル名を修正-->
+
+        <textarea name="input_text" rows="4" cols="50"></textarea><br>
+
+        <input type="submit" name="submit" value="送信">
+    </form>
+    <!-- ここまで -->
+
+</body>
+
+</html>
+```
+
+`textarea.php`
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テキストエリア練習問題(結果)</title>
+</head>
+
+<body>
+    <!--
+* フォームとして受け取った`input_text`の値を出力する
+    * 出力するテキストはpタグでくくる
+
+-->
+
+    <p>入力された文章は、つぎのとおりです。</p>
+    <?php
+    // PHPのコードは以下に記述
+    echo '<p>' . $_POST['input_text'] . '</p>';
+    ?>
+    <a href='textarea.html'>戻る</a>
+
+</body>
+
+</html>
+```
