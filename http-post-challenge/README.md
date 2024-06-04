@@ -2,6 +2,7 @@
 
 - [「入力フォーム」のチャレンジ問題](#入力フォームのチャレンジ問題)
   - [チャレンジ問題について](#チャレンジ問題について)
+  - [解答例](#解答例)
 
 ## チャレンジ問題について
 
@@ -68,4 +69,106 @@ td {
 .rightPos {
     text-align: right;
 }
+```
+
+## 解答例
+
+`tour.html`
+
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>見積りフォーム</title>
+    <link rel="stylesheet" href="tour.css">
+</head>
+
+<body>
+    <div id="main">
+        <h4>ハワイ旅行見積りフォーム</h4>
+        <form method="POST" action="tour.php">
+            <table id="mainTable">
+                <tr>
+                    <td class="titleColor">基本料金</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="course" value="1" checked>エコノミークラス:150,000円<br>
+                        <input type="radio" name="course" value="2">ビジネスクラス:200,000円<br>
+                        <input type="radio" name="course" value="3">LCC(ローコストキャリア)クラス:100,000円
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleColor">オプショナルツアー(複数選択可)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="options[ ]" value="1">ポリネシア文化センター:5,000円<br>
+                        <input type="checkbox" name="options[ ]" value="2">サンセットクルーズ:10,000円<br>
+                        <input type="checkbox" name="options[ ]" value="3">キラウェア火山観光:40,000円
+                    </td>
+                </tr>
+                <tr>
+                    <td class="centerPos">
+                        <input type="submit" value="見積り結果表示">&nbsp;&nbsp;<input type="reset" value="リセット">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
+```
+
+`tour.php`
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>見積り結果</title>
+    <link rel="stylesheet" href="tour.css">
+</head>
+
+<body>
+    <div id="main">
+        <h4>ハワイ旅行見積り結果</h4>
+        <table id="mainTable">
+            <?php
+            $sum = 0;
+            $course_names = ['エコノミークラス', 'ビジネスクラス', 'LCC(ローコストキャリア)クラス'];
+            $course_prices = [150000, 200000, 100000];
+            $option_names = ['ポリネシア文化センター', 'サンセットクルーズ', 'キラウェア火山観光'];
+            $option_prices = [5000, 10000, 40000];
+
+            // 基本料金の処理
+            $course = $_POST['course'] - 1;
+            $sum = $course_prices[$course];
+            echo '<tr><td>' . $course_names[$course] . '</td>';
+            echo '<td class="rightPos">&yen;' . number_format($course_prices[$course]) . '</td></tr>';
+
+            // オプショナルツアーの処理
+            if (isset($_POST['options'])) {
+                foreach ($_POST['options'] as $option) {
+                    echo '<tr><td>' . $option_names[$option - 1] . '</td>';
+                    echo '<td class="rightPos">&yen;' . number_format($option_prices[$option - 1]) . '</td></tr>';
+
+                    $sum += $option_prices[$option - 1];
+                }
+            }
+
+            // 合計金額の処理
+            echo '<tr><td class="titleColor">合計金額</td>';
+            echo '<td class="titleColor rightPos">&yen;' . number_format($sum) . '</td></tr>';
+            ?>
+        </table>
+        <a href="tour.html">見積り画面に戻る</a>
+    </div>
+</body>
+
+</html>
 ```
