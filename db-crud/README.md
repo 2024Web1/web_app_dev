@@ -323,7 +323,8 @@ INSERT文を定義するときも、値の部分を「?」（プレースホル�
 このDELETE文もUPDATE文、INSERT文同様に **「?」（プレースホルダ）** を利用してSQL文を定義します。
 
 `dbdelete.php`
-<img src="./images/dbdelete_display.png" width="80%">
+
+![](./images/dbdelete_display.png)
 
 ```php
 <!DOCTYPE html>
