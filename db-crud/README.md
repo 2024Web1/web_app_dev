@@ -516,7 +516,7 @@ pushした課題が合格したかはpush後に必ず確認してください。
 
 ### 合格確認方法
 
-1. 本課題の[課題ページ](https://classroom.github.com/a/_EUpxz7R)に再度アクセスする。
+1. 本課題の[課題ページ](https://classroom.github.com/a/_EUpxz7R)に再度アクセスします。
 2. 画面上部にある`Actions`をクリックしてください。<br>
 ![](./images/acions.png)
 1. **一番上**の行に、緑色のチェックが入っていればOKです。<br>

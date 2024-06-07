@@ -1,12 +1,12 @@
-﻿# オブジェクト指向プログラミング2
+﻿# オブジェクト指向プログラミング②
 
-- [オブジェクト指向プログラミング2](#オブジェクト指向プログラミング2)
+- [オブジェクト指向プログラミング②](#オブジェクト指向プログラミング)
   - [事前準備](#事前準備)
     - [obj\_select.php](#obj_selectphp)
-    - [obj\_update.php](#obj_updatephp)
-    - [obj\_insert.php](#obj_insertphp)
-    - [obj\_delete.php](#obj_deletephp)
-    - [obj\_select1.php](#obj_select1php)
+    - [UPDATE文](#update文)
+    - [INSERT文](#insert文)
+    - [DELETE文](#delete文)
+    - [条件付きSELECT文にチャレンジ](#条件付きselect文にチャレンジ)
   - [【まとめ】オブジェクト指向プログラミングのメリット](#まとめオブジェクト指向プログラミングのメリット)
   - [付録: MVCモデル](#付録-mvcモデル)
   - [課題の作成と提出](#課題の作成と提出)
@@ -17,117 +17,252 @@
     - [エラーが出た時の対処法](#エラーが出た時の対処法)
     - [タイムアウトになっていないかを確認する](#タイムアウトになっていないかを確認する)
     - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する)
-      - [どこでエラーがでているか確認する](#どこでエラーがでているか確認する)
-      - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する-1)
-  - [GitHub上での採点についてのお願い](#github上での採点についてのお願い)
 
 ## 事前準備
 
-前回の「11.オブジェクト指向プログラミング1」でcloneしたコードをそのまま利用する。
+前回の[オブジェクト指向プログラミング①](../object-i/README.md)でcloneしたコードをそのまま利用してください。
 
-```text
-C:¥xampp¥htdocs
-    └── 11_obj-GitHubのユーザー名
-        ├── <中略>
-        └── src
-        |   └── classes
-        |   |   ├── dbdata.php
-        |   |   └── dbphp.php
-        |   ├── obj_delete.php
-        |   ├── obj_insert.php
-        |   ├── obj_select.php
-        |   ├── obj_select1.php
-        |   └── obj_update.php
-        |   └── script
-        |   |   └── mysql_php.txt
-        └── <中略>
-```
-
-前章の「11_オブジェクト指向プログラミング1」でクラス「DbPhp」を利用するphpファイルのコードを示す。
-
-<div style="page-break-before:always"></div>
+前章で作成したクラス`DbPhp`を利用するphpファイルのコードを以下に示します。
 
 ### obj_select.php
 
-![](./images/11/obj_select_code.png)
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obj_select.php</title>
+</head>
+
+<body>
+    <?php
+    // DbPhpクラスのオブジェクト生成し、selectAll( )メソッドをよびだす
+    require_once __DIR__ . '/classes/dbphp.php'; // ①
+    $dbPhp = new DbPhp(); // ②
+    $persons = $dbPhp->selectAll(); // ③
+
+    // 抽出した全データを画面表示する
+    foreach ($persons as $person) { // ④
+        echo 'uid=' . $person['uid'] . ', name=' . $person['name'] . '<br>';
+    }
+    ?>
+</body>
+
+</html>
+```
 
 ①： `require_once __DIR__ . '/classes/dbphp.php';`</br>
 このコードでDbPhp.class が利用できるようになる
 
 ②: `$dbPhp = new DbPhp( );`</br>
-DbPhpクラスのオブジェクトを生成し、変数 `$dbPhp` に格納する。
+DbPhpクラスのオブジェクトを生成し、変数 `$dbPhp` に格納する
 
 ③: `$persons = $dbPhp->selectAll( );`</br>
 DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出したデータが格納されているPDOオブジェクトを受け取るステートメント
 
 ④: `foreach ($persons as $person) {`</br>
-受け取ったPDOステートメントオブジェクトから1件ずつデータを取り出している 
+受け取ったPDOステートメントオブジェクトから1件ずつデータを取り出している
+
+※なお、今回はデータベースを切断する`$pdo = null;`を記述しないパターンでコードを書いております。明示的に記述がない場合は、PHPスクリプトの終了時に自動的に接
+続が閉じられます。
 
 <img src="./images/11/obj_select_display.png" width="75%">
 
-<div style="page-break-before:always"></div>
+### UPDATE文
 
-### obj_update.php
+以下のコードから穴あきになっています。
+先程の`obj_select.php`と同様に、クラス`DbPhp`を利用するコードを完成させてください。
 
-![](./images/11/obj_update_code.png)
+なお、ブラウザ上での動作は[データベース利用](../db-crud/README.md)と同じです。
+
+`obj_update.php`
+
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obj_update.php</title>
+</head>
+
+<body>
+    <?php
+    // DbPhpクラスのオブジェクト生成し、updatePerson( )メソッドをよびだす
+    
+
+
+
+    // 登録後の全データを画面表示する
+    
+
+
+
+    ?>
+</body>
+
+</html>
+```
+
 ![](./images/11/obj_update_display.png)
 
-<div style="page-break-before:always"></div>
+### INSERT文
 
-### obj_insert.php
+`obj_insert.php`
 
-![](./images/11/obj_insert_code.png)
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obj_insert.php</title>
+</head>
+
+<body>
+    <?php
+    // DbPhpクラスのオブジェクト生成し、insertPerson( )メソッドをよびだす
+    
+
+
+
+    // 登録後の全データを画面表示する
+    
+
+
+
+    ?>
+</body>
+
+</html>
+```
 ![](./images/11/obj_insert_display.png)
 
-<div style="page-break-before:always"></div>
+### DELETE文
 
-### obj_delete.php
+`obj_delete.php`
 
-![](./images/11/obj_delete_code.png)
+```php
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obj_delete.php</title>
+</head>
+
+<body>
+    <?php
+    // DbPhpクラスのオブジェクト生成し、deletePerson( )メソッドをよびだす
+   
+
+
+
+    // 登録後の全データを画面表示する
+    
+
+
+
+    ?>
+</body>
+
+</html>
+```
+
 ![](./images/11/obj_delete_display.png)
 
-<div style="page-break-before:always"></div>
+### 条件付きSELECT文にチャレンジ
 
-### obj_select1.php
+このチャレンジ問題は自動採点の評価対象外です。
+SELECT〜DELETE文を完了した方は、是非チャレンジしてください！
 
-![](./images/11/obj_select1_code.png)
+```php
+<!DOCTYPE html>
+<html lang="ja">
 
-1. uid=2が指定されたとき</br>
-クエリパラメータを設定した以下のURLにブラウザからアクセスする。</br>
-`http://localhost/11_obj-GitHubのユーザー名/src/obj_select1.php?uid=2`</br>
-![](./images/11/obj_select1_display1.png)
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obj_select1.php</title>
+</head>
 
-<div style="page-break-before:always"></div>
+<body>
+    <?php
+    // もしも$_GET['uid']が空なら、uidを求めるフォームを表示(GETメソッド使用)
+    if (                   ) {
+    ?>
+        <!-- 検索フォームを以下に記述 -->
 
-2. uidの指定がないとき</br>
-以下のURLにブラウザからアクセスする。</br>
-`http://localhost/11_obj-GitHubのユーザー名/src/obj_select1.php`</br>
-![](./images/11/obj_select1_display2.png)
 
-3. データのないuid=9が指定されたとき</br>
-クエリパラメータを設定した以下のURLにブラウザからアクセスする。</br>
-`http://localhost/11_obj-GitHubのユーザー名/src/obj_select1.php?uid=9`</br>
-![](./images/11/obj_select1_display3.png)
+
+        <!-- ここまで -->
+    <?php
+    } else {
+        // uidをキーにして、GETメソッドで受け取ったuidを代入
+        $uid = 
+
+        // DbPhpクラスのオブジェクト生成し、selectPerson( )メソッドをよびだす
+        
+
+
+
+
+        // 抽出した結果に応じた画面を表示する
+        // 結果が空ならば、該当するユーザがいない旨を表示
+        if (           ) {
+            echo 
+        } else {
+            // 結果があれば、uidとnameを表示
+            echo 
+        }
+    }
+    ?>
+</body>
+
+</html>
+```
+
+1. `person`テーブルにデータのあるユーザーIDを入力し、「検索」ボタンを押した時<br>
+→該当する`uid`と`name`が表示される
+![](./images/dbselect1_display1.png)
+![](./images/dbselect1_display2.png)
+
+1. `person`テーブルにデータのないユーザーIDを入力し、「検索」ボタンを押した時<br>
+→該当するデータが無い旨のメッセージが表示される
+![](./images/dbselect1_display3.png)
+![](./images/dbselect1_display4.png)
+
+1. ユーザーIDを入力せず、「検索」ボタンを押した時<br>
+→検索フォームが表示のまま
+![](./images/dbselect1_display5.png)
+![](./images/dbselect1_display6.png)
 
 ## 【まとめ】オブジェクト指向プログラミングのメリット
 
-オブジェクト指向プログラミングのメリットは、**複雑なロジック部分のコードを分離することができる** ということである。
+オブジェクト指向プログラミングのメリットは、**複雑なロジック部分のコードを分離することができる** というところです。
 
-さらに、PHPのコードを排除した画面用のコード作成することも可能となる。こうして、プログラマーとデザイナーの役割に応じて開発を同時に進めていくことができるようになる。
+さらに、PHPのコードを排除した画面用のコードを作成することも可能となります。
+こうして、プログラマーとデザイナーの役割に応じて開発を同時に進めていくことができるようになります。
 
-現状では、こうしたWebアプリケーションの開発で「**MVCモデル**」というデザインパターンがよく利用されており、「CakePHP」や「Laravel」といったフレームワークにもこの「MVCモデル」の概念が取り入られている。（「Ruby on Rails」なども同様）
+現状では、こうしたWebアプリケーションの開発で「**MVCモデル**」というデザインパターンがよく利用されており、「Laravel」や「CakePHP」といったフレームワークにもこの「MVCモデル」の概念が取り入られています。
 
 ## 付録: MVCモデル
 
-MVCとはModel・View・Controllerの略で、処理を３つの役割に分割して実装する手法。</br>
+MVCとはModel・View・Controllerの略で、処理を３つの役割に分割して実装する手法です。</br>
 
-![](./images/11/Aspose.Words.a4c93f43-ec41-42b5-b372-9be25bdbba96.013.jpeg)
+![](./images/Aspose.Words.a4c93f43-ec41-42b5-b372-9be25bdbba96.013.jpeg)
 
 - Controller: クライアントからのリクエストを直接受け取り処理を行う部分で、ModelやViewを「制御」する。
 - Model: 処理のメインロジックやデータアクセスを担当する。
 - View: 処理結果として画面表示（HTML出力）を担当する。
 
-処理の流れとしては、以下のようになる。Controllerが最も前面かつ全ての仲介に位置する。
+処理の流れとしては、以下のようになります。
+Controllerが最も前面かつ全ての仲介に位置する。
 
 1. Controllerがリクエスト情報を基にModelに処理を依頼
 1. Modelはデータと連携して処理を行い、処理結果をControllerに返す
@@ -152,75 +287,38 @@ pushまでの説明は省略する。忘れた場合は、これより以前の�
 1. obj_insert.phpにて、データが正しく挿入されること
 1. obj_delete.phpにて、データが正しく削除されること
 
-<div style="page-break-before:always"></div>
-
 ### 合格確認方法
 
-1. 本課題の[課題ページ](https://classroom.github.com/a/cZKEEdEs)に再度アクセスする。
-2. 画面上部にある`Actions`をクリックする。</br>
-![](./images/11/acions.png)
-1. **一番上**の行に、緑色のチェックが入っていればOK。※その下に赤いばつ印が入っているものがあるが、それは無視する。</br>
-![](./images/11/pass.png)
+1. 本課題の[課題ページ](https://classroom.github.com/a/mcVSbvMn)に再度アクセスします。
+2. 画面上部にある`Actions`をクリックしてください。<br>
+![](./images/acions.png)
+1. **一番上**の行に、緑色のチェックが入っていればOKです。<br>
+![](./images/pass.png)
 
 ### エラーが出た時の対処法
 
-自動採点がエラーになると、**一番上**の行に赤いばつ印がでる。その場合の解決策を以下に示す。
+自動採点がエラーになると、**一番上**の行に赤いばつ印がでます。その場合の解決策を以下に示します。
 
 ### タイムアウトになっていないかを確認する
 
-※右端の赤枠で囲まれている箇所に処理時間がでるが、**2分以上**かかっている場合はタイムアウトとなる。
-![](./images/11/timeout.png)
+※右端の赤枠で囲まれている箇所に処理時間がでますが、**4分前後**かかっている場合には、まずタイムアウトの可能性を疑ってください。
+![](./images/timeout.png)
 
-なお、タイムアウトの場合は、GitHub上で処理を再開すると解決できる。具体的なタイムアウト解決方法は、
+具体的なタイムアウトの確認・解決方法は、
 
-  1. Actionsタブをクリック
-  2. タイトルが下記のようにリンクになっているので、クリック</br>
-      ![](./images/11/timeout2.png)</br>
-  3. Autogradingをクリック</br>
-   <img src="./images/11/timeout3.png" width="75%"></br>
-   <div style="page-break-before:always"></div>
-
-  4. 赤いばつ印が出ている箇所をクリック</br>
-   <img src="./images/11/timeout4.png" width="75%"></br>
-  1. `::error::Setup timed out in 120000 milliseconds`のメッセージがあればタイムアウト
-
-  6. 右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
-  ![](./images/11/timeout6.png)</br>
-  ![](./images/11/timeout7.png)
-  7. タイムアウトにならず2分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
-
-<div style="page-break-before:always"></div>
+  1. `Actions`のタイトルが以下のようにリンクになっているので、クリック
+      ![](./images/timeout2.png)
+  2. `run-autograding-tests`をクリック
+   ![](./images/run-autograding-tests.png)
+  3. 赤いばつ印が出ている箇所をクリック
+  ![](./images/timeout4.png)
+  1. `::error::Setup timed out in XXXXXX milliseconds`のメッセージがあればタイムアウト
+   ![](./images/timeout8.png)
+  6. 解決策としては、右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
+  ![](./images/timeout6.png)<br>
+  ![](./images/timeout7.png)
+  7. タイムアウトにならず3分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
 
 ### プログラムが正確に書かれているか確認する
 
-プログラムが正確に書かれているかを確認すること。たとえ、ブラウザの画面でそれっぽく表示されても、自動採点なので融通がきかない。エラーが出た際は、以下を確認すること。
-
-#### どこでエラーがでているか確認する
-
-今回は3つの自動採点(update, insert, delete)があるので、以下の手順で、どごでエラーが出ているか確認する。
-
-1. Actionsタブをクリック
-2. タイトルが下記のようにリンクになっているので、クリック
-      ![](./images/11/timeout2.png)</br>
-3. Autogradingをクリック</br>
-   <img src="./images/11/timeout3.png" width="65%"></br>
-4. 赤いばつ印が出ている箇所をクリック</br>
-  <img src="./images/11/timeout4.png" width="65%"></br>
-1. エラーがあるソースコードは、下記画像のように、エラーメッセージが表示されるので、これにエラーが出ているソースコードを特定できる。</br>
-<img src="./images/11/error_message.png" width="75%"></br>
-
-#### プログラムが正確に書かれているか確認する
-
-プログラムが正確に書かれているかを確認する。たとえ、ブラウザの画面でそれっぽく表示されても、自動採点ですので融通はききません。エラーが出た際は、サンプルコードと差異がないか確認してください。
-
-<div style="page-break-before:always"></div>
-
-## GitHub上での採点についてのお願い
-
-今回、再度GitHub上での採点をするにあたりお願いがあります。それは、</br>
-GitHubに課題をpushする前に、**必ずブラウザで動作確認をしてください。**　理由は下記の2つです。</br>
-
-1. Webアプリケーションはブラウザ上で動作することが前提であるため。
-2. GitHubの採点処理時間に上限があるため。</br>
-以前の自動採点プログラムと比べ、処理時間の高速化には成功したものの、GitHubの合計処理時間には毎月上限があります。むやみやたらにpushすると、上限に達しかねないので、必ずブラウザ上で正常に動作することを確認してからpushしてください。**エラーの原因が特定できない場合は、お気軽に質問してください。**
-
+プログラムが正確に書かれているかを確認してください。たとえ、ブラウザの画面でそれらしく表示されても、自動採点なので融通は効きません。エラーが出た際は、以下の点を確認してください。

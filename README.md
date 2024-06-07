@@ -32,4 +32,4 @@
 
 ## [データベース作成](./db-create/README.md)
 
-## [セッション管理](./db-crud/README.md)
+## [データベース利用](./db-crud/README.md)
