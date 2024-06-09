@@ -68,7 +68,7 @@ DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出�
 ※なお、今回はデータベースを切断する`$pdo = null;`を記述しないパターンでコードを書いております。明示的に記述がない場合は、PHPスクリプトの終了時に自動的に接
 続が閉じられます。
 
-<img src="./images/11/obj_select_display.png" width="75%">
+<img src="./images/obj_select_display.png" width="75%">
 
 ### UPDATE文
 
@@ -107,7 +107,7 @@ DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出�
 </html>
 ```
 
-![](./images/11/obj_update_display.png)
+![](./images/obj_update_display.png)
 
 ### INSERT文
 
@@ -140,7 +140,7 @@ DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出�
 
 </html>
 ```
-![](./images/11/obj_insert_display.png)
+![](./images/obj_insert_display.png)
 
 ### DELETE文
 
@@ -174,7 +174,7 @@ DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出�
 </html>
 ```
 
-![](./images/11/obj_delete_display.png)
+![](./images/obj_delete_display.png)
 
 ### 条件付きSELECT文にチャレンジ
 
@@ -192,6 +192,7 @@ SELECT〜DELETE文を完了した方は、是非チャレンジしてくださ�
 </head>
 
 <body>
+    <h1>条件付きSELECTの例</h1>
     <?php
     // もしも$_GET['uid']が空なら、uidを求めるフォームを表示(GETメソッド使用)
     if (                   ) {
@@ -229,18 +230,18 @@ SELECT〜DELETE文を完了した方は、是非チャレンジしてくださ�
 
 1. `person`テーブルにデータのあるユーザーIDを入力し、「検索」ボタンを押した時<br>
 →該当する`uid`と`name`が表示される
-![](./images/dbselect1_display1.png)
-![](./images/dbselect1_display2.png)
+![](./images/obj_select1_display1.png)
+![](./images/obj_select1_display2.png)
 
 1. `person`テーブルにデータのないユーザーIDを入力し、「検索」ボタンを押した時<br>
 →該当するデータが無い旨のメッセージが表示される
-![](./images/dbselect1_display3.png)
-![](./images/dbselect1_display4.png)
+![](./images/obj_select1_display3.png)
+![](./images/obj_select1_display4.png)
 
 1. ユーザーIDを入力せず、「検索」ボタンを押した時<br>
 →検索フォームが表示のまま
-![](./images/dbselect1_display5.png)
-![](./images/dbselect1_display6.png)
+![](./images/obj_select1_display5.png)
+![](./images/obj_select1_display6.png)
 
 ## 【まとめ】オブジェクト指向プログラミングのメリット
 
