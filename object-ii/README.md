@@ -2,7 +2,7 @@
 
 - [オブジェクト指向プログラミング②](#オブジェクト指向プログラミング)
   - [事前準備](#事前準備)
-    - [obj\_select.php](#obj_selectphp)
+    - [SELECT文](#select文)
     - [UPDATE文](#update文)
     - [INSERT文](#insert文)
     - [DELETE文](#delete文)
@@ -24,7 +24,11 @@
 
 前章で作成したクラス`DbPhp`を利用するphpファイルのコードを以下に示します。
 
-### obj_select.php
+以下の5つのソースコード(`obj_select.php`, `obj_update.php`, `obj_insert.php`, `obj_delete.php`, `obj_select1.php`)は、`public`ディレクトリ直下に作成してください。
+
+### SELECT文
+
+`obj_select.php`
 
 ```php
 <!DOCTYPE html>
