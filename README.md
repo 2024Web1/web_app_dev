@@ -37,5 +37,3 @@
 ## [オブジェクト指向①](./object-i/README.md)
 
 ## [オブジェクト指向②](./object-ii/README.md)
-
-
