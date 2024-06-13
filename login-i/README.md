@@ -20,13 +20,15 @@
 今回作成するWebアプリケーションでは、以下のファイルを作成します。
 それぞれのファイル名と主な機能は以下のとおりです。
 
-1. login.html・・・ユーザーID、パスワードを入力する画面
+1. register.php・・・新規ユーザー登録を行うため、ユーザーID、パスワード、氏名を入力する画面
 
-1. register.html・・・新規ユーザー登録を行うため、ユーザーID、パスワード、氏名を入力する画面
+1. register_db.php・・・新規ユーザの登録処理結果を表示する画面
 
-1. login.php・・・認証処理結果を表示する画面
+1. login.php・・・ユーザーID、パスワードを入力する画面
 
-1. register.php・・・新規ユーザの登録処理結果を表示する画面
+1. login_db.php・・・認証処理をする(※画面表示は行いません)
+
+1. welcome.php・・・ログイン認証が完了した場合、ログインしたユーザー名を表示する画面
 
 1. logout.php・・・ログアウト処理を行う画面
 
@@ -45,48 +47,33 @@
 
 ## 詳細画面
 
-1. 新規登録画面（register.html）<br>
+1. 新規登録画面（register.php）<br>
 新規ユーザーが、「ユーザーID」、「パスワード」、「名前」をデータベースに登録する入力フォームを用意する。<br>
-![](./images/register_html_display.png)
-
-1. 登録結果画面（register.php）<br>
-ユーザー登録が完了した場合、登録した「ユーザーID」、「パスワード」、「名前」を画面に表示する。<br>
-※実際のシステムでは、パスワードを見せることはせずに「\*\*\*\*\*」といった形で表示する ここではあえて見える形で表示している<br>
-![](./images/register_php_display.png)<br><br>
-登録済みのユーザーIDを使った場合にエラーとし、入力されたユーザーIDを画面に表示する。<br>
+![](./images/register_html_display.png)<br><br>
+登録済みのユーザーIDを使った場合はエラーとし、入力されたユーザーIDを画面に表示する。<br>
 ![](./images/register_php_display_error.png)
 
-1. ログイン画面（login.html）<br>
-新規登録完了後、登録したユーザーIDとパスワードを入力する。<br>
-![](./images/login_html_display.png)
+1. 登録結果画面（register_db.php）<br>
+ユーザー登録が完了した場合、登録した「ユーザーID」、「パスワード」、「名前」を画面に表示する。<br>
+※実際のシステムでは、パスワードを見せることはせずに「\*\*\*\*\*」といった形で表示するが、ここではあえて見える形で表示している<br>
+![](./images/register_db_php_display.png)<br><br>
 
-1. 認証結果画面(login.php)<br>
-入力したユーザーIDとパスワードが、データベースに登録した内容と一致した場合、ログインを認め 「こんにちは、○○○○ さん！」とログインしたユーザー名を表示する。<br>
-![](./images/login_php_display.png)<br><br>
+1. ログイン画面（login.php）<br>
+新規登録完了後、登録したユーザーIDとパスワードを入力する。<br>
+![](./images/login_html_display.png)<br><br>
 登録されていないユーザーIDやパスワードでログインしようとした場合には、次のエラー画面を表示する。<br>
 ![](./images/login_php_display_error.png)<br>
 
-![](images/12/namelist.jpeg)
+1. 認証結果画面(welcome.php)<br>
+入力したユーザーIDとパスワードが、データベースに登録した内容と一致した場合、ログインを認め、「○○○○ さんログイン中」とログインしたユーザー名を表示する。<br>
+![](./images/login_php_display.png)<br><br>
+なお、認証をしていない状態で直接URLを入力した場合は、以下の画面が表示されログインするように促す。<br>
 
-```text
-C:¥xampp¥htdocs
-    └── 11_obj-GitHubのユーザー名
-        ├── <中略>
-        └── src
-        |   └── classes
-        |   |   ├── dbdata.php
-        |   |   └── user.php
-        |   └── css
-        |   |   └── login.css
-        |   └── script
-        |   |   └── mysql_login.txt
-        |   ├── login.html
-        |   ├── login.php
-        |   ├── register.html
-        |   ├── register.php
-        |   └── util.php
-        └── <中略>
-```
+1. ログアウト画面（logout.php）<br>
+ログアウトボタンを押すと、ログアウト処理をしたことを表示する。<br>
+
+
+![](images/12/namelist.jpeg)
 
 ※「login.css」を利用し画面デザインを適用するため、HTMLのタグに「id」や「class」といった属性を追加している。CSSについて初めての方は、以下のサイトなどを参考に簡単な使い方などを理解しておくこと。
 
