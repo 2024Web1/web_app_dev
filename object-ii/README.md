@@ -130,6 +130,7 @@ DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出�
 <body>
     <?php
     // DbPhpクラスのオブジェクト生成し、insertPerson( )メソッドをよびだす
+    // name = 深沢七郎, company_id = 3, age = 29
     
 
 
