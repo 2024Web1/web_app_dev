@@ -193,19 +193,19 @@ public function setName( $name ) { // この$nameはメソッドsetName( )の仮
 次に、**クラス「DbData」を継承する、クラス「DbPhp」を定義するPHPファイル「dbphp.php」** を作成します。
 このクラス「DbPhp」には、次の５つのメソッドを定義します。
 
-① `selectAll( )` メソッド</br>
+① `selectAll( )` メソッド<br>
 テーブルpersonのすべてのデータを抽出するメソッド
 
-② `selectPerson( $uid )` メソッド</br>
+② `selectPerson( $uid )` メソッド<br>
 引数で指定されたユーザーID（$uid）のデータを抽出するメソッド
 
-③ `insertPerson( $name,  $cid,  $age )` メソッド</br>
+③ `insertPerson( $name,  $cid,  $age )` メソッド<br>
 引数で渡された氏名、カンパニーID、年齢の値で新規ユーザーを登録するメソッド
 
-④ `updatePerson( $uid,  $name )` メソッド </br>
+④ `updatePerson( $uid,  $name )` メソッド <br>
 引数で指定されたユーザーID($uid）の氏名を引数で渡された$nameの値に更新するメソッド
 
-⑤ `deletePerson( $name )` メソッド</br>
+⑤ `deletePerson( $name )` メソッド<br>
 引数で指定された氏名（$name）のデータを削除するメソッド
 
 `classes/dbphp.php`
@@ -299,7 +299,7 @@ require_once  __DIR__ . '/dbdata.php'; // 【注】__DIR__の「__」部分は�
 
 ファイルを読み込む方法として他にも `require`、`include_once`、`include`などもありますが、下記の参考サイトで その違いなどを確認しておいてください。
 
-[PHP requireとrequire_onceの違い](https://zeropuro.com/blog/?p=322)</br>
+[PHP requireとrequire_onceの違い](https://zeropuro.com/blog/?p=322)<br>
 [PHP requireとincludeの違い](https://zeropuro.com/blog/?p=328)
 
 |命令|特徴|
