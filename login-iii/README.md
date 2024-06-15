@@ -1,8 +1,6 @@
 ﻿# ログイン認証③
 
 - [ログイン認証③](#ログイン認証)
-  - [register.php](#registerphp)
-  - [login.php](#loginphp)
   - [課題の作成と提出](#課題の作成と提出)
     - [作成したソースコードをpush](#作成したソースコードをpush)
   - [採点について](#採点について)
@@ -15,38 +13,7 @@
       - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する-1)
   - [GitHub上での採点についてのお願い](#github上での採点についてのお願い)
 
-## register.php
 
-![](./images/register_php_code.png)
-
-完成させた後、ブラウザで「register.html」を表示し、次のデータを入力後「登録する」ボタンを押し、無事に登録されたことを確認する。
-
-- ユーザーID: kobe
-- パスワード: denshi
-- お名前: 神戸電子
-
-![](./images/register_html_display.png)
-![](./images/register_php_display.png)
-
-また、もう一度「register.html」で同じユーザーを登録しようとすると、以下のように登録が失敗する。
-
-![](./images/register_php_display_error.png)
-
-## login.php
-
-![](./images/login_php_code.png)
-
-完成させた後、ブラウザで「login.html」を表示し、次のデータを入力後「ログイン」ボタンを押し、認証できることを確認する。
-
-- ユーザーID: kobe
-- パスワード: denshi
-
-![](./images/login_html_display_input.png)
-![](./images/login_php_display.png)
-
-また、登録していないユーザーを「login.html」に入力すると、以下のように認証が失敗する。
-
-![](./images/login_php_display_error.png)
 
 ## 課題の作成と提出
 
@@ -68,9 +35,9 @@ pushまでの説明は省略する。忘れた場合は、これより以前の�
 ### 合格確認方法
 
 1. 本課題の[課題ページ]()に再度アクセスする。
-2. 画面上部にある`Actions`をクリックする。</br>
+2. 画面上部にある`Actions`をクリックする。<br>
 ![](./images/acions.png)
-1. **一番上**の行に、緑色のチェックが入っていればOK。※その下に赤いばつ印が入っているものがあるが、それは無視する。</br>
+1. **一番上**の行に、緑色のチェックが入っていればOK。※その下に赤いばつ印が入っているものがあるが、それは無視する。<br>
 ![](./images/pass.png)
 
 ### エラーが出た時の対処法
@@ -85,18 +52,18 @@ pushまでの説明は省略する。忘れた場合は、これより以前の�
 なお、タイムアウトの場合は、GitHub上で処理を再開すると解決できる。具体的なタイムアウト解決方法は、
 
   1. Actionsタブをクリック
-  2. タイトルが下記のようにリンクになっているので、クリック</br>
-      ![](./images/timeout2.png)</br>
-  3. Autogradingをクリック</br>
-   <img src="./images/timeout3.png" width="75%"></br>
+  2. タイトルが下記のようにリンクになっているので、クリック<br>
+      ![](./images/timeout2.png)<br>
+  3. Autogradingをクリック<br>
+   <img src="./images/timeout3.png" width="75%"><br>
    
 
-  4. 赤いばつ印が出ている箇所をクリック</br>
-   <img src="./images/timeout4.png" width="75%"></br>
+  4. 赤いばつ印が出ている箇所をクリック<br>
+   <img src="./images/timeout4.png" width="75%"><br>
   1. `::error::Setup timed out in 120000 milliseconds`のメッセージがあればタイムアウト
 
   6. 右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
-  ![](./images/timeout6.png)</br>
+  ![](./images/timeout6.png)<br>
   ![](./images/timeout7.png)
   7. タイムアウトにならず2分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
 
@@ -112,13 +79,13 @@ pushまでの説明は省略する。忘れた場合は、これより以前の�
 
 1. Actionsタブをクリック
 2. タイトルが下記のようにリンクになっているので、クリック
-      ![](./images/timeout2.png)</br>
-3. Autogradingをクリック</br>
-   <img src="./images/timeout3.png" width="65%"></br>
-4. 赤いばつ印が出ている箇所をクリック</br>
-  <img src="./images/timeout4.png" width="65%"></br>
-1. エラーがあるソースコードは、下記画像のように、エラーメッセージが表示されるので、これにエラーが出ているソースコードを特定できる。</br>
-<img src="./images/error_message.png" width="75%"></br>
+      ![](./images/timeout2.png)<br>
+3. Autogradingをクリック<br>
+   <img src="./images/timeout3.png" width="65%"><br>
+4. 赤いばつ印が出ている箇所をクリック<br>
+  <img src="./images/timeout4.png" width="65%"><br>
+1. エラーがあるソースコードは、下記画像のように、エラーメッセージが表示されるので、これにエラーが出ているソースコードを特定できる。<br>
+<img src="./images/error_message.png" width="75%"><br>
 
 #### プログラムが正確に書かれているか確認する
 
@@ -128,9 +95,9 @@ pushまでの説明は省略する。忘れた場合は、これより以前の�
 
 ## GitHub上での採点についてのお願い
 
-今回、再度GitHub上での採点をするにあたりお願いがあります。それは、</br>
-GitHubに課題をpushする前に、**必ずブラウザで動作確認をしてください。**　理由は下記の2つです。</br>
+今回、再度GitHub上での採点をするにあたりお願いがあります。それは、<br>
+GitHubに課題をpushする前に、**必ずブラウザで動作確認をしてください。**　理由は下記の2つです。<br>
 
 1. Webアプリケーションはブラウザ上で動作することが前提であるため。
-2. GitHubの採点処理時間に上限があるため。</br>
+2. GitHubの採点処理時間に上限があるため。<br>
 以前の自動採点プログラムと比べ、処理時間の高速化には成功したものの、GitHubの合計処理時間には毎月上限があります。むやみやたらにpushすると、上限に達しかねないので、必ずブラウザ上で正常に動作することを確認してからpushしてください。**エラーの原因が特定できない場合は、お気軽に質問してください。**

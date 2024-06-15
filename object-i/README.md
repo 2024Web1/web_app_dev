@@ -222,7 +222,7 @@ class DbPhp extends DbData
     // ①: テーブルpersonからすべてのデータを抽出する
     public function selectAll()
     {
-        $sql = "select * from person";
+        $sql = 'SELECT * FROM person';
         // 継承したDBDataクラスのquery( )メソッドを呼び出している
         // SQL文にプレースホルダはないので空の配列を渡している
         $stmt = $this->query($sql, []);
@@ -234,7 +234,7 @@ class DbPhp extends DbData
     // ②:テーブルpersonから指定されたuidのデータを抽出する
     public function selectPerson($uid)
     {
-        $sql = "select * from person where uid = ?";
+        $sql = 'SELECT * FROM person WHERE uid = ?';
         // 継承したDBDataクラスのquery( )メソッドを呼び出している
         // SQL文のプレースホルダは1つだけだが配列の形式で渡す
         $stmt = $this->query($sql, [$uid]);
@@ -246,7 +246,7 @@ class DbPhp extends DbData
     // ③:テーブルpersonに新規ユーザーを登録する
     public function insertPerson($name, $cid, $age)
     {
-        $sql = "insert into person ( name, company_id, age ) values ( ?, ?, ? )";
+        $sql = 'INSERT INTO person (name, company_id, age) VALUES (?, ?, ?)';
         // 継承したDBDataクラスのexec( )メソッドを呼び出している
         // SQL文のプレースホルダの数だけ配列で渡す
         $this->exec($sql, [$name, $cid, $age]);
@@ -255,7 +255,7 @@ class DbPhp extends DbData
     // ④:テーブルpersonのuidを指定し、氏名の値を更新する
     public function updatePerson($uid, $name)
     {
-        $sql = "update person set name = ? where uid = ?";
+        $sql = 'UPDATE person SET name = ? WHERE uid = ?';
         // 継承したDBDataクラスのexec( )メソッドを呼び出している
         // SQL文のプレースホルダの数だけ配列で渡す
         $this->exec($sql, [$name, $uid]);
@@ -264,7 +264,7 @@ class DbPhp extends DbData
     // ⑤:テーブルpersonの氏名を指定し、データを削除する
     public function deletePerson($name)
     {
-        $sql = "delete from person where name = ?";
+        $sql = 'DELETE FROM person WHERE name = ?';
         // 継承したDBDataクラスのexec( )メソッドを呼び出している
         // SQL文のプレースホルダは1つだけだが配列の形式で渡す
         $this->exec($sql, [$name]);

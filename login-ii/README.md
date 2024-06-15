@@ -2,49 +2,37 @@
 
 - [ログイン認証②](#ログイン認証)
   - [事前準備](#事前準備)
-  - [dbdata.php](#dbdataphp)
-  - [user.php](#userphp)
+    - [login.html](#loginhtml)
+    - [user.php](#userphp)
+  - [login.php](#loginphp)
 
 ## 事前準備
 
-前回の「12.ログイン認証2」でcloneしたコードをそのまま利用する。
+前回の「12.ログイン認証2」でcloneしたコードをそのまま利用してください。
 
-```text
-C:¥xampp¥htdocs
-    └── 11_obj-GitHubのユーザー名
-        ├── <中略>
-        └── src
-        |   └── classes
-        |   |   ├── dbdata.php
-        |   |   └── user.php
-        |   └── css
-        |   |   └── login.css
-        |   └── script
-        |   |   └── mysql_login.txt
-        |   ├── login.html
-        |   ├── login.php
-        |   ├── register.html
-        |   ├── register.php
-        |   └── util.php
-        └── <中略>
-```
+### login.html
 
-## dbdata.php
+<img src="./images/login_html_code.png" width="95%"><br>
 
-データベースの基本事項に関するクラスが定義されているクラス。前章の「11.オブジェクト指向プログラミング」のときとほぼ同じだが、今回は`exec`メソッドの戻り値を判定に利用するので、その部分が追記されている。
+入力が終わったなら、必ずブラウザで以下のように正しく表示されるかを確認すること。問題がないことを確認したうえで次の「register.html」に取り掛かること。<br>
+<img src="./images/login_html_display.png" width="65%"><br>
 
-![](./images/dbdata.png)
+### user.php
 
-## user.php
 
-次に、**クラス「DbData」を継承する、クラス「User」を定義するPHPファイル「user.php」** を作成する。このクラス「User」には、次の2つのメソッドを定義する。
 
-① `signUp($userId, $password, $userName)` メソッド</br>
-引数で渡されたユーザーID、パスワード、ユーザー名の値で新規ユーザーを登録するメソッド
+## login.php
 
-② `authUser($userId, $password)` メソッド</br>
-引数で指定されたユーザーID、パスワードの値でログイン認証するメソッド
+![](./images/login_php_code.png)
 
-![](./images/user.png)
+完成させた後、ブラウザで「login.html」を表示し、次のデータを入力後「ログイン」ボタンを押し、認証できることを確認する。
 
-**dbdata.php, user.phpのプログラムを作成しても、動作確認はまだできません。次章の「12.ログイン認証4」にあるプログラムを作成する必要があります。**
+- ユーザーID: kobe
+- パスワード: denshi
+
+![](./images/login_html_display_input.png)
+![](./images/login_php_display.png)
+
+また、登録していないユーザーを「login.html」に入力すると、以下のように認証が失敗する。
+
+![](./images/login_php_display_error.png)
