@@ -1,6 +1,11 @@
 ﻿# ログイン認証③
 
 - [ログイン認証③](#ログイン認証)
+  - [事前準備](#事前準備)
+  - [logout.php](#logoutphp)
+  - [これでログイン認証作成完了！　　ではありません](#これでログイン認証作成完了ではありません)
+    - [login\_check.php](#login_checkphp)
+    - [welcome.php](#welcomephp)
   - [課題の作成と提出](#課題の作成と提出)
     - [作成したソースコードをpush](#作成したソースコードをpush)
   - [採点について](#採点について)
@@ -9,11 +14,160 @@
     - [エラーが出た時の対処法](#エラーが出た時の対処法)
     - [タイムアウトになっていないかを確認する](#タイムアウトになっていないかを確認する)
     - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する)
-      - [どこでエラーがでているか確認する](#どこでエラーがでているか確認する)
-      - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する-1)
-  - [GitHub上での採点についてのお願い](#github上での採点についてのお願い)
+
+## 事前準備
+前回の[ログイン認証①](../login-i/README.md)でcloneしたコードをそのまま利用してください。
+
+## logout.php
+
+ログアウト処理を行う`logout.php`を作成します。
+
+```php
+<?php
+session_start();
+$_SESSION = array();
+if (isset($_COOKIE[session_name()]) == true) {
+    setcookie(session_name(), '', time() - 10, '/');
+}
+session_destroy();
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログアウトページ</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div id="main">
+        <h2>ログアウトしました</h2>
+        <hr><br>
+        <p><a href="login.html">ログインページへ</a></p>
+    </div>
+</body>
+```
+
+## これでログイン認証作成完了！　　ではありません
+
+このままですと、実はログインしていなくても、直接URLを入力することで認証結果画面(welcome.php)にアクセスすることができてしまいます...(もちろん、正しい画面遷移ではないのでエラーが出ます)
+
+![](./images/welcome_php_display_error.png)
+
+このような不正アクセスを防ぐために、ログインしていない場合はログインページに遷移をするよう処理を追加します。
+
+### login_check.php
+
+まずは、認証処理画面(login_check.php)にて、ログインに成功した際、セッションに認証情報を保存します。
+
+```php
+<?php
+// 送られてきたユーザーIDとパスワードを受け取る	
+$userId   = $_POST['userId'];
+$password = $_POST['password'];
+
+// ---Userオブジェクトを生成し、「authUser()メソッド」を呼び出し、認証結果を受け取る	
+// user.phpを読み込む
+require_once __DIR__  .  '/classes/user.php';
+// UserクラスからUserオブジェクトを生成する
+$user = new User();
+// authUser()メソッドを呼び出し、認証結果を受け取る
+$result = $user->authUser($userId, $password);
+
+// ログインに成功した場合、セッションに認証情報を保存し、welcome.phpにリダイレクトする
+if ($result) {
+    session_start();
+    // --ここだけ追加--
+    $_SESSION['login'] = 1;　// ログインフラグ
+    // --ここまで--
+    $_SESSION['userName'] = $result['userName'];
+    header('Location: welcome.php');
+    exit();
+}
+
+// 共通するデータ・関数を定義したPHPファイルを読み込む
+require_once  __DIR__  .  '/util.php';
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログインページ</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<!-- ログインに失敗した場合のメッセージを表示する -->
+
+<body>
+    <div id="main">
+        <h2>ログインに失敗しました</h2>
+        <hr><br>
+        ユーザーID、パスワードを確認してください。
+        <p><a href='login.html'>ログインページへ</a></p>
+    </div>
+</body>
+
+</html>
+```
+
+### welcome.php
+
+続いて、認証結果画面(welcome.php)にて、セッションに認証情報が無い場合に、ログイン画面にリダイレクトする処理を追加します。
+
+```php
+<?php
+session_start();
+
+// ----ここから追加----
+if (isset($_SESSION['login']) == false) {
+    header('Location: login.html');
+    exit();
+}
+// ----ここまで追加----
 
 
+// 共通するデータ・関数を定義したPHPファイルを読み込む
+require_once  __DIR__  .  '/util.php';
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログインページ</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div id="main">
+        <h2>ようこそ！</h2>
+        <hr><br>
+        <?= h($_SESSION['userName']) ?> さんログイン中
+        <p><a href='logout.php'>ログアウト</a></p>
+    </div>
+</body>
+
+</html>
+```
+
+以上で、修正は完了です。
+実際の動作を確認してみましょう。
+
+1. ログインしていない状態で、welcome.phpにアクセスしてください。<br>
+![](./images/url.png)
+
+2. ログインページにリダイレクトされることを確認してください。
+![](./images/login_html_display.png)
+
+これで本当にログイン認証の作成が完了しました。
 
 ## 課題の作成と提出
 
@@ -29,75 +183,43 @@ pushまでの説明は省略する。忘れた場合は、これより以前の�
 
 以下の3つを合格基準とする。
 
-1. 新規ユーザーの登録処理ができること
-2. 登録したユーザーで認証処理ができること
+1. ユーザーが新規登録できること
+2. 新規登録したユーザーでログインできること
+3. ログアウトできること
+4. ログインしていない状態で、welcome.phpにアクセスすると、ログインページにリダイレクトされること
 
 ### 合格確認方法
 
-1. 本課題の[課題ページ]()に再度アクセスする。
-2. 画面上部にある`Actions`をクリックする。<br>
+1. 本課題の[課題ページ]()に再度アクセスします。
+2. 画面上部にある`Actions`をクリックしてください。<br>
 ![](./images/acions.png)
-1. **一番上**の行に、緑色のチェックが入っていればOK。※その下に赤いばつ印が入っているものがあるが、それは無視する。<br>
+1. **一番上**の行に、緑色のチェックが入っていればOKです。<br>
 ![](./images/pass.png)
 
 ### エラーが出た時の対処法
 
-自動採点がエラーになると、**一番上**の行に赤いばつ印がでる。その場合の解決策を以下に示す。
+自動採点がエラーになると、**一番上**の行に赤いばつ印がでます。その場合の解決策を以下に示します。
 
 ### タイムアウトになっていないかを確認する
 
-※右端の赤枠で囲まれている箇所に処理時間がでるが、**2分以上**かかっている場合はタイムアウトとなる。
+※右端の赤枠で囲まれている箇所に処理時間がでますが、**4分前後**かかっている場合には、まずタイムアウトの可能性を疑ってください。
 ![](./images/timeout.png)
 
-なお、タイムアウトの場合は、GitHub上で処理を再開すると解決できる。具体的なタイムアウト解決方法は、
+具体的なタイムアウトの確認・解決方法は、
 
-  1. Actionsタブをクリック
-  2. タイトルが下記のようにリンクになっているので、クリック<br>
-      ![](./images/timeout2.png)<br>
-  3. Autogradingをクリック<br>
-   <img src="./images/timeout3.png" width="75%"><br>
-   
-
-  4. 赤いばつ印が出ている箇所をクリック<br>
-   <img src="./images/timeout4.png" width="75%"><br>
-  1. `::error::Setup timed out in 120000 milliseconds`のメッセージがあればタイムアウト
-
-  6. 右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
+  1. `Actions`のタイトルが以下のようにリンクになっているので、クリック
+      ![](./images/timeout2.png)
+  2. `run-autograding-tests`をクリック
+   ![](./images/run-autograding-tests.png)
+  3. 赤いばつ印が出ている箇所をクリック
+  ![](./images/timeout4.png)
+  1. `::error::Setup timed out in XXXXXX milliseconds`のメッセージがあればタイムアウト
+   ![](./images/timeout8.png)
+  6. 解決策としては、右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
   ![](./images/timeout6.png)<br>
   ![](./images/timeout7.png)
-  7. タイムアウトにならず2分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
-
-
+  7. タイムアウトにならず3分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
 
 ### プログラムが正確に書かれているか確認する
 
-プログラムが正確に書かれているかを確認すること。たとえ、ブラウザの画面でそれっぽく表示されても、自動採点なので融通がきかない。エラーが出た際は、以下を確認すること。
-
-#### どこでエラーがでているか確認する
-
-今回は2つの自動採点(新規ユーザー登録処理、ログイン認証処理)があるので、以下の手順で、どごでエラーが出ているか確認する。
-
-1. Actionsタブをクリック
-2. タイトルが下記のようにリンクになっているので、クリック
-      ![](./images/timeout2.png)<br>
-3. Autogradingをクリック<br>
-   <img src="./images/timeout3.png" width="65%"><br>
-4. 赤いばつ印が出ている箇所をクリック<br>
-  <img src="./images/timeout4.png" width="65%"><br>
-1. エラーがあるソースコードは、下記画像のように、エラーメッセージが表示されるので、これにエラーが出ているソースコードを特定できる。<br>
-<img src="./images/error_message.png" width="75%"><br>
-
-#### プログラムが正確に書かれているか確認する
-
-プログラムが正確に書かれているかを確認する。たとえ、ブラウザの画面でそれっぽく表示されても、自動採点ですので融通はききません。エラーが出た際は、サンプルコードと差異がないか確認してください。
-
-
-
-## GitHub上での採点についてのお願い
-
-今回、再度GitHub上での採点をするにあたりお願いがあります。それは、<br>
-GitHubに課題をpushする前に、**必ずブラウザで動作確認をしてください。**　理由は下記の2つです。<br>
-
-1. Webアプリケーションはブラウザ上で動作することが前提であるため。
-2. GitHubの採点処理時間に上限があるため。<br>
-以前の自動採点プログラムと比べ、処理時間の高速化には成功したものの、GitHubの合計処理時間には毎月上限があります。むやみやたらにpushすると、上限に達しかねないので、必ずブラウザ上で正常に動作することを確認してからpushしてください。**エラーの原因が特定できない場合は、お気軽に質問してください。**
+プログラムが正確に書かれているかを確認してください。たとえ、ブラウザの画面でそれらしく表示されても、自動採点なので融通は効きません。エラーが出た際は、以下の点を確認してください。

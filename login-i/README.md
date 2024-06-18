@@ -71,8 +71,7 @@
 1. 認証結果画面(welcome.php)<br>
 入力したユーザーIDとパスワードが、データベースに登録した内容と一致した場合、ログインを認め、「○○○○ さんログイン中」とログインしたユーザー名を表示する。<br>
 ![](./images/welcome_php_display.png)<br><br>
-なお、認証をしていない状態で直接URLを入力した場合は、以下の画面が表示されログインするように促す。<br>
-![](./images/welcome_php_display_error.png)<br>
+なお、認証をしていない状態で直接URLを入力した場合は、ログイン画面に遷移する。<br>
 
 1. ログアウト画面（logout.php）<br>
 ログアウトボタンを押すと、ログアウト処理をしたことを表示する。<br>
@@ -272,17 +271,17 @@ class User extends DbData
 
 ```php
 <?php
-// 送られてきたデータを受けとる																		
+// 送られてきたデータを受けとる
 $userId   = $_POST['userId'];
 $password = $_POST['password'];
 $userName  = $_POST['userName'];
 
-// Userオブジェクトを生成し、 ユーザー登録処理を行うsignUp( )メソッドを呼び出し、その結果のメッセージを受け取る																		
+// Userオブジェクトを生成し、 ユーザー登録処理を行うsignUp( )メソッドを呼び出し、その結果のメッセージを受け取る
 require_once  __DIR__  .  '/classes/user.php';
 $user = new User();
 $result = $user->signUp($userId, $password, $userName);
 
-// 共通するデータ・関数を定義したPHPファイルを読み込む								
+// 共通するデータ・関数を定義したPHPファイルを読み込む
 require_once  __DIR__  .  '/util.php';
 ?>
 
@@ -340,7 +339,7 @@ require_once  __DIR__  .  '/util.php';
 ①: `<?= h($userId) ?>` は、`<?php echo ?>`の省略形であり、htmlの中に部分的にPHPの変数を埋め込みたい時に便利な書き方です。
 `h($userId)` は、`util.php` で定義したエスケープ処理用関数です。
 
-完成させた後、ブラウザで「register.html」を表示し、次のデータを入力後「登録する」ボタンを押し、無事に登録されたことを確認する。
+完成させた後、ブラウザで「register.html」を表示し、以下のデータを入力後「登録する」ボタンを押し、無事に登録されたことを確認してください。
 
 - ユーザーID: kobe
 - パスワード: denshi
@@ -349,8 +348,8 @@ require_once  __DIR__  .  '/util.php';
 ![](./images/register_html_display.png)
 ![](./images/register_php_display.png)
 
-また、もう一度「register.html」で同じユーザーを登録しようとすると、以下のように登録が失敗する。
+また、もう一度「register.html」で同じユーザーを登録しようとすると、以下のように登録が失敗することも確認してください。
 
 ![](./images/register_php_display_error.png)
 
-**ログイン認証はまだ完成ではありません。まだpushはしないでください。**
+**次回「ログイン認証②」に続きます。まだpushはしないでください。**
