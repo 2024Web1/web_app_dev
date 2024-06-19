@@ -52,7 +52,7 @@
 </html>
 ```
 
-入力が終わったら、必ずブラウザで以下のように正しく表示されるかを確認あしてください。
+入力が終わったら、必ずブラウザで以下のように正しく表示されるかを確認してください。
 ![](./images/login_html_display.png)
 
 ### user.php
@@ -60,32 +60,39 @@
 前回は、クラス`User`に、新規ユーザー登録処理を行う`signUp`メソッドを追加しました。
 今回は、ログイン認証処理を行う`authUser`メソッドを追加します。
 
+ログイン認証を行うためには、ユーザーIDとパスワードを条件に、ユーザー情報を取得する必要があります。
+
 ```php
 <?php
-// スーパークラスであるDbDataを利用するため
-require_once __DIR__ . '/dbdata.php';
+// スーパークラスであるDbDataを利用するため、dbdata.phpを読み込む(穴埋め)
+require_once 
 
-class User extends DbData
+// DbDataクラスを継承するUserクラスの定義(穴埋め)
+class 
 {
     // ユーザー登録処理
     public function signUp($userId, $password, $userName)
     {
-        // userIdを条件とするSELECT文の定義
-        $sql = 'SELECT * FROM users WHERE userId = ?';
-        // dbdata.phpのquery()メソッドの実行
-        $stmt = $this->query($sql, [$userId]);
-        // 抽出したデータを取り出す
-        $result = $stmt->fetch();
+        // userIdを条件とするSELECT文の定義(穴埋め)
+        $sql = 
+        // dbdata.phpのquery()メソッドの実行(穴埋め)
+        $stmt = 
+        // 抽出したデータを取り出す(穴埋め)
+        $result = 
         // 登録しようとしているユーザーID（Eメール）が既に登録されている場合
         if ($result) {
             return 'ユーザーID「' . $userId . '」は既に登録されています。<br>他のユーザーIDをご利用ください。';
         }
-        $sql = 'INSERT into users(userId, password, userName) VALUES (?, ?, ?)';
-        $result = $this->exec($sql, [$userId, $password, $userName]);
-
+        // 登録しようとしているユーザーIDが未登録の場合
+        // ユーザーを登録するINSERT文の定義(穴埋め)
+        $sql = 
+        // dbdata.phpのexec()メソッドの実行(穴埋め)
+        $result = 
+        // 登録が成功した場合
         if ($result) {
             // ここも空文字を返すので「''」はシングルクォーテーションが２つ
             return '';
+        // 登録に失敗した場合
         } else {
             // 何らかの原因で失敗した場合
             return '新規登録できませんでした。管理者にお問い合わせください。';
@@ -97,12 +104,13 @@ class User extends DbData
     // ログイン認証処理
     public function authUser($userId, $password)
     {
-        // SQL文を定義
-        $sql = 'SELECT * FROM users WHERE userId = ? AND password = ?';
+        // SQL文を定義(穴埋め)
+        // ※ヒント:ユーザーIDとパスワードを条件にユーザー情報を取得
+        $sql = 
         // DbDataクラスのquery( )メソッドを呼び出す
         $stmt = $this->query($sql, [$userId, $password]);
-        // fetch( )メソッドでデータを取り出す
-        return $stmt->fetch();
+        // fetch( )メソッドでデータを取り出す(穴埋め)
+        return 
     }
 
     // --- ここまで追加 ---
@@ -112,23 +120,28 @@ class User extends DbData
 
 ## login_check.php
 
+まずは、認証処理画面(login_check.php)にて、ログインに成功した際、セッションに認証情報を保存します。
+
+なお、コードが一部穴埋めになっているので、それぞれの箇所に適切なコードを追記してください。
+
 ```php
 <?php
-// 送られてきたユーザーIDとパスワードを受け取る
-$userId   = $_POST['userId'];
-$password = $_POST['password'];
+// 送られてきたユーザーIDとパスワードを受け取る(穴埋め)
+$userId   = 
+$password = 
 
-// ---Userオブジェクトを生成し、「authUser()メソッド」を呼び出し、認証結果を受け取る
-// user.phpを読み込む
-require_once __DIR__  .  '/classes/user.php';
-// UserクラスからUserオブジェクトを生成する
-$user = new User();
-// authUser()メソッドを呼び出し、認証結果を受け取る
-$result = $user->authUser($userId, $password);
+// Userクラスを利用するため、user.phpクラスを読み込む(穴埋め)
+require_once 
+// UserクラスからUserオブジェクトを生成する(穴埋め)
+$user 
+// authUser()メソッドを呼び出し、認証結果を受け取る(穴埋め)
+$result = 
 
 // ログインに成功した場合、welcome.phpにリダイレクトする
-if ($result) {
-    session_start();
+if ($result) {  // ①
+    // セッションを開始(穴埋め)
+    
+    // セッションにユーザー名を保存
     $_SESSION['userName'] = $result['userName'];
     header('Location: welcome.php');
     exit();
@@ -162,11 +175,20 @@ require_once  __DIR__  .  '/util.php';
 </html>
 ```
 
+①`if ($result) { `: `$result`には`authUser()`メソッドの戻り値が格納されます。`authUser()`の戻り値は、`fetch()`メソッドの戻り値になります。
+
+`fetch()`メソッドの戻り値をif分の条件に使うと、データが取得できた場合は`true`、取得できなかった場合は`false`になります。
+
 ## welcome.php
+
+ログイン認証に成功し、ユーザーがログインしていることを表示する画面です。
+
+なお、コードが一部穴埋めになっているので、それぞれの箇所に適切なコードを追記してください。
+
 
 ```php
 <?php
-session_start();
+// セッションを開始(穴埋め)
 
 // 共通するデータ・関数を定義したPHPファイルを読み込む
 require_once  __DIR__  .  '/util.php';
@@ -186,7 +208,8 @@ require_once  __DIR__  .  '/util.php';
     <div id="main">
         <h2>ようこそ！</h2>
         <hr><br>
-        <?= h($_SESSION['userName']) ?> さんログイン中
+        <!-- セッションに保存されたユーザー名を表示する(穴埋め) -->
+        <?= h(                 ) ?>さんログイン中
         <p><a href='logout.php'>ログアウト</a></p>
     </div>
 </body>

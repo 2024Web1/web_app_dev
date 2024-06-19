@@ -57,16 +57,16 @@
 </html>
 ```
 
-①： `require_once __DIR__ . '/classes/dbphp.php';`</br>
+①： `require_once __DIR__ . '/classes/dbphp.php';`<br>
 このコードでDbPhp.class が利用できるようになる
 
-②: `$dbPhp = new DbPhp( );`</br>
+②: `$dbPhp = new DbPhp( );`<br>
 DbPhpクラスのオブジェクトを生成し、変数 `$dbPhp` に格納する
 
-③: `$persons = $dbPhp->selectAll( );`</br>
+③: `$persons = $dbPhp->selectAll( );`<br>
 DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出したデータが格納されているPDOオブジェクトを受け取るステートメント
 
-④: `foreach ($persons as $person) {`</br>
+④: `foreach ($persons as $person) {`<br>
 受け取ったPDOステートメントオブジェクトから1件ずつデータを取り出している
 
 ※なお、今回はデータベースを切断する`$pdo = null;`を記述しないパターンでコードを書いております。明示的に記述がない場合は、PHPスクリプトの終了時に自動的に接
@@ -259,7 +259,7 @@ SELECT〜DELETE文を完了した方は、是非チャレンジしてくださ�
 
 ## 付録: MVCモデル
 
-MVCとはModel・View・Controllerの略で、処理を３つの役割に分割して実装する手法です。</br>
+MVCとはModel・View・Controllerの略で、処理を３つの役割に分割して実装する手法です。<br>
 
 ![](./images/Aspose.Words.a4c93f43-ec41-42b5-b372-9be25bdbba96.013.jpeg)
 

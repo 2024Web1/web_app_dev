@@ -8,8 +8,8 @@
   - [プログラムの作成](#プログラムの作成)
     - [register.html](#registerhtml)
     - [util.php](#utilphp)
-  - [dbdata.php](#dbdataphp)
-  - [user.php](#userphp)
+  - [classes/dbdata.php](#classesdbdataphp)
+  - [classes/user.php](#classesuserphp)
   - [register.php](#registerphp)
 
 ## 事前準備
@@ -175,10 +175,12 @@ function h($data)
 }
 ```
 
-## dbdata.php
+## classes/dbdata.php
 
 データベースの基本事項に関するクラスが定義されているクラスです。
 前章の[オブジェクト指向プログラミング①](../object-i/README.md)のときとほぼ同じですが、今回は`exec`メソッドの戻り値を判定に利用するため、その部分を追記しています。
+
+なお、dbdata.phpのファイルは、`public`ディレクトリ直下の`classes`というディレクトリに作成してください。
 
 ```php
 <?php
@@ -228,37 +230,47 @@ class DbData
 }
 ```
 
-## user.php
+## classes/user.php
 
 次に、クラス`DbData`を継承する、クラス`User`を定義するPHPファイル「user.php」 を作成します。
 まずクラス`User`に、新規ユーザー登録処理を行う`signUp`メソッドを追加します。
 
+なお、dbdata.php同様、user.phpも`public`ディレクトリ直下の`classes`というディレクトリに作成してください。
+
+一部のソースコードが穴埋めになっているので、それぞれの箇所に適切なコードを追記してください。
+なお、穴埋めが必要な箇所のコメントに **(穴埋め)** と記載しています。
+
 ```php
 <?php
-// スーパークラスであるDbDataを利用するため
-require_once __DIR__ . '/dbdata.php';
+// スーパークラスであるDbDataを利用するため、dbdata.phpを読み込む(穴埋め)
+require_once 
 
-class User extends DbData
+// DbDataクラスを継承するUserクラスの定義(穴埋め)
+class 
 {
     // ユーザー登録処理
     public function signUp($userId, $password, $userName)
     {
-        // userIdを条件とするSELECT文の定義
-        $sql = 'SELECT * FROM users WHERE userId = ?';
-        // dbdata.phpのquery()メソッドの実行
-        $stmt = $this->query($sql, [$userId]);
-        // 抽出したデータを取り出す
-        $result = $stmt->fetch();
+        // userIdを条件とするSELECT文の定義(穴埋め)
+        $sql = 
+        // dbdata.phpのquery()メソッドの実行(穴埋め)
+        $stmt = 
+        // 抽出したデータを取り出す(穴埋め)
+        $result = 
         // 登録しようとしているユーザーID（Eメール）が既に登録されている場合
         if ($result) {
             return 'ユーザーID「' . $userId . '」は既に登録されています。<br>他のユーザーIDをご利用ください。';
         }
-        $sql = 'INSERT into users(userId, password, userName) VALUES (?, ?, ?)';
-        $result = $this->exec($sql, [$userId, $password, $userName]);
-
+        // 登録しようとしているユーザーIDが未登録の場合
+        // ユーザーを登録するINSERT文の定義(穴埋め)
+        $sql = 
+        // dbdata.phpのexec()メソッドの実行(穴埋め)
+        $result = 
+        // 登録が成功した場合
         if ($result) {
             // ここも空文字を返すので「''」はシングルクォーテーションが２つ
             return '';
+        // 登録に失敗した場合
         } else {
             // 何らかの原因で失敗した場合
             return '新規登録できませんでした。管理者にお問い合わせください。';
@@ -269,17 +281,22 @@ class User extends DbData
 
 ## register.php
 
+一部のソースコードが空欄になっているので、それぞれの箇所に適切なコードを追記してください。
+なお、穴埋めが必要な箇所のコメントに **(穴埋め)** と記載しています。
+
 ```php
 <?php
-// 送られてきたデータを受けとる
-$userId   = $_POST['userId'];
-$password = $_POST['password'];
-$userName  = $_POST['userName'];
+// 送られてきたデータを受けとる(穴埋め)
+$userId   = 
+$password = 
+$userName = 
 
-// Userオブジェクトを生成し、 ユーザー登録処理を行うsignUp( )メソッドを呼び出し、その結果のメッセージを受け取る
-require_once  __DIR__  .  '/classes/user.php';
-$user = new User();
-$result = $user->signUp($userId, $password, $userName);
+// Userクラスを利用するため、user.phpクラスを読み込む(穴埋め)
+require_once
+// Userオブジェクトを生成する(穴埋め)
+$user = 
+// ユーザー登録処理を行うsignUp( )メソッドを呼び出し、その結果のメッセージを受け取る((穴埋め)
+$result = 
 
 // 共通するデータ・関数を定義したPHPファイルを読み込む
 require_once  __DIR__  .  '/util.php';
@@ -320,7 +337,7 @@ require_once  __DIR__  .  '/util.php';
             </table>
             <p><a href='login.html'>ログインページへ</a></p>
         <?php
-            // 登録に失敗した場合
+        // 登録に失敗した場合
         } else {
         ?>
             <h2>登録に失敗しました</h2>
@@ -336,8 +353,8 @@ require_once  __DIR__  .  '/util.php';
 </html>
 ```
 
-①: `<?= h($userId) ?>` は、`<?php echo ?>`の省略形であり、htmlの中に部分的にPHPの変数を埋め込みたい時に便利な書き方です。
-`h($userId)` は、`util.php` で定義したエスケープ処理用関数です。
+①: `<?=  ?>` は、`<?php echo ?>`の省略形であり、htmlの中に部分的にPHPの変数を埋め込みたい時に便利な書き方です。
+また、`h($userId)` は、`util.php` で定義したエスケープ処理用関数です。
 
 完成させた後、ブラウザで「register.html」を表示し、以下のデータを入力後「登録する」ボタンを押し、無事に登録されたことを確認してください。
 
