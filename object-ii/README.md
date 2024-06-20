@@ -95,7 +95,7 @@ DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出�
 
 <body>
     <?php
-    // DbPhpクラスのオブジェクト生成し、updatePerson( )メソッドをよびだす
+    // DbPhpクラスのオブジェクト生成し、updatePersonメソッドをよびだす
     
 
 
@@ -129,7 +129,7 @@ DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出�
 
 <body>
     <?php
-    // DbPhpクラスのオブジェクト生成し、insertPerson( )メソッドをよびだす
+    // DbPhpクラスのオブジェクト生成し、insertPersonメソッドをよびだす
     // name = 深沢七郎, company_id = 3, age = 29
     
 
@@ -163,7 +163,7 @@ DbPhpオブジェクトの `selectAll( )` メソッドを呼び出し、抽出�
 
 <body>
     <?php
-    // DbPhpクラスのオブジェクト生成し、deletePerson( )メソッドをよびだす
+    // DbPhpクラスのオブジェクト生成し、deletePersonメソッドをよびだす
    
 
 
