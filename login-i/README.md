@@ -83,9 +83,11 @@
 
 **テーブル名：users**
 
-- userId: varchar型、最大文字数8、主キーとして設定、大文字・小文字を区別するためbinary属性を設定
-- password: varchar型、最大文字数12、not null制約
-- userName: varchar型、最大文字数50、not null制約
+| カラム名 | データ型 | 制約 |
+| - | - | - |
+|userId|varchar型|最大文字数8、主キーとして設定、大文字・小文字を区別するためbinary属性を設定|
+|password|varchar型|最大文字数12、not null制約|
+|userName|varchar型|最大文字数50、not null制約|
 
 ## プログラムの作成
 
@@ -180,7 +182,7 @@ function h($data)
 データベースの基本事項に関するクラスが定義されているクラスです。
 前章の[オブジェクト指向プログラミング①](../object-i/README.md)のときとほぼ同じですが、今回は`exec`メソッドの戻り値を判定に利用するため、その部分を追記しています。
 
-なお、dbdata.phpのファイルは、`public`ディレクトリ直下の`classes`というディレクトリに作成してください。
+なお、dbdata.phpのファイルは、`public`内に`classes`というディレクトリを作成し、そこに追加してください。
 
 ```php
 <?php
@@ -235,7 +237,7 @@ class DbData
 次に、クラス`DbData`を継承する、クラス`User`を定義するPHPファイル「user.php」 を作成します。
 まずクラス`User`に、新規ユーザー登録処理を行う`signUp`メソッドを追加します。
 
-なお、dbdata.php同様、user.phpも`public`ディレクトリ直下の`classes`というディレクトリに作成してください。
+なお、dbdata.php同様、user.phpも`public`内に`classes`というディレクトリに作成してください。
 
 一部のソースコードが穴埋めになっているので、それぞれの箇所に適切なコードを追記してください。
 なお、穴埋めが必要な箇所のコメントに **(穴埋め)** と記載しています。
