@@ -203,7 +203,7 @@ class DbData
         }
     }
 
-    // SELECT文実行用のquery( )メソッド ・・・このメソッドはユーザー定義関数
+    // SELECT文実行用のqueryメソッド ・・・このメソッドはユーザー定義関数
     protected function query($sql, $array_params)
     {
         $stmt = $this->pdo->prepare($sql);
@@ -248,7 +248,7 @@ class
     {
         // userIdを条件とするSELECT文の定義(穴埋め)
         $sql = 
-        // dbdata.phpのquery()メソッドの実行(穴埋め)
+        // dbdata.phpのqueryメソッドの実行(穴埋め)
         $stmt = 
         // 抽出したデータを取り出す(穴埋め)
         $result = 
@@ -259,7 +259,7 @@ class
         // 登録しようとしているユーザーIDが未登録の場合
         // ユーザーを登録するINSERT文の定義(穴埋め)
         $sql = 
-        // dbdata.phpのexec()メソッドの実行(穴埋め)
+        // dbdata.phpのexecメソッドの実行(穴埋め)
         $result = 
         // 登録が成功した場合
         if ($result) {
@@ -274,7 +274,7 @@ class
 }
 ```
 
-①`if ($result) { `: `$result`には`authUser()`メソッドの戻り値が格納されます。`authUser()`の戻り値は、`fetch()`メソッドの戻り値になります。
+①`if ($result) { `: `$result`には`signUp()`メソッドの戻り値が格納されます。`signUp()`の戻り値は、`fetch()`メソッドの戻り値になります。
 
 `fetch()`メソッドの戻り値をif分の条件に使うと、データが取得できた場合は`true`、取得できなかった場合は`false`になります。
 
@@ -294,7 +294,7 @@ $userName =
 require_once
 // Userオブジェクトを生成する(穴埋め)
 $user = 
-// ユーザー登録処理を行うsignUp( )メソッドを呼び出し、その結果のメッセージを受け取る((穴埋め)
+// ユーザー登録処理を行うsignUpメソッドを呼び出し、その結果のメッセージを受け取る((穴埋め)
 $result = 
 
 // 共通するデータ・関数を定義したPHPファイルを読み込む

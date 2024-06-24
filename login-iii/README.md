@@ -77,7 +77,7 @@ $password =
 require_once 
 // UserクラスからUserオブジェクトを生成する(穴埋め)
 $user 
-// authUser()メソッドを呼び出し、認証結果を受け取る(穴埋め)
+// authUserメソッドを呼び出し、認証結果を受け取る(穴埋め)
 $result = 
 
 // ログインに成功した場合、welcome.phpにリダイレクトする

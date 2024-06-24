@@ -77,7 +77,7 @@ class
     {
         // userIdを条件とするSELECT文の定義(穴埋め)
         $sql = 
-        // dbdata.phpのquery()メソッドの実行(穴埋め)
+        // dbdata.phpのqueryメソッドの実行(穴埋め)
         $stmt = 
         // 抽出したデータを取り出す(穴埋め)
         $result = 
@@ -88,7 +88,7 @@ class
         // 登録しようとしているユーザーIDが未登録の場合
         // ユーザーを登録するINSERT文の定義(穴埋め)
         $sql = 
-        // dbdata.phpのexec()メソッドの実行(穴埋め)
+        // dbdata.phpのexecメソッドの実行(穴埋め)
         $result = 
         // 登録が成功した場合
         if ($result) {
@@ -109,9 +109,9 @@ class
         // SQL文を定義(穴埋め)
         // ※ヒント:ユーザーIDとパスワードを条件にユーザー情報を取得
         $sql = 
-        // DbDataクラスのquery( )メソッドを呼び出す
+        // DbDataクラスのqueryメソッドを呼び出す
         $stmt = $this->query($sql, [$userId, $password]);
-        // fetch( )メソッドでデータを取り出す(穴埋め)
+        // fetchメソッドでデータを取り出す(穴埋め)
         return 
     }
 
@@ -136,7 +136,7 @@ $password =
 require_once 
 // UserクラスからUserオブジェクトを生成する(穴埋め)
 $user 
-// authUser()メソッドを呼び出し、認証結果を受け取る(穴埋め)
+// authUserメソッドを呼び出し、認証結果を受け取る(穴埋め)
 $result = 
 
 // ログインに成功した場合、welcome.phpにリダイレクトする
