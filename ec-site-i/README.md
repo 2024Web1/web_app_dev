@@ -1,185 +1,181 @@
-﻿# ミニショップ仕様書①
+﻿# 仕様書① : ジャンル選択画面、ジャンル別商品一覧画面
 
-- [ミニショップ仕様書①](#ミニショップ仕様書)
-  - [概要](#概要)
-  - [画面遷移図](#画面遷移図)
-  - [商品に関する機能の詳細画面](#商品に関する機能の詳細画面)
-    - [ジャンル選択](#ジャンル選択)
-    - [ジャンル別商品一覧](#ジャンル別商品一覧)
-    - [商品詳細表示](#商品詳細表示)
+- [仕様書① : ジャンル選択画面、ジャンル別商品一覧画面](#仕様書--ジャンル選択画面ジャンル別商品一覧画面)
   - [事前準備](#事前準備)
-  - [ジャンル選択画面とジャンル別商品一覧画面の作成](#ジャンル選択画面とジャンル別商品一覧画面の作成)
-    - [データベースの作成](#データベースの作成)
-    - [ヘッダーとフッター](#ヘッダーとフッター)
-    - [ジャンル選択画面（index.php）](#ジャンル選択画面indexphp)
-    - [データベースの基本事項を定義するDbData.class](#データベースの基本事項を定義するdbdataclass)
-    - [商品データを操作するProduct.class](#商品データを操作するproductclass)
+  - [画面遷移図](#画面遷移図)
+  - [本章で使用するテーブルについて](#本章で使用するテーブルについて)
+  - [ジャンル選択画面(index.php)](#ジャンル選択画面indexphp)
+    - [データベースの基本事項を定義するクラスDbData](#データベースの基本事項を定義するクラスdbdata)
+    - [商品データを操作するクラスProduct](#商品データを操作するクラスproduct)
     - [ジャンル別商品一覧画面（product\_select.php）](#ジャンル別商品一覧画面product_selectphp)
     - [動作確認](#動作確認)
 
-## 概要
+## 事前準備
 
-PHPのオブジェクト指向プログラミングの要素を取り入れ、簡易版ショッピングサイト(ミニショップ)を作成する。
+[こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneすること。
+
+```text
+public
+├── classes
+│   ├── dbdata.php  ←データベースの基本事項を定義する
+│   └── product.php ←「商品」に関するProduct.class を定義する
+├── footer.php        ←画面のフッターを構成する
+├── header.php        ←画面のヘッダーを構成する
+├── index.php         ←３つのジャンルから１つのジャンルを選択する画面
+└── product
+    ├── product_detail.php    ←特定の商品の詳細内容を表示する
+    └── product_select.php    ←選択されたジャンルの商品一覧を表示する
+```
 
 ## 画面遷移図
 
-<img src="./images/13/screen.png" width="75%">
+本章では、以下の2つの画面を作成します。
 
-## 商品に関する機能の詳細画面
+![](./images/screen.png)
 
-### ジャンル選択
+## 本章で使用するテーブルについて
 
-- パソコン、ブック、ミュージックの３つのジャンルをラジオボタンで表示する
-- ブックにデフォルトチェックが入っている
+使用するテーブルは、以下の通りです。
 
-### ジャンル別商品一覧
+**テーブル名：items**
 
-- 選択されたジャンルの商品概要を一覧で表示する
-- 各商品にはそれぞれの詳細画面へのリンクがある
+以下はテーブル構造です。
 
-### 商品詳細表示
+| カラム名 | データ型 | 制約 |
+| - | - | - |
+|ident|int|主キー、not null制約|
+|name|varchar型|最大文字数50、not null制約|
+|maker|varchar型|最大文字数50、not null制約|
+|price|int型||
+|image|varchar型|最大文字数20|
+|genre|varchar型|最大文字数10|
 
-- ジャンル別商品一覧から選択された商品の詳細画面を表示する
-- 注文数のプルダウンメニューと カートに入れるためのボタンがある
+また、初期データとして以下のものが登録されています。
 
-## 事前準備
+| ident | name | maker | price | image | genre |
+| - | - | - | - | - | - |
+|1|NEC LAVIE|NEC|61980|pc001.jpg|pc|
+|2|dynabook AZ45|東芝|80784|pc002.jpg|pc|
+|3|Surface Pro|マイクロソフト|167980|pc003.jpg|pc|
+|4|FMV LIFEBOOK|富士通|221480|pc004.jpg|pc|
+|5|MacBook Pro|Apple|142800|pc005.jpg|pc|
+|6|確かな力が身につくPHP「超」入門|松浦健一郎/司ゆき|2678|book001.jpg|book|
+|7|スラスラわかるJavaScript|生形　可奈子|2484|book002.jpg|book|
+|8|SCRUM BOOT CAMP THE BOOK|西村　直人ほか|2592|book003.jpg|book|
+|9|かんたんUML入門 (プログラミングの教科書)|大西　洋平ほか|3218|book004.jpg|book|
+|10|Webデザイナーのための jQuery入門|高津戸 壮|3110|book005.jpg|book|
+|11|÷(ディバイド)|エド・シーラン|1818|music001.jpg|music|
+|12|Live in San Diego [12 inch Analog]|Eric Clapton|3956|music002.jpg|music|
+|13|25(UK盤)|Adele|1205|music003.jpg|music|
+|14|Somehow,Someday,Somewhere|ai kuwabara trio project|2700|music004.jpg|music|
+|15|Singles[Explicit]|マルーン5|1530|music005.jpg|music|
 
-[こちらのページ](https://classroom.github.com/a/4ZOKphQa)から、ソースコードを`C:¥xampp¥htdocs`へcloneすること。
+phpMyAdmin上でも確認できます。
 
-```text
-C:¥xampp¥htdocs
-    └── 13-minishop-GitHubのユーザー名
-        └── src
-            ├── cart
-            │   ├── cart_add.php      ←カートに商品を入れる処理を行う
-            │   ├── cart_change.php   ←カート内の商品の注文数を変更する処理を行う  
-            │   ├── cart_clear.php    ←カート内のすべての商品を削除する処理を行う
-            │   ├── cart_delete.php   ←カート内の特定の商品を削除する処理を行う
-            │   └── cart_list.php     ←カート内の商品を画面に表示する
-            ├── classes
-            │   ├── cart.php    ←「カート」に関するCart.classを定義する
-            │   ├── dbdata.php  ←データベースの基本事項を定義する
-            │   ├── order.php   ←「注文」に関するOrder.calss を定義する
-            │   └── product.php ←「商品」に関するProduct.class を定義する
-            ├── css
-            │   └── minishop.css  ←このファイルはこのまま使用する
-            ├── data
-            │   ├── mysql_minishop.txt  ← 「商品」に関するDBのスクリプト
-            │   ├── mysql_minishop_cart.txt ← 「カート」に関するDBのスクリプト
-            │   └── mysql_minishop_order.txt  ← 「注文」に関するDBのスクリプト
-            ├── footer.php        ←画面のフッターを構成する
-            ├── header.php        ←画面のヘッダーを構成する
-            ├── images            ←画像ファイルが入っているフォルダ
-            ├── index.php         ←３つのジャンルから１つのジャンルを選択する画面
-            ├── order
-            │   └── order_now.php ←注文処理を行い、注文内容を表示する
-            └── product
-                ├── product_detail.php    ←特定の商品の詳細内容を表示する
-                └── product_select.php    ←選択されたジャンルの商品一覧を表示する
+![](./images/items_data.png)
 
-```
-
-## ジャンル選択画面とジャンル別商品一覧画面の作成
-
-ジャンル選択画面 ： **index.php**
+## ジャンル選択画面(index.php)
 
 - パソコン、ブック、ミュージックの３つのジャンルをラジオボタンで表示する
-- ブックにデフォルトチェックが入っている
+- ブックにデフォルトチェックが入っている<br>
+![](./images/index_display.png)
 
-<img src="./images/13/index_display.png" width="70%">
+ジャンル選択画面（index.php）のジャンルを選択し、「選択」ボタンをクリックすると、ジャンル別商品一覧画面（product_select.php）に遷移します。
 
-ジャンル選択画面（index.php）のジャンルを選択し、「選択」ボタンをクリックすると、 ジャンル別商品一覧画面（product_select.php）が表示される。
+**index.php** のコードは以下のとおりです。（実態はHTMLのみ）
 
-ジャンル別商品一覧画面 ： **product\_select.php**
+```php
+<!DOCTYPE html>
+<html lang="ja">
 
-- 選択されたジャンルの商品概要を一覧で表示する
-- 各商品にはそれぞれの詳細画面へのリンクがある
+<head>
+  <meta charset="UTF-8">
+  <title>ショッピングサイト</title>
+  <link rel="stylesheet" href="./css/minishop.css">
+</head>
 
-<img src="./images/13/product_select_display.png" width="80%">
-
-### データベースの作成
-
-dataフォルダ内の **mysql\_minishop.txt** を使用してデータベースを作成する。すべてのコードは記述済みであるのでそのまま使用できるが、このファイルに書かれているコードに目を通し、データベースとそのテーブルの構成・構造をしっかり理解し、これからのプログラミングに臨むこと。
-
-以下にコードの一部を抜粋する。
-
-```sql
-# データベースminishopの作成
-set names utf8;
-drop database if exists minishop;
-create database minishop character set utf8 collate utf8_general_ci;
-
-# ユーザーminiに、パスワードshopを設定し、データベースminishopに対するすべての権限を付与
-grant all privileges on minishop.* to mini@localhost identified by 'shop';
-
-# データベースminishopを使用する
-use minishop;
-
-# テーブルitemsの作成
-create table items(
-	ident	int auto_increment primary key,
-	name	varchar(50) not null,
-	maker	varchar(50) not null,
-	price	int,
-	image	varchar(20),
-  genre varchar(10)
-);
-
-# テーブルitemsへデータを入力
-insert into items(name, maker, price, image, genre)
-	values('NEC LAVIE', 'NEC', 61980, 'pc001.jpg', 'pc');
-    
- ＜ 後 略 ＞
-
+<body>
+  <h3>ジャンル選択</h3>
+  お好みのジャンルを選択してください。<br>
+  <form method="POST" action="product/product_select.php"> <!-- ① -->
+    <label><input type="radio" name="genre" value="pc">パソコン</label>&nbsp;&nbsp; <!-- ② -->
+    <label><input type="radio" name="genre" value="book" checked>ブック</label>&nbsp;&nbsp;
+    <label><input type="radio" name="genre" value="music">ミュージック</label>&nbsp;&nbsp;
+    <input type="submit" value="選択">
+  </form>
+</body>
+</html>
 ```
-
-### ヘッダーとフッター
-
-画面のヘッダーとフッダーを構成するもの。すべての画面でプログラムが統一されているため、別ファイル(header.php, footer.php)で作成し、各画面では `require_once` を用い別ファイル(header.php, footer.php)を読み取ることでヘッダー、フッター部を実装する。
-
-**header.php**
-
-![](./images/13/header_code.png)
-
-**footer.php**
-
-![](./images/13/footer_code.png)
-
-### ジャンル選択画面（index.php）
-
-**index.php** のコードは次の通り。（実態はHTMLのみ）
-
-![](./images/13/index_code.png)
 
 ①: `<form method="POST" action="product/product_select.php">`
 
-データの送信先は「product_select.php」とする。
+`action`属性のパスの記載方法は相対パスとなっています。
+この場合、index.php から見て product_select.php は「product」フォルダ内にあるため、パスの記載は「product/product_select.php」となります。
 
 ②: `<label><input type="radio" name="genre" value="pc">パソコン</label>&nbsp;&nbsp;`
 
-`<label></label>`タグでラジオボタンを囲むことにより、「パソコン」という文字をクリックしてもラジオボタンが選択される効果を発揮する。
+`<label></label>`タグでラジオボタンを囲むことにより、「パソコン」という文字をクリックしてもラジオボタンが選択されます。
 
-### データベースの基本事項を定義するDbData.class
+### データベースの基本事項を定義するクラスDbData
 
-このミニショップ用のDbData.classを作成して使用する。 `$dsn`、`$user`、`$password` の値がミニショップ用になっている以外は「オブジェクト指向プログラミング」 で作成した「DbData.class」と同じ内容。
+このミニショップ用のクラスを作成して使用します。
+`$dsn`、`$user`、`$password` の値がWebアプリケーション「ミニショップ」用になっている以外は、[ログイン認証①](../login-i/README.md)で作成したクラス`DbData`と同じ内容です。
 
-**dbdata.php** のコードは次の通り。
+**dbdata.php** のコードは以下のとおりです。
 
-![](./images/13/dbdata_code.png)
+```php
+<?php
+// DbDataクラスの宣言
+class DbData
+{
+    // PDOオブジェクト用のプロパティ(メンバ変数)の宣言
+    protected $pdo;
 
-### 商品データを操作するProduct.class
+    // コンストラクタ
+    // 「__construct」の「̲̲__」は「_(アンダースコア)」を2つ記述する
+    public function __construct()
+    {
+        // PDOオブジェクトを生成する
+        $user = 'sampleuser';
+        $password = 'samplepass';
+        $host = 'db';
+        $dbName = 'SAMPLE';
+        $dsn = 'mysql:host=' . $host . ';dbname=' . $dbName . ';charset=utf8';
+        try {
+            $this->pdo = new PDO($dsn, $user, $password);
+        } catch (Exception $e) {
+            // 接続できなかった場合のエラーメッセージ
+            exit('データベースに接続できませんでした：' . $e->getMessage());
+        }
+    }
 
-データベースの基本事項を定義する「DbData.class」を継承し、商品データを操作する「**Product.class**」を 定義する。
+    // SELECT文実行用のqueryメソッド ・・・このメソッドはユーザー定義関数
+    protected function query($sql, $array_params)
+    {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($array_params);
+        // PDOステートメントオブジェクトを返すので
+        // 呼び出し側でfetch( )、またはfetchAll( )で結果セットを取得
+        return $stmt;
+    }
 
-このミニショップ全体では、このほかにカート内の商品を操作する「**Cart.class**」と注文を処理する 「**Order.class**」を定義する。
+    // INSERT、UPDATE、DELETE文実行用のメソッド ・・・このメソッドもユーザー定義関数
+    protected function exec($sql, $array_params)
+    {
+        $stmt = $this->pdo->prepare($sql);
+        // 成功:true、失敗:false
+        $stmt->execute($array_params);
+        // 【今回追記】実行結果(true or false)を利用するので、戻り値を返す
+        return $stmt;
+    }
+}
+```
 
-なお、それぞれのクラスを定義するPHPファイルは次の通り。（すべて空ファイルを配布済み）
+### 商品データを操作するクラスProduct
 
-Product.class src\classes\product.php
+データベースの基本事項を定義するクラス`DbData`を継承し、商品データを操作するクラス`Product`を定義します。
 
-Cart.class src\classes\cart.php
-
-Order.class src\classes\order.php
+このミニショップ全体では、このほかにカート内の商品を操作するクラス`Cart`と注文を処理するクラス`Order`を定義する予定です。
 
 今回は、選択されたジャンルの商品データを抽出するメソッドを次の条件でこのProduct.class に定義する。
 
@@ -190,24 +186,31 @@ Order.class src\classes\order.php
 戻り値： 抽出した商品データの結果セット
 ```
 
-**product.php** のコードは次の通り。
+**product.php** のコードは以下のとおりです。
 
-![](./images/13/product1_code.png)
+![](./images/product1_code.png)
 
 ＊この `getItems( )` メソッドを、「product_select.php」 で呼び出して利用する。（そのコードは次に示す）
 
 ### ジャンル別商品一覧画面（product_select.php）
 
-ジャンル選択画面（index.php）から選択されたジャンルのデータは、このジャンル別商品一覧画面 （product_select.php）が受け取るが、ここで処理する内容は次の通り。
+ジャンル別商品一覧画面 ： **product\_select.php**
+
+- 選択されたジャンルの商品概要を一覧で表示する
+- 各商品にはそれぞれの詳細画面へのリンクがある
+
+<img src="./images/product_select_display.png" width="80%">
+
+ジャンル選択画面（index.php）から選択されたジャンルのデータは、このジャンル別商品一覧画面 （product_select.php）が受け取るが、ここで処理する内容は以下のとおりです。
 
 1. 送られてきたジャンルの値を受け取る。
-1. Product.class のオブジェクトを生成する
-1. Productオブジェクトの `getItems( )` メソッドを呼び出し、抽出した商品データの結果セットを受け取る
-1. 商品データの結果セットから商品を取り出し一覧画面を作成する
+2. Product.class のオブジェクトを生成する
+3. Productオブジェクトの `getItems( )` メソッドを呼び出し、抽出した商品データの結果セットを受け取る
+4. 商品データの結果セットから商品を取り出し一覧画面を作成する
 
-この **product_select.php** のコードは次の通り。
+この **product_select.php** のコードは以下のとおりです。
 
-![](./images/13/product_select1_code.png)
+![](./images/product_select1_code.png)
 
 **`<td>`セル内のクラス設定について**
 
@@ -242,16 +245,16 @@ Order.class src\classes\order.php
 以上の作業終了後、次のように画面が表示されることを確認する。
 
 - 最初に「ジャンル選択」画面にアクセスする。<br>
-![](./images/13/index_display.png)
+![](./images/index_display.png)
 
 - ジャンルを選択し「選択」ボタンをクリックするとその「ジャンル別商品一覧」画面が表示される。<br>
 ＊図は「ブック」のジャンルを選択した場合。それぞれのジャンルで正しく商品一覧が表示されることを確認する。<br>
-![](./images/13/product_select_display.png)
+![](./images/product_select_display.png)
 
 - 「パソコン」を選んだ場合<br>
-![](./images/13/product_select_display_pc.png)
+![](./images/product_select_display_pc.png)
 
 - ミュージックを選んだ場合<br>
-![](./images/13/product_select_display_music.png)
+![](./images/product_select_display_music.png)
 
 **ミニショップの商品に関する機能はまだ完成ではありません。まだpushはしないでください。**
