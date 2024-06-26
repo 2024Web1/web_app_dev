@@ -190,7 +190,7 @@ class DbData
 
 ![](./images/product1_code.png)
 
-＊この `getItems( )` メソッドを、「product_select.php」 で呼び出して利用する。（そのコードは次に示す）
+＊この `getItems` メソッドを、「product_select.php」 で呼び出して利用します。（そのコードは次に示します。）
 
 ### ジャンル別商品一覧画面（product_select.php）
 

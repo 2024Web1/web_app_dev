@@ -11,6 +11,19 @@
 
 前回の[ログイン認証①](../login-i/README.md)でcloneしたコードをそのまま利用してください。
 
+前回のログイン認証①まで作成していれば、以下のファイル構成となっているはずです。
+
+```text
+public
+├── classes
+│   ├── dbdata.php
+│   └── user.php
+├── index.php
+├── register.html
+├── register.php
+└── util.php
+```
+
 ### login.html
 
 ```php
