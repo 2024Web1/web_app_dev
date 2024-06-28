@@ -3,7 +3,7 @@
 - [ログイン認証②](#ログイン認証)
   - [事前準備](#事前準備)
     - [login.html](#loginhtml)
-    - [user.php](#userphp)
+    - [classes/user.php](#classesuserphp)
   - [login\_check.php](#login_checkphp)
   - [welcome.php](#welcomephp)
 
@@ -23,6 +23,8 @@ public
 ├── register.php
 └── util.php
 ```
+
+それでは、引き続きログイン認証のプログラムを実装していきましょう！
 
 ### login.html
 
@@ -68,7 +70,7 @@ public
 入力が終わったら、必ずブラウザで以下のように正しく表示されるかを確認してください。
 ![](./images/login_html_display.png)
 
-### user.php
+### classes/user.php
 
 前回は、クラス`User`に、新規ユーザー登録処理を行う`signUp`メソッドを追加しました。
 今回は、ログイン認証処理を行う`authUser`メソッドを追加します。
@@ -192,7 +194,8 @@ require_once  __DIR__  .  '/util.php';
 </html>
 ```
 
-①`if ($result) { `: `$result`には`authUser()`メソッドの戻り値が格納されます。`authUser()`の戻り値は、`fetch()`メソッドの戻り値になります。
+①`if ($result) { `: `$result`には`authUser`メソッドの戻り値が格納されます。
+`authUser`の戻り値は、`fetch()`メソッドの戻り値になります。
 
 `fetch()`メソッドの戻り値をif分の条件に使うと、データが取得できた場合は`true`、取得できなかった場合は`false`になります。
 

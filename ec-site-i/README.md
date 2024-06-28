@@ -2,32 +2,20 @@
 
 - [仕様書① : ジャンル選択画面、ジャンル別商品一覧画面](#仕様書--ジャンル選択画面ジャンル別商品一覧画面)
   - [事前準備](#事前準備)
-  - [画面遷移図](#画面遷移図)
+  - [この章でやること](#この章でやること)
   - [本章で使用するテーブルについて](#本章で使用するテーブルについて)
   - [ジャンル選択画面(index.php)](#ジャンル選択画面indexphp)
-    - [データベースの基本事項を定義するクラスDbData](#データベースの基本事項を定義するクラスdbdata)
-    - [商品データを操作するクラスProduct](#商品データを操作するクラスproduct)
-    - [ジャンル別商品一覧画面（product\_select.php）](#ジャンル別商品一覧画面product_selectphp)
-    - [動作確認](#動作確認)
+  - [データベースの基本事項を定義するクラスDbData](#データベースの基本事項を定義するクラスdbdata)
+  - [商品データを操作するクラスProduct](#商品データを操作するクラスproduct)
+  - [ジャンル別商品一覧画面(product\_select.php)](#ジャンル別商品一覧画面product_selectphp)
+  - [ディレクトリ構成の確認](#ディレクトリ構成の確認)
+  - [ブラウザでの動作確認](#ブラウザでの動作確認)
 
 ## 事前準備
 
 [こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneすること。
 
-```text
-public
-├── classes
-│   ├── dbdata.php  ←データベースの基本事項を定義する
-│   └── product.php ←「商品」に関するProduct.class を定義する
-├── footer.php        ←画面のフッターを構成する
-├── header.php        ←画面のヘッダーを構成する
-├── index.php         ←３つのジャンルから１つのジャンルを選択する画面
-└── product
-    ├── product_detail.php    ←特定の商品の詳細内容を表示する
-    └── product_select.php    ←選択されたジャンルの商品一覧を表示する
-```
-
-## 画面遷移図
+## この章でやること
 
 本章では、以下の2つの画面を作成します。
 
@@ -41,36 +29,17 @@ public
 
 以下はテーブル構造です。
 
-| カラム名 | データ型 | 制約 |
-| - | - | - |
-|ident|int|主キー、not null制約|
-|name|varchar型|最大文字数50、not null制約|
-|maker|varchar型|最大文字数50、not null制約|
-|price|int型||
-|image|varchar型|最大文字数20|
-|genre|varchar型|最大文字数10|
+| カラム名 | データ型 | 制約 | 備考 |
+| - | - | - | - |
+|ident|int|主キー、not null制約|商品番号|
+|name|varchar型|最大文字数50、not null制約|商品名|
+|maker|varchar型|最大文字数50、not null制約|メーカー・著者・アーティスト|
+|price|int型||価格|
+|image|varchar型|最大文字数20|画像名|
+|genre|varchar型|最大文字数10|ジャンル|
 
 また、初期データとして以下のものが登録されています。
-
-| ident | name | maker | price | image | genre |
-| - | - | - | - | - | - |
-|1|NEC LAVIE|NEC|61980|pc001.jpg|pc|
-|2|dynabook AZ45|東芝|80784|pc002.jpg|pc|
-|3|Surface Pro|マイクロソフト|167980|pc003.jpg|pc|
-|4|FMV LIFEBOOK|富士通|221480|pc004.jpg|pc|
-|5|MacBook Pro|Apple|142800|pc005.jpg|pc|
-|6|確かな力が身につくPHP「超」入門|松浦健一郎/司ゆき|2678|book001.jpg|book|
-|7|スラスラわかるJavaScript|生形　可奈子|2484|book002.jpg|book|
-|8|SCRUM BOOT CAMP THE BOOK|西村　直人ほか|2592|book003.jpg|book|
-|9|かんたんUML入門 (プログラミングの教科書)|大西　洋平ほか|3218|book004.jpg|book|
-|10|Webデザイナーのための jQuery入門|高津戸 壮|3110|book005.jpg|book|
-|11|÷(ディバイド)|エド・シーラン|1818|music001.jpg|music|
-|12|Live in San Diego [12 inch Analog]|Eric Clapton|3956|music002.jpg|music|
-|13|25(UK盤)|Adele|1205|music003.jpg|music|
-|14|Somehow,Someday,Somewhere|ai kuwabara trio project|2700|music004.jpg|music|
-|15|Singles[Explicit]|マルーン5|1530|music005.jpg|music|
-
-phpMyAdmin上でも確認できます。
+量が多いため、phpMyAdmin上で確認してください。
 
 ![](./images/items_data.png)
 
@@ -80,9 +49,9 @@ phpMyAdmin上でも確認できます。
 - ブックにデフォルトチェックが入っている<br>
 ![](./images/index_display.png)
 
-ジャンル選択画面（index.php）のジャンルを選択し、「選択」ボタンをクリックすると、ジャンル別商品一覧画面（product_select.php）に遷移します。
+ジャンル選択画面(index.php)のジャンルを選択し、「選択」ボタンをクリックすると、ジャンル別商品一覧画面(product_select.php)に遷移します。
 
-**index.php** のコードは以下のとおりです。（実態はHTMLのみ）
+**index.php** のコードは以下のとおりです。(実態はHTMLのみ)
 
 ```php
 <!DOCTYPE html>
@@ -116,12 +85,11 @@ phpMyAdmin上でも確認できます。
 
 `<label></label>`タグでラジオボタンを囲むことにより、「パソコン」という文字をクリックしてもラジオボタンが選択されます。
 
-### データベースの基本事項を定義するクラスDbData
+## データベースの基本事項を定義するクラスDbData
 
-このミニショップ用のクラスを作成して使用します。
 `$dsn`、`$user`、`$password` の値がWebアプリケーション「ミニショップ」用になっている以外は、[ログイン認証①](../login-i/README.md)で作成したクラス`DbData`と同じ内容です。
 
-**dbdata.php** のコードは以下のとおりです。
+**classes/dbdata.php** のコードは以下のとおりです。`puclic`ディレクトリに`classes`ディレクトリを作成し、その中に配置してください。
 
 ```php
 <?php
@@ -155,7 +123,7 @@ class DbData
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($array_params);
         // PDOステートメントオブジェクトを返すので
-        // 呼び出し側でfetch( )、またはfetchAll( )で結果セットを取得
+        // 呼び出し側でfetchメソッド、またはfetchAllメソッドで結果セットを取得
         return $stmt;
     }
 
@@ -171,28 +139,46 @@ class DbData
 }
 ```
 
-### 商品データを操作するクラスProduct
+## 商品データを操作するクラスProduct
 
 データベースの基本事項を定義するクラス`DbData`を継承し、商品データを操作するクラス`Product`を定義します。
 
-このミニショップ全体では、このほかにカート内の商品を操作するクラス`Cart`と注文を処理するクラス`Order`を定義する予定です。
-
-今回は、選択されたジャンルの商品データを抽出するメソッドを次の条件でこのProduct.class に定義する。
+今回は、選択されたジャンルの商品データを抽出する`getItems`メソッドを、以下の条件でクラス`Product` に定義します。
+`puclic`ディレクトリの`classes`ディレクトリに配置してください。
 
 ```text
 アクセス修飾子： public
 メソッド名： getItems
-引数： $genre （選択されたジャンル）
+引数： $genre(選択されたジャンル)
 戻り値： 抽出した商品データの結果セット
 ```
 
-**product.php** のコードは以下のとおりです。
+**classes/product.php** のコードは以下のとおりです。
 
-![](./images/product1_code.png)
+```php
+<?php
+// スーパークラスであるDbDataを利用するため
+require_once __DIR__ . '/dbdata.php';
 
-＊この `getItems` メソッドを、「product_select.php」 で呼び出して利用します。（そのコードは次に示します。）
+// Productクラスの宣言
+class  Product  extends  DbData
+{
+    // 選択されたジャンルの商品を取り出す
+    public  function  getItems($genre)
+    {
+        $sql  =  "SELECT  *  FROM  items  WHERE  genre  =  ?";
+        // DbDataクラスに定義したqueryメソッドを実行している
+        $stmt = $this->query($sql,  [$genre]);
+        // 抽出した商品データ(複数件)の結果セットを返す
+        $items = $stmt->fetchAll();
+        return  $items; 
+    }
+}
+```
 
-### ジャンル別商品一覧画面（product_select.php）
+この`getItems`メソッドを、「product_select.php」 で呼び出して利用します。
+
+## ジャンル別商品一覧画面(product_select.php)
 
 ジャンル別商品一覧画面 ： **product\_select.php**
 
@@ -201,60 +187,131 @@ class DbData
 
 <img src="./images/product_select_display.png" width="80%">
 
-ジャンル選択画面（index.php）から選択されたジャンルのデータは、このジャンル別商品一覧画面 （product_select.php）が受け取るが、ここで処理する内容は以下のとおりです。
+ジャンル選択画面(index.php)から選択されたジャンルのデータは、このジャンル別商品一覧画面(product_select.php)が受け取りますが、ここで処理する内容は以下のとおりです。
 
-1. 送られてきたジャンルの値を受け取る。
-2. Product.class のオブジェクトを生成する
-3. Productオブジェクトの `getItems( )` メソッドを呼び出し、抽出した商品データの結果セットを受け取る
+1. 送られてきたジャンルの値を受け取る
+2. クラス`Product`のオブジェクトを生成する
+3. `Product`オブジェクトの `getItems` メソッドを呼び出し、抽出した商品データの結果セットを受け取る
 4. 商品データの結果セットから商品を取り出し一覧画面を作成する
 
-この **product_select.php** のコードは以下のとおりです。
+この **product/product_select.php** のコードは以下のとおりです。
+※このファイルは、`puclic`ディレクトリに`product`ディレクトリを作成し、その中に配置してください。
 
-![](./images/product_select1_code.png)
+```php
+<?php
+// genreの値を受け取る
+$genre = $_POST['genre'];
+
+// Productオブジェクトを生成する
+require_once __DIR__ . '/../classes/product.php';
+$product = new Product();
+
+// 抽出された商品データの結果セットを受け取る
+$items = $product->getItems($genre);
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ショッピングサイト</title>
+  <link rel="stylesheet" href="./css/minishop.css">
+</head>
+
+<body>
+
+<h3>ジャンル別商品一覧</h3>
+<table>
+  <tr>
+    <th>&nbsp;</th>
+    <th>商品名</th>
+    <th>メーカー・著者<br>アーティスト</th>
+    <th>価格</th>
+    <th>詳細</th>
+  </tr>
+  <?php
+  foreach ($items  as  $item) {
+  ?>
+    <tr>
+      <td class="td_mini_img"><img class="mini_img" src="../images/<?= $item['image'] ?>"></td> <!-- ① -->
+      <td class="td_item_name"><?= $item['name'] ?></td> <!-- ② -->
+      <td class="td_item_maker"><?= $item['maker'] ?></td> <!-- ③ -->
+      <td class="td_right">&yen;<?= number_format($item['price'])?></td> <!-- ④ -->
+      <td><a href="product_detail.php?ident= <?= $item['ident'] ?> ">詳細</a></td> <!-- ⑤ -->
+    </tr>
+  }
+?>
+</table>
+<br>
+<a href="../index.php">ジャンル選択に戻る</a>
+
+</body>
+</html>
+```
 
 **`<td>`セル内のクラス設定について**
 
-各セルの幅や高さ、左詰め・右詰め・中央ぞろえなどといった表示に関する設定を行っている。具体的な設定は、src\css\minishop.css に記述してある。
+各セルの幅や高さ、左詰め・右詰め・中央ぞろえなどといった表示に関する設定を行っています。
+具体的な設定は、「css/minishop.css」 に記述してあります。
 
-①: `'<td class="td_mini_img"><img class="mini_img" src="../images/' . $item['image'] . '"></td>' .`
+①: `<td class="td_mini_img"><img class="mini_img" src="../images/<?= $item['image'] ?>"></td>`
 
-`class="td_mini_img"` の効果は 「minishop.css」に定義されており、画像を表示するセルのサイズを幅・高さともに40pxとしている。`class="mini_img"` の効果も「minishop.css」に定義されており、画像の大きさをセルのサイズに合わせる。<br><br>
+`class="td_mini_img"` の効果は、画像を表示するセルのサイズを幅・高さともに40pxとしています。<br>
+`class="mini_img"` の効果は、画像の大きさをセルのサイズに合わせます。<br><br>
 
-②: `'<td class="td_item_name">' . $item['name'] . '</td>' .`
+②: `<td class="td_item_name"><?= $item['name'] ?></td>`
 
-`class="td_item_name"` の効果は「minishop.css」に定義されており、商品名を表示するセルの横幅を200pxとし、収まりきらない場合は折り返して表示する。<br><br>
+`class="td_item_name"` の効果は、商品名を表示するセルの横幅を200pxとし、収まりきらない場合は折り返して表示します。<br><br>
 
-③: `'<td class="td_item_maker">' . $item['maker'] . '</td>' .`
+③: `<td class="td_item_maker"><?= $item['maker'] ?></td>`
 
-`class="td_item_maker"` の効果は「minishop.css」に定義されており、メーカー等を表示する。セルの横幅を150pxとし、収まりきらない場合は折り返して表示する。<br><br>
+`class="td_item_maker"` の効果は、メーカー等を表示する。セルの横幅を150pxとし、収まりきらない場合は折り返して表示します。<br><br>
 
-④-1: `'<td class="td_right">&yen;' . number_format($item['price']) . '</td>' .`
+④: `<td class="td_right">&yen;<?= number_format($item['price'])?></td>`
 
-`class="td_right"` の効果は「minishop.css」に定義されており、セル内のデータを右詰で表示する。<br><br>
+`class="td_right"` の効果は、セル内のデータを右詰で表示します。<br>
+`&yen;` は 「¥」 を表し、`number_format` 関数は、数字を3桁ごとにカンマ区切りにする関数です。<br>
+これにより「2678」を「¥2,678」と表示している。<br><br>
 
-④-2: `'<td class="td_right">&yen;' . number_format($item['price']) . '</td>' .`
+⑤: `<td><a href="product_detail.php?ident= <?= $item['ident'] ?> ">詳細</a></td>`
 
-`&yen;` は 「¥」 を表し、`number_format( )` 関数は、数字を3桁ごとにカンマ区切りにする関数。これにより「2678」を「¥2,678」と表示している。<br><br>
+各商品の「詳細」の文字には、商品詳細画面(product_detail.php)へのリンクが張られています。<br>
+そして、そのリンクにはクエリパラメータ`?ident= <?= $item['ident'] ?>`を使い、GETメソッドで商品詳細画面(product_detail.php)へ商品番号(`ident`)を送っています。<br>
+これは、商品詳細画面(product_detail.php)で商品番号を使って商品の詳細情報を取得するためです。
 
-⑤: `'<td><a href="product_detail.php?ident=' . $item['ident'] . '">詳細</a></td>' .`
+## ディレクトリ構成の確認
 
-各商品の「詳細」の文字には、詳細画面を表示する「product_detail.php」へのリンクが張られている。そして、「product_detail.php」 にはクエリパラメータ `$ident` でその商品の商品番号を送信する。
+動作確認をする前に、ディレクトリ構成が以下のようになっていることを確認してください。
 
-### 動作確認
+```text
+public
+├── classes
+│   ├── dbdata.php
+│   └── product.php
+├── css
+│   └── minishop.css
+├── images
+├── index.php
+└── product
+    └── product_select.php
+```
 
-以上の作業終了後、次のように画面が表示されることを確認する。
+## ブラウザでの動作確認
 
-- 最初に「ジャンル選択」画面にアクセスする。<br>
+以上の作業終了後、次のように画面が表示されることを確認します。
+
+- 最初に「ジャンル選択」画面にアクセスします。<br>
 ![](./images/index_display.png)
 
-- ジャンルを選択し「選択」ボタンをクリックするとその「ジャンル別商品一覧」画面が表示される。<br>
-＊図は「ブック」のジャンルを選択した場合。それぞれのジャンルで正しく商品一覧が表示されることを確認する。<br>
+- ジャンルを選択し「選択」ボタンをクリックするとその「ジャンル別商品一覧」画面が表示されます。<br>
+＊図は「ブック」のジャンルを選択した場合。それぞれのジャンルで正しく商品一覧が表示されることを確認します。<br>
 ![](./images/product_select_display.png)
 
 - 「パソコン」を選んだ場合<br>
 ![](./images/product_select_display_pc.png)
 
-- ミュージックを選んだ場合<br>
+- 「ミュージック」を選んだ場合<br>
 ![](./images/product_select_display_music.png)
 
 **ミニショップの商品に関する機能はまだ完成ではありません。まだpushはしないでください。**

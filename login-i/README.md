@@ -274,9 +274,9 @@ class
 }
 ```
 
-①`if ($result) { `: `$result`には`signUp()`メソッドの戻り値が格納されます。`signUp()`の戻り値は、`fetch()`メソッドの戻り値になります。
+①`if ($result) { `: `$result`には`signUp`メソッドの戻り値が格納されます。`signUp`の戻り値は、`fetch`メソッドの戻り値になります。
 
-`fetch()`メソッドの戻り値をif分の条件に使うと、データが取得できた場合は`true`、取得できなかった場合は`false`になります。
+`fetch`メソッドの戻り値をif分の条件に使うと、データが取得できた場合は`true`、取得できなかった場合は`false`になります。
 
 ## register.php
 

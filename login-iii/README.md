@@ -13,7 +13,25 @@
 
 ## 事前準備
 
-前回の[ログイン認証①](../login-i/README.md)でcloneしたコードをそのまま利用してください。
+[ログイン認証①](../login-i/README.md)でcloneしたコードをそのまま利用してください。
+
+ログイン認証②まで作成していれば、以下のファイル構成となっているはずです。
+
+```text
+public
+├── classes
+│   ├── dbdata.php
+│   └── user.php
+├── index.php
+├── login_check.php
+├── login.html
+├── register.html
+├── register.php
+├── util.php
+└── welcome.php
+```
+
+それでは、引き続きログイン認証のプログラムを実装していきましょう！
 
 ## logout.php
 
