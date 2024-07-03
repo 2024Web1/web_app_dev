@@ -4,7 +4,7 @@
   - [事前準備](#事前準備)
   - [この章でやること](#この章でやること)
   - [クラスProductの修正](#クラスproductの修正)
-    - [商品詳細画面(product\_detail.php)](#商品詳細画面product_detailphp)
+  - [商品詳細画面(product\_detail.php)](#商品詳細画面product_detailphp)
   - [ジャンル別商品一覧画面(product\_select.php)の修正](#ジャンル別商品一覧画面product_selectphpの修正)
   - [動作確認](#動作確認)
   - [課題の作成と提出](#課題の作成と提出)
@@ -36,7 +36,7 @@
 上記「2」と「3」の処理をクラス`Product`に実装します。<br>
 商品詳細画面(product_detail.php) からは、クラス`Product`のオブジェクトを生成し、受け取った商品番号のデータを抽出するメソッドを呼び出して、商品データの結果セットを受け取るようにします。
 
-そこでまず、クラス`Product`」に以下の条件でメソッドを追加定義します。
+そこでまず、クラス`Product`に以下の条件でメソッドを追加定義します。
 
 ```text
 アクセス修飾子： public
@@ -83,14 +83,15 @@ class  Product  extends  DbData
 }
 ```
 
-### 商品詳細画面(product_detail.php)
+## 商品詳細画面(product_detail.php)
 
 この画面の完成形は以下のとおりです。
 (以下の画面は、ジャンル＝ブック、商品番号=6が選ばれた場合のサンプルです。)
 
 ![](./images/product_detail_display.png)
 
-完成形の画面、並びにコメントを参考に、以下の「product_detail.php」の穴埋めの箇所に適切なコードを記述し完成させてください。
+完成形の画面、並びにコメントを参考に、以下の「product_detail.php」の**穴埋めの箇所に適切なコードを記述し**完成させてください。
+また、「product_detail.php」は、`product`ディレクトリに配置してください。
 
 **product/product_detail.php**
 
@@ -184,19 +185,21 @@ $item =
 ## ジャンル別商品一覧画面(product_select.php)の修正
 
 以上で商品詳細画面(product_detail.php)が完成ですが、ひとつ問題が発生します。<br>
-それは、商品詳細画面(product_detail.php)の「ジャンル選択に戻る」リンクをクリックすると以下のエラーが発生します。
+それは、商品詳細画面(product_detail.php)の「ジャンル選択に戻る」リンクをクリックすると以下のエラーが発生することです。
 
 ![](./images/product_select_display_error.png)
 
 このエラーは、ジャンル別商品一覧(product_select.php)で発生しています。
 
-`Undefined array key "genre" ... on line3` と表示されていることから、product_select.php の3行目で`genre`というキーが配列にて定義されていないことが原因となっているようです。
+`Undefined array key "genre" ... on line3` と表示されていることから、3行目で`genre`というキーが配列にて定義されていないことが原因となっているようです。
 
-product_select.phpの3行目は、`$genre = $_POST['genre'];` となっており、ジャンル選択画面(index.php)からジャンルの値をPOSTで受け取るようになっています。
+3行目は、`$genre = $_POST['genre'];` となっており、ジャンル選択画面(index.php)からジャンルの値をPOSTで受け取るようになっています。
 
 しかし、商品詳細画面(product_detail.php)の「ジャンル選択に戻る」リンクをクリックすると、ジャンルの値がGETで送られてくるため、`$_POST['genre']` ではなく `$_GET['genre']` で受け取る必要があります。
 
-そのため、product_select.phpの3行目を以下のように修正してください。
+そのため、ジャンル別商品一覧(product_select.php)の3行目を以下のように修正してください。
+
+**product/product_select.php**
 
 ```php
 <?php

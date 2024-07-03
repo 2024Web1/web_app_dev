@@ -177,11 +177,9 @@ class  Product  extends  DbData
 }
 ```
 
-この`getItems`メソッドを、「product_select.php」 で呼び出して利用します。
+この`getItems`メソッドを、ジャンル別商品一覧画面(product_select.php)で呼び出して利用します。
 
 ## ジャンル別商品一覧画面(product_select.php)
-
-ジャンル別商品一覧画面 ： **product\_select.php**
 
 - 選択されたジャンルの商品概要を一覧で表示する
 - 各商品にはそれぞれの詳細画面へのリンクがある<br>
@@ -274,7 +272,7 @@ $items = $product->getItems($genre);
 
 `class="td_right"` の効果は、セル内のデータを右詰で表示します。<br>
 `&yen;` は 「¥」 を表し、`number_format` 関数は、数字を3桁ごとにカンマ区切りにする関数です。<br>
-これにより「2678」を「¥2,678」と表示している。<br><br>
+これにより「2678」を「¥2,678」と表示します。<br><br>
 
 ⑤: `<td><a href="product_detail.php?ident= <?= $item['ident'] ?> ">詳細</a></td>`
 
@@ -293,7 +291,7 @@ public
 │   └── product.php
 ├── css
 │   └── minishop.css
-├── images
+├── images(中のファイル名は省略)
 ├── index.php
 └── product
     └── product_select.php
