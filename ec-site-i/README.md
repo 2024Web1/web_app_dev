@@ -13,7 +13,7 @@
 
 ## 事前準備
 
-[こちらのページ]()から、ソースコードを`C:¥web_app_dev`へcloneすること。
+[こちらのページ](https://classroom.github.com/a/29gYmXWZ)から、ソースコードを`C:¥web_app_dev`へcloneしてください。
 
 ## この章でやること
 
@@ -31,7 +31,7 @@
 
 | カラム名 | データ型 | 制約 | 備考 |
 | - | - | - | - |
-|ident|int|主キー、not null制約|商品番号|
+|ident|int型|主キー、not null制約|商品番号|
 |name|varchar型|最大文字数50、not null制約|商品名|
 |maker|varchar型|最大文字数50、not null制約|メーカー・著者・アーティスト|
 |price|int型||価格|
