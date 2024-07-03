@@ -6,6 +6,7 @@
   - [クラスProductの修正](#クラスproductの修正)
   - [商品詳細画面(product\_detail.php)](#商品詳細画面product_detailphp)
   - [ジャンル別商品一覧画面(product\_select.php)の修正](#ジャンル別商品一覧画面product_selectphpの修正)
+  - [ディレクトリ構成の確認](#ディレクトリ構成の確認)
   - [動作確認](#動作確認)
   - [課題の作成と提出](#課題の作成と提出)
   - [採点について](#採点について)
@@ -268,6 +269,24 @@ $items = $product->getItems($genre);
 
 `$_SERVER["REQUEST_METHOD"]`は、リクエストメソッドを取得するためのPHPの定義済み変数です。
 `$_SERVER["REQUEST_METHOD"]`を使うことで、リクエスト時に送信されたデータのメソッド(主に`GET`や`POST`)を取得できます。
+
+## ディレクトリ構成の確認
+
+動作確認をする前に、ディレクトリ構成が以下のようになっていることを確認してください。
+
+```text
+public
+├── classes
+│   ├── dbdata.php
+│   └── product.php
+├── css
+│   └── minishop.css
+├── images(中のファイル名は省略)
+├── index.php
+└── product
+    ├── product_detail.php ←本章で追加
+    └── product_select.php
+```
 
 ## 動作確認
 
