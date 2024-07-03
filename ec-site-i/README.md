@@ -58,21 +58,22 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <title>ショッピングサイト</title>
-  <link rel="stylesheet" href="./css/minishop.css">
+    <meta charset="UTF-8">
+    <title>ショッピングサイト</title>
+    <link rel="stylesheet" href="css/minishop.css">
 </head>
 
 <body>
-  <h3>ジャンル選択</h3>
-  お好みのジャンルを選択してください。<br>
-  <form method="POST" action="product/product_select.php"> <!-- ① -->
-    <label><input type="radio" name="genre" value="pc">パソコン</label>&nbsp;&nbsp; <!-- ② -->
-    <label><input type="radio" name="genre" value="book" checked>ブック</label>&nbsp;&nbsp;
-    <label><input type="radio" name="genre" value="music">ミュージック</label>&nbsp;&nbsp;
-    <input type="submit" value="選択">
-  </form>
+    <h3>ジャンル選択</h3>
+    お好みのジャンルを選択してください。<br>
+    <form method="POST" action="product/product_select.php"> <!-- ① -->
+        <label><input type="radio" name="genre" value="pc">パソコン</label>&nbsp;&nbsp; <!-- ② -->
+        <label><input type="radio" name="genre" value="book" checked>ブック</label>&nbsp;&nbsp;
+        <label><input type="radio" name="genre" value="music">ミュージック</label>&nbsp;&nbsp;
+        <input type="submit" value="選択">
+    </form>
 </body>
+
 </html>
 ```
 
@@ -171,7 +172,7 @@ class  Product  extends  DbData
         $stmt = $this->query($sql,  [$genre]);
         // 抽出した商品データ(複数件)の結果セットを返す
         $items = $stmt->fetchAll();
-        return  $items; 
+        return  $items;
     }
 }
 ```
@@ -183,9 +184,8 @@ class  Product  extends  DbData
 ジャンル別商品一覧画面 ： **product\_select.php**
 
 - 選択されたジャンルの商品概要を一覧で表示する
-- 各商品にはそれぞれの詳細画面へのリンクがある
-
-<img src="./images/product_select_display.png" width="80%">
+- 各商品にはそれぞれの詳細画面へのリンクがある<br>
+![](./images/product_select_display.png)
 
 ジャンル選択画面(index.php)から選択されたジャンルのデータは、このジャンル別商品一覧画面(product_select.php)が受け取りますが、ここで処理する内容は以下のとおりです。
 
@@ -214,39 +214,41 @@ $items = $product->getItems($genre);
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <title>ショッピングサイト</title>
-  <link rel="stylesheet" href="./css/minishop.css">
+    <meta charset="UTF-8">
+    <title>ショッピングサイト</title>
+    <link rel="stylesheet" href="../css/minishop.css">
 </head>
 
 <body>
 
-<h3>ジャンル別商品一覧</h3>
-<table>
-  <tr>
-    <th>&nbsp;</th>
-    <th>商品名</th>
-    <th>メーカー・著者<br>アーティスト</th>
-    <th>価格</th>
-    <th>詳細</th>
-  </tr>
-  <?php
-  foreach ($items  as  $item) {
-  ?>
-    <tr>
-      <td class="td_mini_img"><img class="mini_img" src="../images/<?= $item['image'] ?>"></td> <!-- ① -->
-      <td class="td_item_name"><?= $item['name'] ?></td> <!-- ② -->
-      <td class="td_item_maker"><?= $item['maker'] ?></td> <!-- ③ -->
-      <td class="td_right">&yen;<?= number_format($item['price'])?></td> <!-- ④ -->
-      <td><a href="product_detail.php?ident= <?= $item['ident'] ?> ">詳細</a></td> <!-- ⑤ -->
-    </tr>
-  }
-?>
-</table>
-<br>
-<a href="../index.php">ジャンル選択に戻る</a>
+    <h3>ジャンル別商品一覧</h3>
+    <table>
+        <tr>
+            <th>&nbsp;</th>
+            <th>商品名</th>
+            <th>メーカー・著者<br>アーティスト</th>
+            <th>価格</th>
+            <th>詳細</th>
+        </tr>
+        <?php
+        foreach ($items  as  $item) {
+        ?>
+            <tr>
+                <td class="td_mini_img"><img class="mini_img" src="../images/<?= $item['image'] ?>"></td> <!-- ① -->
+                <td class="td_item_name"><?= $item['name'] ?></td> <!-- ② -->
+                <td class="td_item_maker"><?= $item['maker'] ?></td> <!-- ③ -->
+                <td class="td_right">&yen;<?= number_format($item['price']) ?></td> <!-- ④ -->
+                <td><a href="product_detail.php?ident= <?= $item['ident'] ?> ">詳細</a></td> <!-- ⑤ -->
+            </tr>
+        <?php
+        }
+        ?>
+    </table>
+    <br>
+    <a href="../index.php">ジャンル選択に戻る</a>
 
 </body>
+
 </html>
 ```
 

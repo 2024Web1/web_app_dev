@@ -149,10 +149,10 @@ class
 $userId   = 
 $password = 
 
-// Userクラスを利用するため、user.phpクラスを読み込む(穴埋め)
+// Userクラスを利用するため、user.phpを読み込む(穴埋め)
 require_once 
 // UserクラスからUserオブジェクトを生成する(穴埋め)
-$user 
+$user =  
 // authUserメソッドを呼び出し、認証結果を受け取る(穴埋め)
 $result = 
 

@@ -1,21 +1,16 @@
-﻿# 仕様書② : ジャンル選択画面、ジャンル別商品一覧画面
+﻿# 仕様書② : 商品詳細画面
 
-- [仕様書② : ジャンル選択画面、ジャンル別商品一覧画面](#仕様書--ジャンル選択画面ジャンル別商品一覧画面)
+- [仕様書② : 商品詳細画面](#仕様書--商品詳細画面)
   - [事前準備](#事前準備)
   - [この章でやること](#この章でやること)
   - [クラスProductの修正](#クラスproductの修正)
     - [商品詳細画面(product\_detail.php)](#商品詳細画面product_detailphp)
   - [ジャンル別商品一覧画面(product\_select.php)の修正](#ジャンル別商品一覧画面product_selectphpの修正)
   - [動作確認](#動作確認)
-  - [課題の提出と採点について](#課題の提出と採点について)
+  - [課題の作成と提出](#課題の作成と提出)
+  - [採点について](#採点について)
     - [課題の合格基準](#課題の合格基準)
     - [合格確認方法](#合格確認方法)
-    - [エラーが出た時の対処法](#エラーが出た時の対処法)
-    - [タイムアウトになっていないかを確認する](#タイムアウトになっていないかを確認する)
-    - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する)
-      - [どこでエラーがでているか確認する](#どこでエラーがでているか確認する)
-      - [プログラムが正確に書かれているか確認する](#プログラムが正確に書かれているか確認する-1)
-  - [GitHub上での採点についてのお願い](#github上での採点についてのお願い)
 
 ## 事前準備
 
@@ -27,7 +22,7 @@
 
 ![](./images/screen.png)
 
-また、商品詳細画面(product_detail.php)の作成だけでなく、商品データを操作するクラス`Product`(product.php)の修正を行います。
+また、商品詳細画面(product_detail.php)の作成だけでなく、商品データを操作するクラス`Product`の修正を行います。
 
 ## クラスProductの修正
 
@@ -77,10 +72,12 @@ class  Product  extends  DbData
     // 選択された商品を取り出す
     public  function  getItem($ident)
     {
-        $sql  =  "select  *  from  items  where  ident  =  ?";
+        $sql  =  "SELECT  *  FROM  items  WHERE  ident  =  ?";
         $stmt = $this->query($sql,  [$ident]);
-        $item = $stmt->fetch();     // 1件だけ抽出するのでfetch( )メソッドを使用
-        return  $item;      // 抽出した商品データを返す（1件だけ）
+        // 1件だけ抽出するのでfetch( )メソッドを使用
+        $item = $stmt->fetch();
+        // 抽出した商品データを返す（1件だけ）
+        return  $item;
     }
     // --- 追加はここまで ---
 }
@@ -91,14 +88,11 @@ class  Product  extends  DbData
 この画面の完成形は以下のとおりです。
 (以下の画面は、ジャンル＝ブック、商品番号=6が選ばれた場合のサンプルです。)
 
-<img src="./images/product_detail_display.png" width="70%">
-
-プルダウンメニューを開いた状態<br>
-![](./images/product_detail_pulldown_display.png)
+![](./images/product_detail_display.png)
 
 完成形の画面、並びにコメントを参考に、以下の「product_detail.php」の穴埋めの箇所に適切なコードを記述し完成させてください。
 
-**product/product\_detail.php**
+**product/product_detail.php**
 
 ```php
 <?php
@@ -117,7 +111,7 @@ $item =
 <head>
   <meta charset="UTF-8">
   <title>ショッピングサイト</title>
-  <link rel="stylesheet" href="./css/minishop.css">
+  <link rel="stylesheet" href="../css/minishop.css">
 </head>
 
 <body>
@@ -187,8 +181,6 @@ $item =
 
 注文数は「1 ～ 10」のプルダウンメニューで表示しますが、`for`分を使うことで、`<option>`タグの記述を簡略化できます。
 
-![](./images/cart_list_display_pulldown.png)
-
 ## ジャンル別商品一覧画面(product_select.php)の修正
 
 以上で商品詳細画面(product_detail.php)が完成ですが、ひとつ問題が発生します。<br>
@@ -196,14 +188,22 @@ $item =
 
 ![](./images/product_select_display_error.png)
 
-このエラーは「ジャンル別商品一覧(product_select.php)」のプログラムで発生しているので、正しく「ジャンル別商品一覧」画面が表示されるように「**product\_select.php**」を修正する必要があります。
+このエラーは、ジャンル別商品一覧(product_select.php)で発生しています。
+
+`Undefined array key "genre" ... on line3` と表示されていることから、product_select.php の3行目で`genre`というキーが配列にて定義されていないことが原因となっているようです。
+
+product_select.phpの3行目は、`$genre = $_POST['genre'];` となっており、ジャンル選択画面(index.php)からジャンルの値をPOSTで受け取るようになっています。
+
+しかし、商品詳細画面(product_detail.php)の「ジャンル選択に戻る」リンクをクリックすると、ジャンルの値がGETで送られてくるため、`$_POST['genre']` ではなく `$_GET['genre']` で受け取る必要があります。
+
+そのため、product_select.phpの3行目を以下のように修正してください。
 
 ```php
 <?php
 // ---修正箇所(ここから)---
 // genreの値を受け取る
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  // POSTで送られてきた場合
+if ($_SERVER["REQUEST_METHOD"] === "POST") { // ①
+  // POSTで送られてきた場合(※前回の仕様書で記述されていた箇所)
   $genre = $_POST['genre'];
 } else {
   // GETで送られてきた場合
@@ -245,11 +245,11 @@ $items = $product->getItems($genre);
   foreach ($items  as  $item) {
   ?>
     <tr>
-      <td class="td_mini_img"><img class="mini_img" src="../images/<?= $item['image'] ?>"></td> <!-- ① -->
-      <td class="td_item_name"><?= $item['name'] ?></td> <!-- ② -->
-      <td class="td_item_maker"><?= $item['maker'] ?></td> <!-- ③ -->
-      <td class="td_right">&yen;<?= number_format($item['price'])?></td> <!-- ④ -->
-      <td><a href="product_detail.php?ident= <?= $item['ident'] ?> ">詳細</a></td> <!-- ⑤ -->
+      <td class="td_mini_img"><img class="mini_img" src="../images/<?= $item['image'] ?>"></td>
+      <td class="td_item_name"><?= $item['name'] ?></td>
+      <td class="td_item_maker"><?= $item['maker'] ?></td>
+      <td class="td_right">&yen;<?= number_format($item['price'])?></td>
+      <td><a href="product_detail.php?ident= <?= $item['ident'] ?> ">詳細</a></td>
     </tr>
   }
 ?>
@@ -261,109 +261,53 @@ $items = $product->getItems($genre);
 </html>
 ```
 
+①: `$_SERVER["REQUEST_METHOD"] === "POST"`
+
+`$_SERVER["REQUEST_METHOD"]`は、リクエストメソッドを取得するためのPHPの定義済み変数です。
+`$_SERVER["REQUEST_METHOD"]`を使うことで、リクエスト時に送信されたデータのメソッド(主に`GET`や`POST`)を取得できます。
 
 ## 動作確認
 
-以上の作業終了後、次のように画面が表示されることを確認する。
+以上の作業終了後、以下のように画面が表示されることを確認してください。
 
 1. ジャンル＝パソコンの最初の商品(商品番号=1)を選択した場合<br>
-   ジャンル別商品一覧画面と商品詳細画面が行き来できること
-
-<img src="./images/product_select_display_pc_kakunin.png" width="80%"><br>
-`　　　　　　　　　　　　　　　　　　　　`↕️
-<img src="./images/product_detail_display_pc_kakunin.png" width="80%">
-
-
+   ジャンル別商品一覧画面と商品詳細画面が行き来できること<br>
+   ![](./images/product_select_display_pc.png)<br>
+   ![](./images/product_detail_display_pc.png)<br>
+   ![](./images/product_select_display_pc_back.png)
 
 1. ジャンル＝ブックの最初の商品(商品番号=6)が選択された場合
-
-<img src="./images/product_select_display_book_kakunin.png" width="80%"><br>
-`　　　　　　　　　　　　　　　　　　　　`
-<img src="./images/product_detail_display_book_kakunin.png" width="80%">
-
-
+   ジャンル別商品一覧画面と商品詳細画面が行き来できること<br>
+   ![](./images/product_select_display_book.png)<br>
+   ![](./images/product_detail_display_book.png)<br>
+   ![](./images/product_select_display_book_back.png)
 
 1. ジャンル＝ミュージックの最初の商品(商品番号=11)が選択された場合
+   ジャンル別商品一覧画面と商品詳細画面が行き来できること<br>
+   ![](./images/product_select_display_music.png)<br>
+   ![](./images/product_detail_display_music.png)<br>
+   ![](./images/product_select_display_music_back.png)
 
-<img src="./images/product_select_display_music_kakunin.png" width="80%"><br>
-`　　　　　　　　　　　　　　　　　　　　`↕️
-<img src="./images/product_detail_display_music_kakunin.png" width="80%">
+## 課題の作成と提出
 
-## 課題の提出と採点について
+## 採点について
 
-pushで提出した課題は、GitHub上で自動採点される。提出後、課題が合格しているかを確認すること。合格していない場合は修正後pushし、再提出すること。
+提出した課題はGitHub上で自動採点されます。
+提出後、課題が合格しているかを確認してください。
+合格していない場合は修正後pushし、再提出してください。
 
 ### 課題の合格基準
 
-以下を合格基準とする。
+以下の3つを合格基準とします。
 
-1. ジャンル別商品一覧画面で、選択したジャンルの商品一覧が表示されること
-2. 商品詳細画面で、ジャンル別商品一覧画面で選択した商品の詳細が表示されること
+1. ジャンル別商品一覧画面(product_select.php)で、選択したジャンルの商品一覧が表示されること
+2. 商品詳細画面(product_detail.php)で、ジャンル別商品一覧画面で選択した商品の詳細が表示されること
+3. 商品詳細画面(product_detail.php)からジャンル別商品一覧画面(product_select.php)に遷移できること
 
 ### 合格確認方法
 
-1. 本課題の[課題ページ](https://classroom.github.com/a/4ZOKphQa)に再度アクセスする。
-2. 画面上部にある`Actions`をクリックする。<br>
+1. 本課題の[課題ページ]()に再度アクセスします。
+2. 画面上部にある`Actions`をクリックしてください。<br>
 ![](./images/acions.png)
-1. **一番上**の行に、緑色のチェックが入っていればOK。※その下に赤いばつ印が入っているものがあるが、それは無視する。<br>
+1. **一番上**の行に、緑色のチェックが入っていればOKです。<br>
 ![](./images/pass.png)
-
-### エラーが出た時の対処法
-
-自動採点がエラーになると、**一番上**の行に赤いばつ印がでる。その場合の解決策を以下に示す。
-
-### タイムアウトになっていないかを確認する
-
-※右端の赤枠で囲まれている箇所に処理時間がでるが、**2分以上**かかっている場合はタイムアウトとなる。
-![](./images/timeout.png)
-
-なお、タイムアウトの場合は、GitHub上で処理を再開すると解決できる。具体的なタイムアウト解決方法は、
-
-  1. Actionsタブをクリック
-  2. タイトルが下記のようにリンクになっているので、クリック<br>
-      ![](./images/timeout2.png)<br>
-  3. Autogradingをクリック<br>
-   <img src="./images/timeout3.png" width="75%"><br>
-   
-
-  4. 赤いばつ印が出ている箇所をクリック<br>
-   <img src="./images/timeout4.png" width="75%"><br>
-  1. `::error::Setup timed out in 120000 milliseconds`のメッセージがあればタイムアウト
-
-  6. 右上に`Re-run jobs`(再実行)のボタンがあるので、`Re-run failed jobs`(失敗した処理だけ再実行)をクリックする。
-  ![](./images/timeout6.png)<br>
-  ![](./images/timeout7.png)
-  7. タイムアウトにならず2分以内に処理が終了したらOK。※タイムアウトでないエラーは、次の解決策を参照。
-
-
-
-### プログラムが正確に書かれているか確認する
-
-プログラムが正確に書かれているかを確認すること。たとえ、ブラウザの画面でそれっぽく表示されても、自動採点なので融通がきかない。エラーが出た際は、以下を確認すること。
-
-#### どこでエラーがでているか確認する
-
-今回は2つの自動採点(新規ユーザー登録処理、ログイン認証処理)があるので、以下の手順で、どごでエラーが出ているか確認する。
-
-1. Actionsタブをクリック
-2. タイトルが下記のようにリンクになっているので、クリック
-      ![](./images/timeout2.png)<br>
-3. Autogradingをクリック<br>
-   <img src="./images/timeout3.png" width="65%"><br>
-4. 赤いばつ印が出ている箇所をクリック<br>
-  <img src="./images/timeout4.png" width="65%"><br>
-1. エラーがあるソースコードは、下記画像のように、エラーメッセージが表示されるので、これにエラーが出ているソースコードを特定できる。<br>
-<img src="./images/error_message.png" width="75%"><br>
-
-#### プログラムが正確に書かれているか確認する
-
-プログラムが正確に書かれているかを確認する。たとえ、ブラウザの画面でそれっぽく表示されても、自動採点ですので融通はききません。エラーが出た際は、サンプルコードと差異がないか確認してください。
-
-## GitHub上での採点についてのお願い
-
-今回、再度GitHub上での採点をするにあたりお願いがあります。それは、<br>
-GitHubに課題をpushする前に、**必ずブラウザで動作確認をしてください。**　理由は下記の2つです。<br>
-
-1. Webアプリケーションはブラウザ上で動作することが前提であるため。
-2. GitHubの採点処理時間に上限があるため。<br>
-以前の自動採点プログラムと比べ、処理時間の高速化には成功したものの、GitHubの合計処理時間には毎月上限があります。むやみやたらにpushすると、上限に達しかねないので、必ずブラウザ上で正常に動作することを確認してからpushしてください。**エラーの原因が特定できない場合は、お気軽に質問してください。**
