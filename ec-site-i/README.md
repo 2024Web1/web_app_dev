@@ -80,7 +80,7 @@
 ①: `<form method="POST" action="product/product_select.php">`
 
 `action`属性のパスの記載方法は相対パスとなっています。
-この場合、index.php から見て product_select.php は「product」フォルダ内にあるため、パスの記載は「product/product_select.php」となります。
+この場合、index.php から見て product_select.php は「product」ディレクトリ内にあるため、パスの記載は「product/product_select.php」となります。
 
 ②: `<label><input type="radio" name="genre" value="pc">パソコン</label>&nbsp;&nbsp;`
 
