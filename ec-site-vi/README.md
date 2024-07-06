@@ -4,7 +4,7 @@
   - [事前準備](#事前準備)
   - [本章から追加されたテーブルについて](#本章から追加されたテーブルについて)
   - [注文画面(order\_now.php)の作成](#注文画面order_nowphpの作成)
-  - [注文に関するデータベース操作を行う Order.class](#注文に関するデータベース操作を行う-orderclass)
+  - [注文に関するデータベース操作を行うクラスOrder](#注文に関するデータベース操作を行うクラスorder)
   - [Cart.classに、カート内の全ての商品を削除するclearCart()メソッドを作成](#cartclassにカート内の全ての商品を削除するclearcartメソッドを作成)
   - [注文画面(order\_now.php)](#注文画面order_nowphp)
   - [ディレクトリ構成の確認](#ディレクトリ構成の確認)
@@ -56,7 +56,7 @@ public
 
 | カラム名 | データ型 | 制約 | 備考 |
 | - | - | - | - |
-|orderId|int型|主キー|注文番号|
+|orderId|int型|主キー|注文番号(テーブルordersのorderId)|
 |itemId|int型|主キー|商品番号|
 |quantity|int型||注文数|
 
@@ -71,81 +71,32 @@ public
   
 の処理を行い、注文した商品の内容を注文画面(order_now.php)に表示します。
 
-**カート内の商品画面：cart_list.php**</br>
+**カート内の商品画面：cart_list.php**<br>
 ![](./images/cart_list_display.png)
 
-**注文画面：order_now.php**</br>
+**注文画面：order_now.php**<br>
 ![](./images/order_now_display.png)
 
 この一連の処理を以下の手順で実装していきます。
 
-1. データベースに関わる処理は、src\classes\order.php の Order.class に以下のメソッドとして定義する。
-  メソッド名：addOrder( ) ・・・ カート内のすべての商品を注文内容として登録するメソッド
+1. データベースに関わる処理は、classes/order.php のクラス`Order` に以下のメソッドとして定義する
+  `addOrder`メソッド ・・・ カート内のすべての商品を注文内容として登録するメソッド
 
-1. カート内の商品画面(cart_list.php)から送られてくるリクエストを受け取る「注文画面」(order_now.php)には、以下の処理を記述する。
+1. カート内の商品画面(cart_list.php)から送られてくるリクエストを受け取る注文画面(order_now.php)には、以下の処理を記述する
+  1. クラス`Cart`のオブジェクトを生成し、カート内のすべての商品を取り出すメソッドを呼び出す
+  1. クラス`Order`のオブジェクトを生成し、カート内のすべての商品を注文内容として登録するメソッドを呼び出す
+  1. 取り出したカート内のすべての商品を画面に表示する(金額と合計金額も表示する)
+  1. Cartオブジェクトの全ての商品を削除するメソッドを呼び出し、カート内の全ての商品を削除する
 
-  (1) Cartクラスのオブジェクトを生成し、カート内のすべての商品を取り出すメソッドを呼び出す。
-  (2) Orderクラスのオブジェクトを生成し、カート内のすべての商品を注文内容として登録するメソッドを呼び出す。
-  (3) 取り出したカート内のすべての商品を画面に表示する。(金額と合計金額も表示する)
-  (4) Cartオブジェクトの全ての商品を削除するメソッドを呼び出し、カート内の全ての商品を削除する。
-```
+## 注文に関するデータベース操作を行うクラスOrder
 
-## 注文テーブル「orders」と注文明細テーブル「orderdetails」
-
-注文内容は、注文テーブル「orders」 と注文明細テーブル「orderdetails」の構成で登録する。
-
-### 注文テーブル「orders」
-
-|項目名|データ型|説明|その他|
-| - | - | - | - |
-|orderId|int型|注文番号|auto_increment,   primary key|
-|orderdate|datetime型|注文日時|注文時の日時(年月日 時分秒)|
-
-(＊)MySQLのDATETIME型のフォーマットは「YYYY-MM-DD HH:MM:SS」である。(時間表記は、00～23の24時間制)
-
-### 注文明細テーブル「 orderdetails 」
-
-|項目名|データ型|説明|その他|
-| - | - | - | - |
-|orderId|int型|注文番号|ordersテーブルのorderId|
-|itemId|int型|商品番号||
-|quantity|int型|注文数||
-
-(＊)primary keyは「orderId」と「itemId」の複数列を使った複合主キーとする。
-
-これを踏まえ、src\data\\**mysql_minishop_order.txt** に以下の内容が記述されているので、これを用いてテーブルを作成する。
-
-```sql
-# データベースminishopを使用する
-set names utf8;
-use minishop;
-
-# 注文テーブルordersの作成
-drop table if exists orders;
-create table orders (
-    orderId     int   auto_increment   primary   key,
-    orderdate   datetime
-);
-
-# 注文明細テーブルorderdetailsの作成
-drop table if exists orderdetails;
-create table orderdetails (
-    orderId     int,
-    itemId      int,
-    quantity    int,
-    primary key(orderId, itemId)
-);
-```
-
-## 注文に関するデータベース操作を行う Order.class
-
-データベースの基本事項を定義する「DbData.class」を継承し、注文に関するデータベース操作を行う 「Order.class」を定義する。</br>
-定義するファイルは、src\classes\order.php で、この「Order.class」にカート内のすべての商品を注文内容として登録する「addOrder( )」メソッドを以下の仕様で定義する。</br>
+データベースの基本事項を定義するクラス`DbData`を継承し、注文に関するデータベース操作を行うクラス`Order`を定義します。<br>
+定義するファイルは、classes/order.php で、このクラス`Order`にカート内のすべての商品を注文内容として登録する`addOrder`メソッドを以下の仕様で定義します。<br>
 
 ```text
 アクセス修飾子： public
 メソッド名： addOrder
-引数： $cartItems (カート内の全ての商品を取り出した結果セット)
+引数： $cartItems(カート内の全ての商品を取り出した結果セット)
 戻り値： なし
 ```
 
@@ -157,9 +108,9 @@ create table orderdetails (
 3. 引数で受け取った$cartItemsの各商品に注文番号をセットしたデータを注文明細テーブルに登録する
 ```
 
-【ヒント】</br>
+【ヒント】<br>
 
-- 注文テーブルにセットする注文日時は以下のフォーマットを用いれば、MySQLのDATETIME型と一致する。</br>
+- 注文テーブルにセットする注文日時は以下のフォーマットを用いれば、MySQLのDATETIME型と一致する。<br>
 **date("Y-m-d H:i:s")**
 - 登録した注文データの注文番号は「auto_increment」で採番されるので、以下の処理で取得することができる。
 
@@ -184,7 +135,7 @@ $orderId = $result[ 0 ]; // auto_incrementで登録された注文番号(orderId
 
 ## 注文画面(order_now.php)
 
-この画面の完成形は以下のとおり。</br>
+この画面の完成形は以下のとおり。<br>
 ![](./images/order_now_display.png)
 
 この画面と以下の処理概要を参考に、src\order\order_now.php を作成する。
@@ -229,22 +180,22 @@ public
 
 カートに複数の商品を入れ、カート内の商品画面(cart_list.php)の「注文する」リンクをクリックすると 注文画面(order_now.php)にカート内の全ての商品が表示され、データベースの注文テーブルと 注文明細テーブルにデータが登録されていることを確認する。
 
-カート内の商品画面：cart_list.php</br>
-「注文する」リンクをクリックする</br>
-![](./images/cart_list_display.png)</br></br>
+カート内の商品画面：cart_list.php<br>
+「注文する」リンクをクリックする<br>
+![](./images/cart_list_display.png)<br><br>
 
-注文画面：order_now.php</br>
+注文画面：order_now.php<br>
 ![](./images/order_now_display.png)
 
 データベースminishopの注文テーブル(orders)と注文明細テーブル(orderdetails)には、以下のようにデータが追加される。また、カートテーブル(cart)は空になっている。
 
-- 注文テーブル: **orders**</br>
+- 注文テーブル: **orders**<br>
   ![](./images/orders.png)
   
-- 注文明細テーブル: **orderdetails**</br>
+- 注文明細テーブル: **orderdetails**<br>
   ![](./images/orderdetails.png)
 
-- カートテーブル: **cart**</br>
+- カートテーブル: **cart**<br>
   ![](./images/cart.png)
 
 ## 課題の作成と提出
