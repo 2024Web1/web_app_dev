@@ -8,6 +8,7 @@
   - [データベースの基本事項を定義するクラスDbData](#データベースの基本事項を定義するクラスdbdata)
   - [商品データを操作するクラスProduct](#商品データを操作するクラスproduct)
   - [ジャンル別商品一覧画面(product\_select.php)](#ジャンル別商品一覧画面product_selectphp)
+      - [`<td>`セル内のクラス設定について\*\*](#tdセル内のクラス設定について)
   - [ディレクトリ構成の確認](#ディレクトリ構成の確認)
   - [ブラウザでの動作確認](#ブラウザでの動作確認)
 
@@ -202,7 +203,7 @@ class  Product  extends  DbData
 $genre = $_POST['genre'];
 
 // Productオブジェクトを生成する
-require_once __DIR__ . '/../classes/product.php';
+require_once __DIR__ . '/../classes/product.php'; // ①
 $product = new Product();
 
 // 抽出された商品データの結果セットを受け取る
@@ -252,7 +253,22 @@ $items = $product->getItems($genre);
 </html>
 ```
 
-**`<td>`セル内のクラス設定について**
+①： `require_once  __DIR__  .  '/../classes/product.php';`
+
+このパスの書き方理解しておきましょう。
+product_select.php から product.php は以下に示す配置となっています。
+
+```text
+public
+├── product
+│   └── product_select.php
+└── classes
+    └── product.php
+```
+
+つまり、product_select.php から product.php へのパスを記述するには、1つ上の階層に上がる必要があります。1つ上の階層に上がるパスの書き方は、`/../`であるため、`'/../classes/product.php;'` となります。
+
+#### `<td>`セル内のクラス設定について**
 
 各セルの幅や高さ、左詰め・右詰め・中央ぞろえなどといった表示に関する設定を行っています。
 具体的な設定は、「css/minishop.css」 に記述してあります。

@@ -9,7 +9,8 @@
   - [注文追加機能(cart\_add.php)](#注文追加機能cart_addphp)
   - [カート内の商品画面(cart\_list.php)](#カート内の商品画面cart_listphp)
   - [動作確認](#動作確認)
-  - [カート内の商品画面のバグ修正](#カート内の商品画面のバグ修正)
+  - [カート内の商品画面(cart\_list.php)のバグ修正](#カート内の商品画面cart_listphpのバグ修正)
+  - [ディレクトリ構成の確認](#ディレクトリ構成の確認)
   - [動作確認](#動作確認-1)
 
 ## 事前準備
@@ -43,6 +44,8 @@ public
 - カート内の商品を表示する・・・仕様書③で実装する←本章はここ
 - 特定の商品をカートから削除する・・・仕様書④で実装する
 - カート内の商品の注文数を変更する・・・仕様書⑤で実装する
+
+![](./images/cart_transition.png)
 
 ## 本章から追加されたテーブルについて
 
@@ -134,14 +137,16 @@ require_once __DIR__ . '/dbdata.php';
 
 class Cart extends DbData
 {
-  // 商品をカートに入れる ・・ テーブルcartに登録する
+  // 商品をカートに入れるメソッド
+  // 【ヒント】商品番号($ident)と注文数($quantity)をテーブルcartに登録する処理①、②を記述する
   public function addItem($ident, $quantity)
   {
     // ① SQL文を定義する
     // ② 実行する
   }
 
-  // カート内のすべてのデータを取り出す
+  // カート内のすべてのデータを取り出すメソッド
+  // 【ヒント】テーブルcart内のすべてのデータを抽出し、商品テーブルitemsの結果セットを返す処理①〜④を記述する
   public function getItems()
   {
     // ① SQL文を定義する
@@ -161,7 +166,9 @@ $sql = "SELECT items.ident, items.name, items.maker, items.price, cart.quantity,
 
 ## 注文追加機能(cart_add.php)
 
-※ファイルを作成する前に、1つ注意事項があります。今後作成する cart_***.php というファイル名のファイルは、すべて`cart`ディレクトリに配置してください。また、`cart`ディレクトリは、`public`ディレクトリに配置してください。
+※ファイルを作成する前に、1つ注意事項があります。
+今後作成する **cart_xxx.php** というファイル名のファイルは、すべて`cart`ディレクトリに配置してください。
+また、`cart`ディレクトリは、`public`ディレクトリに配置してください。
 
 注文追加機能(cart_add.php)には、以下の処理を記述します。
 
@@ -187,21 +194,6 @@ $sql = "SELECT items.ident, items.name, items.maker, items.price, cart.quantity,
     require_once __DIR__ . '/cart_list.php';
 ```
 
-2行目： `require_once  __DIR__  .  '/../classes/cart.php';`
-
-このパスの書き方理解しておきましょう。
-cart_add.php から cart.php は以下に示す配置となっています。
-
-```text
-public
-├── cart
-│   └── cart_add.php
-└── classes
-    └── cart.php
-```
-
-つまり、cart_add.php から cart.php へのパスを記述するには、1つ上の階層に上がる必要があります。1つ上の階層に上がるパスの書き方は、`/../`であるため、`'/../classes/cart.php;'` となります。
-
 ## カート内の商品画面(cart_list.php)
 
 この画面の完成形は以下のとおりです。(画面は3の商品がカートに入っている場合です。)
@@ -217,49 +209,51 @@ public
 
 ```php
 <?php
-require_once  __DIR__  .  '/../header.php';	// header.phpを読み込む
+require_once  __DIR__  .  '/../header.php'; // header.phpを読み込む
 ?>
 
 <h3>カートの商品</h3>
 <table>
-	<tr>
-		<th>&nbsp;</th>
-		<th>商品名</th>
-		<th>メーカー・著者<br>アーティスト</th>
-		<th>価格</th>
-		<th>注文数</th>
-		<th>金額</th>
-	</tr>
-	
+  <tr>
+    <th>&nbsp;</th>
+    <th>商品名</th>
+    <th>メーカー・著者<br>アーティスト</th>
+    <th>価格</th>
+    <th>注文数</th>
+    <th>金額</th>
+  </tr>
 
+  <!-- ====ここから以下の2つの処理を記載してください==== -->
+  <!-- 1. CartオブジェクトのgetItemsメソッドを呼び出し、テーブルcart内のすべてのデータを抽出する -->
 
-
-
+  <!-- 2. 抽出したテーブルcart内のすべてのデータを画面に表示する。商品一覧の表示に関しては、ジャンル別商品一覧画面(product_select.php)を参考にすると作りやすい。ただし、注文数欄、金額欄、合計金額欄の追加を忘れないこと。 -->
+  <!-- =========================================== -->
 
 
 <a href="../index.php">ジャンル選択に戻る</a>&nbsp;&nbsp;<a href="../order/order_now.php">注文する</a>
 
 <?php
-require_once  __DIR__ . '/../footer.php';  	// footer.phpを読み込む	
+require_once  __DIR__ . '/../footer.php';  // footer.phpを読み込む
 ?>
 ```
 
-
-【ヒント】画面に表示するにあたり、各セルには以下のクラス設定を行う。(13\_ミニショップ1.pdfの「**`<td>`セル内のクラス設定について**」を参照)
+【ヒント】画面に表示するにあたり、カート内の商品一覧表のセル(`<td>`や`<th>`)には以下の`class`属性の設定を以下のように行います。
+なお、[「仕様書① : ジャンル選択画面、ジャンル別商品一覧画面」の**`<td>`セル内のクラス設定について**](../ec-site-i/README.md####tdセル内のクラス設定について)で説明した内容と同様のものです。
 
 - 画像: `<td class="td_mini_img">` また、`<img>` には `class="mini_img"` を設定する。
 - 商品名: `<td class="td_item_name">`
 - メーカー・著者・アーティスト: `<td class="td_item_maker">`
 - 価格: `<td class="td_right">`
-- 注文数: `<td class="td_right">`
-- 金額: `<td class="td_right">`
-- 合計金額: `<th colspan="5">`
-
-**※注文数と合計金額は、cart_list.php で初めてでてきた項目です。**
+- 注文数: `<td class="td_right">` ←本章で追加
+- 金額: `<td class="td_right">` ←本章で追加
+- 合計金額: `<th colspan="5">` ←本章で追加
 
 ## 動作確認
 
-商品詳細画面(product_detail.php)の「カートに入れる」ボタンをクリックすると、その商品がデータベース minishop のテーブル cart に登録され、カート内の商品画面(cart_list.php)が表示されることを確認する。
+商品詳細画面(product_detail.php)の「カートに入れる」ボタンをクリックすると、その商品がテーブル cart に登録され、カート内の商品画面(cart_list.php)が表示されることを確認してください。
+
+**但し、この時点ではある「バグ」が潜んでいます。**
+この動作確認が完了しましたら、バグの修正にうつります。
 
 商品詳細画面：product_detail.php
 
@@ -269,40 +263,55 @@ require_once  __DIR__ . '/../footer.php';  	// footer.phpを読み込む
 
 ![](./images/cart_list_display_book.png)
 
-
-
 複数の商品が入っている場合
 
 ![](./images/cart_list_display_three.png)
 
-**但し、この時点ではある「バグ」が潜んでいる。 以降のページでは、バグの内容や修正方法について説明していく。**
+## カート内の商品画面(cart_list.php)のバグ修正
 
+作成したカート内の商品画面(cart_list.php)に、以下のバグが発見されたので、修正します。
 
-
-## カート内の商品画面のバグ修正
-
-作成したカート内の商品画面(cart_list.php)に、以下のバグが発見されたので、これを修正する。
-
-【バグ内容】
-
-すでにカート内に入っている商品をさらに入れようとするとエラーが発生する。(ちなみに、このエラーメッセージはWindowsのみ表示されます。Macはエラーメッセージは表示されず、なんの処理も行われません。)
+【バグ内容】<br>
+すでにカート内に入っている商品をさらに追加しようとするとエラーが発生します。
 
 ![](./images/cart_add_display_error.png)
 
 【修正内容】<br>
-すでにカート内に入っている商品をさらに入れようとした場合、注文数の追加として処理する。 (アマゾン、楽天などがこの方法で処理している) 但し、注文数は最大「10」個までとする。※追加して10個以上となる場合、今回は強制的に10個にする。
+すでにカート内に入っている商品をさらに追加しようとした場合、注文数の追加として処理します。
+但し、注文数は最大「10」個までとします。なお、追加して10個以上となる場合、**今回は強制的に10個にします。**
 
 【ヒント】<br>
-修正箇所は、クラス`Cart`の `addItem`メソッド。 このメソッドを以下の内容に修正する。
+修正箇所は、クラス`Cart`の `addItem`メソッドです。
+このメソッドを以下の内容に修正してください。
 
 ```text
-1. 今回追加する商品データが既にカート内にあるかどうかをチェックする。
-2. 既にカート内にあるならば、今回の商品の注文数を加算する。
-3. 但し、加算して「10」個を超えるようなら、注文数は「10」とする。
-4. カート内にない商品なら、新たに注文データとして登録する。
+1. 今回追加する商品データが既にカート内にあるかどうかをチェックする
+2. 既にカート内にあるならば、今回の商品の注文数を加算する
+3. 但し、加算して「10」個を超えるようなら、注文数は「10」とする
+4. カート内にない商品なら、新たに注文データとして登録する
 ```
 
+## ディレクトリ構成の確認
 
+動作確認をする前に、ディレクトリ構成が以下のようになっていることを確認してください。
+
+```text
+public
+├── cart
+│   ├── cart_add.php ←本章で追加
+│   └── cart_list.php ←本章で追加
+├── classes
+│   ├── cart.php ←本章で追加
+│   ├── dbdata.php
+│   └── product.php
+├── css
+│   └── minishop.css
+├── images
+├── index.php
+└── product
+    ├── product_detail.php
+    └── product_select.php
+```
 
 ## 動作確認
 
@@ -314,8 +323,6 @@ require_once  __DIR__ . '/../footer.php';  	// footer.phpを読み込む
 
 ![](./images/product_detail_display_2.png)
 
-
-
 3. 注文数が追加され3個となった
 
 ![](./images/cart_add_display_3.png)
@@ -323,8 +330,6 @@ require_once  __DIR__ . '/../footer.php';  	// footer.phpを読み込む
 4. 同じ商品を9個カートに入れる
 
 ![](./images/product_detail_display_9.png)
-
-
 
 5. 注文数は「12」とならず「10」となる
 
