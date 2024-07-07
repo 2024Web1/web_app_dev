@@ -62,9 +62,7 @@ public
 
 ## カート内の商品画面(cart_list.php)の作成
 
-カート内に商品を登録し、画面に表示するまでの一連の流れを以下に示します。
-
-その商品がテーブルcartに登録され、カート内の商品画面(cart_list.php)がカート内の商品を表示します。
+カート内に商品が登録され、画面に表示するまでの一連の簡単な流れを示します。
 
 ### 商品詳細画面
 
@@ -84,8 +82,8 @@ public
 **複数の商品がカート内に入っている場合**
 ![](./images/cart_list_display_three.png)
 
-上記の処理の流れですが、よりプログラム的に表現すると以下のようになります。
-※実際の開発現場でも、抽象的なものをよりプログラム的な表現に変換することが求められます。
+上記の処理の流れですが、よりプログラム的に表現すると以下のようになります。<br>
+※実際の開発現場でも、抽象的なものをよりプログラム的な表現に変換することが求められますので、脳内変換しながら練習してみてください。
 
 1. classes/cart.php にクラス`Cart`を宣言し、以下の2つのメソッドを定義
    1. `addItem`メソッド
@@ -198,7 +196,7 @@ $sql = "SELECT items.ident, items.name, items.maker, items.price, cart.quantity,
 
 ## カート内の商品画面(cart_list.php)
 
-この画面の完成形は以下のとおりです。(画面は3の商品がカートに入っている場合です。)
+この画面の完成形は以下のとおりです。(画面は3つの商品がカートに入っている場合です。)
 
 ![](./images/cart_list_display_three.png)
 
@@ -210,10 +208,15 @@ $sql = "SELECT items.ident, items.name, items.maker, items.price, cart.quantity,
 **cart/cart_list.php**
 
 ```php
-<?php
-require_once  __DIR__  .  '/../header.php'; // header.phpを読み込む
-?>
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+    <meta charset="UTF-8">
+    <title>ショッピングサイト</title>
+    <link rel="stylesheet" href="../css/minishop.css">
+</head>
+<body>
 <h3>カートの商品</h3>
 <table>
   <tr>
@@ -228,15 +231,21 @@ require_once  __DIR__  .  '/../header.php'; // header.phpを読み込む
   <!-- ====ここから以下の2つの処理を記載してください==== -->
   <!-- 1. CartオブジェクトのgetItemsメソッドを呼び出し、テーブルcart内のすべてのデータを抽出する -->
 
-  <!-- 2. 抽出したテーブルcart内のすべてのデータを画面に表示する。商品一覧の表示に関しては、ジャンル別商品一覧画面(product_select.php)を参考にすると作りやすい。ただし、注文数欄、金額欄、合計金額欄の追加を忘れないこと。 -->
+
+
+  <!-- 2. 抽出したテーブルcart内のすべてのデータを画面に表示する。 -->
+  <!-- 商品一覧の表示に関しては、ジャンル別商品一覧画面(product_select.php)を -->
+  <!-- 参考にすると作りやすい。ただし、注文数欄、金額欄、合計金額欄の追加を忘れないこと。 -->
+
+
+
   <!-- =========================================== -->
 
-
+<br>
 <a href="../index.php">ジャンル選択に戻る</a>&nbsp;&nbsp;<a href="../order/order_now.php">注文する</a>
 
-<?php
-require_once  __DIR__ . '/../footer.php';  // footer.phpを読み込む
-?>
+</body>
+</html>
 ```
 
 【ヒント】画面に表示するにあたり、カート内の商品一覧表のセル(`<td>`や`<th>`)には以下の`class`属性の設定を以下のように行います。
