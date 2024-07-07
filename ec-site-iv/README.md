@@ -96,7 +96,6 @@ public
 
 ![](./images/cart_list_display_1.png)
 
-
 3. カート内に商品がない場合の画面となり、「注文する」のリンクが無くなる
 
 ![](./images/cart_list_display_0.png)
