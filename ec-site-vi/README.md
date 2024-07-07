@@ -60,7 +60,7 @@ public
 |itemId|int型|主キー|商品番号|
 |quantity|int型||注文数|
 
-(＊)primary keyは「orderId」と「itemId」の複数列を使った複合主キーとします。
+＊primary keyは「orderId」と「itemId」の複数列を使った複合主キーとします。
 
 ## 注文画面(order_now.php)の作成
 
@@ -108,7 +108,7 @@ public
 3. 引数で受け取った$cartItemsの各商品に注文番号をセットしたデータを注文明細テーブルに登録する
 ```
 
-【ヒント】<br>
+【ヒント】
 
 - 注文テーブルにセットする注文日時は以下のフォーマットを用いれば、MySQLのDATETIME型と一致する。<br>
 **date("Y-m-d H:i:s")**
