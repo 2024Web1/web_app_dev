@@ -331,19 +331,19 @@ public
 
 ![](./images/cart_list_display_book.png)
 
-2. 同じ商品をさらに2個カートに入れる
+2. 同じ商品をさらにカートに入れる(注文数の合計が10を超えないように)
 
-![](./images/product_detail_display_2.png)
+![](./images/product_detail_display.png)
 
-3. 注文数が追加され3個となった
+3. 同じ商品がカートに追加され、注文数が加算される
 
-![](./images/cart_add_display_3.png)
+![](./images/cart_add_display_4.png)
 
-4. 同じ商品を9個カートに入れる
+1. 同じ商品をさらにカートに入れる(注文数の合計が10を超えるように)
 
-![](./images/product_detail_display_9.png)
+![](./images/product_detail_display_8.png)
 
-5. 注文数は「12」とならず「10」となる
+1. 注文数が「10」となる
 
 ![](./images/cart_add_display_10.png)
 
