@@ -201,7 +201,8 @@ $sql = "SELECT items.ident, items.name, items.maker, items.price, cart.quantity,
 
 ![](./images/cart_list_display_three.png)
 
-この画面を参考に、カート内の商品画面(cart_list.php)を作成します。処理概要についてはコメントで記載していますので、そちらを参考に記述してください。
+この画面を参考に、カート内の商品画面(cart_list.php)を作成します。
+処理概要についてはコメントで記載していますので、そちらを参考に記述してください。
 
 **cart/cart_list.php**
 
@@ -227,7 +228,8 @@ $sql = "SELECT items.ident, items.name, items.maker, items.price, cart.quantity,
   </tr>
 
   <!-- ====ここから以下の2つの処理を記載してください==== -->
-  <!-- 1. CartオブジェクトのgetItemsメソッドを呼び出し、テーブルcart内のすべてのデータを抽出する -->
+  <!-- 1. CartオブジェクトのgetItemsメソッドを呼び出し、テーブルcart内のすべてのデータを抽出する。 -->
+  <!-- ※なお、cart_add.phpで既にCartオブジェクトを生成しているため、Cartオブジェクトの再生成は不要。 -->
 
 
 
