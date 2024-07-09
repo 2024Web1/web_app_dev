@@ -94,7 +94,7 @@ Webアプリケーション「ミニショップ」の作成に関しては、�
 - カート内に保存されている商品を表示する
 - 注文数の変更、特定の商品の削除ができる
 - カート内の商品を注文するためのリンクがある<br>
-  <img src="./images/cart_list_display.png" width="80%">
+  ![](./images/cart_list_display.png)
 
 ### 注文画面
 
