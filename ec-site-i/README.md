@@ -92,7 +92,7 @@
 
 `$dsn`、`$user`、`$password` の値がWebアプリケーション「ミニショップ」用になっている以外は、[ログイン認証①](../login-i/README.md)で作成したクラス`DbData`と同じ内容です。
 
-**classes/dbdata.php** のコードは以下のとおりです。`puclic`ディレクトリに`classes`ディレクトリを作成し、その中に配置してください。
+**classes/dbdata.php** のコードは以下のとおりです。`public`ディレクトリに`classes`ディレクトリを作成し、その中に配置してください。
 
 ```php
 <?php

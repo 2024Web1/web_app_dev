@@ -8,7 +8,7 @@
     - [商品詳細画面](#商品詳細画面)
     - [カート内の商品画面](#カート内の商品画面)
   - [カート内に関するデータベース操作を行うクラスCart](#カート内に関するデータベース操作を行うクラスcart)
-  - [注文追加機能(cart\_add.php)](#注文追加機能cart_addphp)
+  - [商品追加機能(cart\_add.php)](#商品追加機能cart_addphp)
   - [カート内の商品画面(cart\_list.php)](#カート内の商品画面cart_listphp)
   - [動作確認(1回目)](#動作確認1回目)
   - [カート内の商品画面(cart\_list.php)のバグ修正](#カート内の商品画面cart_listphpのバグ修正)
@@ -94,7 +94,7 @@ public
    2. `getItems`メソッド
       - テーブルcart内のすべてのデータを抽出
 
-2. 商品詳細画面(product_detail.php)から送られてくるリクエストを受け取る、注文追加(cart_add.php)を作成
+2. 商品詳細画面(product_detail.php)から送られてくるリクエストを受け取る、商品追加(cart_add.php)を作成
    1. 商品詳細画面(product_detail.php)から送られてきた商品番号と注文数を取得
    2. クラス`Cart`のオブジェクトを生成
    3. `addItem`メソッドを呼び出し、テーブルcartに商品データと注文数を登録
@@ -165,13 +165,13 @@ class Cart extends DbData
 $sql = "SELECT items.ident, items.name, items.maker, items.price, cart.quantity, items.image, items.genre FROM cart JOIN items ON cart.ident = items.ident";
 ```
 
-## 注文追加機能(cart_add.php)
+## 商品追加機能(cart_add.php)
 
 ※ファイルを作成する前に、1つ注意事項があります。
 今後作成する **cart_xxx.php** というファイル名のファイルは、すべて`cart`ディレクトリに配置してください。
 また、`cart`ディレクトリは、`public`ディレクトリに配置してください。
 
-注文追加機能(cart_add.php)には、以下の処理を記述します。
+商品追加機能(cart_add.php)には、以下の処理を記述します。
 
 1. 商品詳細画面(product_detail.php)から送られてきた商品番号と注文数を受け取る
 2. クラス`Cart`のオブジェクトを生成する
