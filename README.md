@@ -52,8 +52,8 @@
 
 ## [ミニショップ③(カート内の商品画面、カート内の商品画面のバグ修正)](./ec-site-iii/README.md)
 
-## [ミニショップ④(カート内の商品を削除する)](./ec-site-iv/README.md)
+## [ミニショップ④(カート内の商品を削除する)](./ec-site-iiii/README.md)
 
-## [ミニショップ⑤(カート内の商品の注文数を変更する)](./ec-site-v/README.md)
+## [ミニショップ⑤(カート内の商品の注文数を変更する)](./ec-site-iiiii/README.md)
 
-## [ミニショップ⑥(注文画面)](./ec-site-vi/README.md)
+## [ミニショップ⑥(注文画面)](./ec-site-final/README.md)
