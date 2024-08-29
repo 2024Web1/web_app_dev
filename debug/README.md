@@ -107,7 +107,7 @@ var_dump($array);
 2. VSCode上で、`Ctrl+J`(Macの場合は`Cmd+J`)を押し、ターミナルを表示する
 3. 画面下部のポートをクリックし、地球儀マークをクリックする<br>
    ![](./images/port_click.png)
-4. ブラウザ上で以下のように表示されればOK
+4. ブラウザが表示されるので「var_dump.php」のリンクをクリックし、以下のような表示がされればOK
 
 ```php
 /var/www/html/var_dump.php:11:
