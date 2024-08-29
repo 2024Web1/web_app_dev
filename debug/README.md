@@ -473,4 +473,7 @@ mytest.phpに`test4`メソッドを追加してください。
 - パッケージ管理ツール利用のすすめ
   個人的には、composerのようなパッケージ管理ツールの利用は開発の幅が広がり、非常に便利です。
   他言語でもこのようなツールはありますので、制作演習Ⅱや総合開発実習でも積極的に利用してみてください。
+
+- 最後に
+  [アンケート](https://docs.google.com/forms/d/e/1FAIpQLSevalE7-k7Fl0NfugTDEqF-DpYtz44B91P4MJ6fXnv51lMUzw/viewform?usp=sf_link)に答えてください！
   
