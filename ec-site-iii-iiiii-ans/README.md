@@ -370,3 +370,4 @@ public function changeQuantity($ident, $quantity)
   $sql = "UPDATE cart SET quantity = ? WHERE ident = ?";
   $this->exec($sql, [$quantity, $ident]);
 }
+```
